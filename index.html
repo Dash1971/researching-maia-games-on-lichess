@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Millions of games with Maia · Lichess research snapshot</title>
+<style>
+:root { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:#172638; background:#f5f3ed; }
+* { box-sizing:border-box } body { margin:0 } .wrap { max-width:1120px;margin:auto;padding:0 30px }
+a { color:#236d70 } a:hover { color:#123c4d } h1,h2,h3,p { margin-top:0 }
+.hero { background:#14283b;color:#fff;padding:54px 0 48px;position:relative;overflow:hidden }
+.hero:after { content:"♞";position:absolute;font-size:360px;right:4%;top:-105px;color:#ffffff0c;line-height:1 }
+.eyebrow { text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:800;color:#96d3c1 }
+h1 { font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-.045em;max-width:730px;margin:15px 0 20px }
+.dek { font-size:19px;line-height:1.55;color:#d5e1e8;max-width:700px }
+.hero-meta { font-size:12px;color:#a8c0ca;margin-top:28px }
+main { padding:32px 0 64px } section { margin:30px 0 42px;break-inside:avoid }
+.metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-60px;position:relative }
+.metric { background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 7px 25px #13263b13 }
+.metric strong { font-size:33px;letter-spacing:-.04em;display:block } .metric span { color:#5d6a78;font-size:13px;line-height:1.45 }
+.section-head { display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid #d9dedb;padding-bottom:10px;margin-bottom:18px }
+h2 { font-size:27px;letter-spacing:-.025em;margin:0 } .section-head p { margin:0;color:#667582;font-size:12px }
+.three { display:grid;grid-template-columns:repeat(3,1fr);gap:14px }
+.bot-card,.opening-card,.panel,.answer { background:#fff;border:1px solid #e3e8e6;border-radius:15px;padding:19px;break-inside:avoid }
+.bot-title { display:flex;gap:8px;align-items:center } .bot-title h3 { margin:0;flex:1;font-size:18px } .bot-title a { font-size:11px;white-space:nowrap }
+.dot { background:var(--accent);width:10px;height:10px;border-radius:50% } .big { display:block;font-size:32px;margin:16px 0 0;letter-spacing:-.03em }
+small,.micro { color:#657582;font-size:12px } .micro { margin:14px 0 0;line-height:1.45 }
+.stack { height:16px;width:100%;display:flex;overflow:hidden;border-radius:9px;background:#e5ebed;margin:14px 0 6px } .stack span { height:100%;display:block }
+.legend { font-size:12px;color:#596a77;margin:0 }
+.panel { padding:24px } .chart-row { display:grid;grid-template-columns:80px 1fr 215px;gap:16px;align-items:center;margin:14px 0 }
+.chart-row .stack { margin:0;height:20px } .chart-row span:last-child { color:#61727e;font-size:13px }
+.key { display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#687782;margin-top:14px } .swatch { display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px }
+.opening-card h3 { font-size:20px;margin-bottom:18px } .opening-line { display:grid;grid-template-columns:1fr 88px 41px;gap:9px;align-items:center;margin:10px 0;font-size:12px;line-height:1.3 }
+.opening-line .track { background:#edf1f1;border-radius:5px;height:10px;overflow:hidden } .opening-line i { display:block;height:100%;min-width:2px;border-radius:5px } .opening-line b { text-align:right }
+.insight { border-left:4px solid #d89b44;background:#fff8ec;padding:15px 19px;border-radius:0 12px 12px 0;line-height:1.5;margin:18px 0 }
+.answers { display:grid;grid-template-columns:repeat(2,1fr);gap:12px } .answer h3 { font-size:16px;margin:0 0 8px } .answer p { font-size:13px;color:#526474;line-height:1.55;margin:0 }
+.badge { font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;border-radius:20px;padding:5px 8px;display:inline-block;margin-bottom:10px }
+.yes { background:#d8eee7;color:#245c50 } .no { background:#fae9d5;color:#8a5b23 }
+.method { background:#e7eceb;border-radius:15px;padding:20px 24px;color:#405565;font-size:13px;line-height:1.65 } .method p:last-child { margin-bottom:0 }
+.sources { font-size:12px;line-height:1.8;color:#667582 } footer { border-top:1px solid #dce1df;padding:22px 0 40px;color:#647481;font-size:12px }
+@media(max-width:800px) { .metrics,.three,.answers { grid-template-columns:1fr } .metrics { margin-top:-25px } .chart-row { grid-template-columns:70px 1fr;gap:8px } .chart-row span:last-child { grid-column:2 } }
+@media print { @page { size:A4; margin:14mm } body { background:#fff } .hero { padding:30px 0;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact } .metrics { margin-top:12px;grid-template-columns:repeat(3,1fr) } .metric,.bot-card,.opening-card,.panel,.answer { box-shadow:none } .three { grid-template-columns:repeat(3,1fr) } .answers { grid-template-columns:repeat(2,1fr) } .chart-row { grid-template-columns:80px 1fr 215px } .chart-row span:last-child { grid-column:auto } section { margin:22px 0;break-inside:auto } .section-head { break-after:avoid } .opening-card,.bot-card,.answer { break-inside:avoid } }
+</style></head><body>
+<header class="hero"><div class="wrap"><div class="eyebrow">A public-data research snapshot · October 4, 2026</div>
+<h1>Millions of games with Maia</h1><p class="dek">What Lichess can tell us about Maia 1, 5, and 9—and what it cannot yet tell us about the people practicing against them.</p>
+<p class="hero-meta">Official bot accounts only · Public profile totals plus three stale rated-game Insights samples · Collected 2026-10-04T07:12:48+00:00 UTC</p></div></header>
+<main class="wrap"><div class="metrics">
+<div class="metric"><strong>6.49 million</strong><span>distinct games involving the three bots, after removing their head-to-head overlap</span></div>
+<div class="metric"><strong>59%</strong><span>of their recorded games were casual, not rated</span></div>
+<div class="metric"><strong>45,000</strong><span>rated account-game records in three Insights overview slices</span></div>
+</div>
+<section><div class="section-head"><h2>1 · The scale of Maia play</h2><p>Live profile counters; they keep changing</p></div>
+<div class="three"><article class="bot-card" style="--accent:#4a9f8a">
+      <div class="bot-title"><span class="dot"></span><h3>Maia 1</h3><a href="https://lichess.org/@/maia1">Lichess profile ↗</a></div>
+      <strong class="big">3,661,291</strong><small>all recorded games at collection time</small>
+      <div class="stack"><span style="width:41.338%;background:#4a9f8a" title="Rated: 1,513,490"></span><span style="width:58.662%;background:#dfe5e8" title="Casual: 2,147,801"></span></div>
+      <p class="legend"><b style="color:#4a9f8a">■</b> 41.3% rated &nbsp; <b style="color:#a6b5be">■</b> 58.7% casual</p>
+      <p class="micro">Bot wins 56.9% · draws 6.4% · losses 36.7%</p>
+    </article><article class="bot-card" style="--accent:#d59a48">
+      <div class="bot-title"><span class="dot"></span><h3>Maia 5</h3><a href="https://lichess.org/@/maia5">Lichess profile ↗</a></div>
+      <strong class="big">1,430,845</strong><small>all recorded games at collection time</small>
+      <div class="stack"><span style="width:40.187%;background:#d59a48" title="Rated: 575,010"></span><span style="width:59.813%;background:#dfe5e8" title="Casual: 855,835"></span></div>
+      <p class="legend"><b style="color:#d59a48">■</b> 40.2% rated &nbsp; <b style="color:#a6b5be">■</b> 59.8% casual</p>
+      <p class="micro">Bot wins 55.7% · draws 7.2% · losses 37.1%</p>
+    </article><article class="bot-card" style="--accent:#866bb3">
+      <div class="bot-title"><span class="dot"></span><h3>Maia 9</h3><a href="https://lichess.org/@/maia9">Lichess profile ↗</a></div>
+      <strong class="big">1,394,669</strong><small>all recorded games at collection time</small>
+      <div class="stack"><span style="width:42.516%;background:#866bb3" title="Rated: 592,961"></span><span style="width:57.484%;background:#dfe5e8" title="Casual: 801,708"></span></div>
+      <p class="legend"><b style="color:#866bb3">■</b> 42.5% rated &nbsp; <b style="color:#a6b5be">■</b> 57.5% casual</p>
+      <p class="micro">Bot wins 55.7% · draws 7.5% · losses 36.8%</p>
+    </article></div>
+<p class="insight"><b>The headline:</b> Maia 1 accounts for 56.4% of bot-account game entries. 3,805,344 entries are casual. Only 21 games were between two of these Maia bots; removing that double-counting leaves 6,486,784 distinct games in this snapshot.</p>
+</section>
+<section><div class="section-head"><h2>2 · Which side does Maia play?</h2><p>15,000 rated games per bot, not lifetime totals</p></div>
+<div class="panel"><div class="chart-row"><b>Maia 1</b>
+      <div class="stack"><span style="width:46.780%;background:#4a9f8a" title="Maia White: 7,017"></span><span style="width:53.220%;background:#293b55" title="Maia Black: 7,983"></span></div>
+      <span>46.8% White / 53.2% Black</span></div><div class="chart-row"><b>Maia 5</b>
+      <div class="stack"><span style="width:45.900%;background:#d59a48" title="Maia White: 6,885"></span><span style="width:54.100%;background:#293b55" title="Maia Black: 8,115"></span></div>
+      <span>45.9% White / 54.1% Black</span></div><div class="chart-row"><b>Maia 9</b>
+      <div class="stack"><span style="width:47.433%;background:#866bb3" title="Maia White: 7,115"></span><span style="width:52.567%;background:#293b55" title="Maia Black: 7,885"></span></div>
+      <span>47.4% White / 52.6% Black</span></div><div class="key"><span><i class="swatch" style="background:#6e9e9a"></i>Maia White (bot-specific colors in bars)</span><span><i class="swatch" style="background:#293b55"></i>Maia Black</span></div></div>
+<p class="micro">In each available sample, Maia plays Black slightly more often: about 53–54% of games. This may reflect how challengers choose colors; the data does not establish why.</p></section>
+<section><div class="section-head"><h2>3 · What kind of games?</h2><p>Same 15,000-game slices</p></div>
+<div class="panel"><div class="chart-row"><b>Maia 1</b>
+      <div class="stack"><span style="width:9.113%;background:#c3d3d5" title="Bullet: 1,367"></span><span style="width:17.160%;background:#8dbbb0" title="Blitz: 2,574"></span><span style="width:63.933%;background:#4a9f8a" title="Rapid: 9,590"></span><span style="width:9.793%;background:#34455c" title="Classical: 1,469"></span></div>
+      <span>63.9% rapid · 17.2% blitz</span></div><div class="chart-row"><b>Maia 5</b>
+      <div class="stack"><span style="width:6.293%;background:#c3d3d5" title="Bullet: 944"></span><span style="width:29.513%;background:#8dbbb0" title="Blitz: 4,427"></span><span style="width:52.540%;background:#d59a48" title="Rapid: 7,881"></span><span style="width:11.653%;background:#34455c" title="Classical: 1,748"></span></div>
+      <span>52.5% rapid · 29.5% blitz</span></div><div class="chart-row"><b>Maia 9</b>
+      <div class="stack"><span style="width:9.607%;background:#c3d3d5" title="Bullet: 1,441"></span><span style="width:34.027%;background:#8dbbb0" title="Blitz: 5,104"></span><span style="width:45.873%;background:#866bb3" title="Rapid: 6,881"></span><span style="width:10.493%;background:#34455c" title="Classical: 1,574"></span></div>
+      <span>45.9% rapid · 34.0% blitz</span></div><div class="key"><span><i class="swatch" style="background:#c3d3d5"></i>Bullet</span><span><i class="swatch" style="background:#8dbbb0"></i>Blitz</span><span><i class="swatch" style="background:#d59a48"></i>Rapid (bot-specific colors in bars)</span><span><i class="swatch" style="background:#34455c"></i>Classical</span></div></div>
+<p class="micro">Rapid dominates Maia 1’s sample (63.9%), but Maia 9 has a much larger blitz share (34.0%). These samples cover different periods, so do not read this as a controlled comparison of bot strength.</p></section>
+<section><div class="section-head"><h2>4 · Openings people see against Maia</h2><p>Top families among 15,000 rated games per bot</p></div>
+<div class="three"><article class="opening-card"><h3 style="color:#4a9f8a">Maia 1</h3><div class="opening-line"><span>Queen&#x27;s Pawn Game</span>
+          <div class="track"><i style="width:10.72%;background:#4a9f8a"></i></div>
+          <b>10.7%</b></div><div class="opening-line"><span>King&#x27;s Pawn Game</span>
+          <div class="track"><i style="width:6.73%;background:#4a9f8a"></i></div>
+          <b>6.7%</b></div><div class="opening-line"><span>Sicilian Defense</span>
+          <div class="track"><i style="width:6.21%;background:#4a9f8a"></i></div>
+          <b>6.2%</b></div><div class="opening-line"><span>Italian Game</span>
+          <div class="track"><i style="width:5.57%;background:#4a9f8a"></i></div>
+          <b>5.6%</b></div><div class="opening-line"><span>Scandinavian Defense</span>
+          <div class="track"><i style="width:5.29%;background:#4a9f8a"></i></div>
+          <b>5.3%</b></div><div class="opening-line"><span>French Defense</span>
+          <div class="track"><i style="width:4.66%;background:#4a9f8a"></i></div>
+          <b>4.7%</b></div></article><article class="opening-card"><h3 style="color:#d59a48">Maia 5</h3><div class="opening-line"><span>Sicilian Defense</span>
+          <div class="track"><i style="width:9.93%;background:#d59a48"></i></div>
+          <b>9.9%</b></div><div class="opening-line"><span>Queen&#x27;s Pawn Game</span>
+          <div class="track"><i style="width:8.74%;background:#d59a48"></i></div>
+          <b>8.7%</b></div><div class="opening-line"><span>French Defense</span>
+          <div class="track"><i style="width:6.40%;background:#d59a48"></i></div>
+          <b>6.4%</b></div><div class="opening-line"><span>Caro-Kann Defense</span>
+          <div class="track"><i style="width:5.23%;background:#d59a48"></i></div>
+          <b>5.2%</b></div><div class="opening-line"><span>Scandinavian Defense</span>
+          <div class="track"><i style="width:4.79%;background:#d59a48"></i></div>
+          <b>4.8%</b></div><div class="opening-line"><span>Italian Game</span>
+          <div class="track"><i style="width:4.65%;background:#d59a48"></i></div>
+          <b>4.6%</b></div></article><article class="opening-card"><h3 style="color:#866bb3">Maia 9</h3><div class="opening-line"><span>Sicilian Defense</span>
+          <div class="track"><i style="width:12.71%;background:#866bb3"></i></div>
+          <b>12.7%</b></div><div class="opening-line"><span>Queen&#x27;s Pawn Game</span>
+          <div class="track"><i style="width:8.51%;background:#866bb3"></i></div>
+          <b>8.5%</b></div><div class="opening-line"><span>French Defense</span>
+          <div class="track"><i style="width:6.85%;background:#866bb3"></i></div>
+          <b>6.9%</b></div><div class="opening-line"><span>Caro-Kann Defense</span>
+          <div class="track"><i style="width:5.17%;background:#866bb3"></i></div>
+          <b>5.2%</b></div><div class="opening-line"><span>Scandinavian Defense</span>
+          <div class="track"><i style="width:4.80%;background:#866bb3"></i></div>
+          <b>4.8%</b></div><div class="opening-line"><span>English Opening</span>
+          <div class="track"><i style="width:4.04%;background:#866bb3"></i></div>
+          <b>4.0%</b></div></article></div>
+<p class="insight"><b>An opening pattern:</b> the Sicilian Defense appears in 6.2% of Maia 1’s sample, 9.9% of Maia 5’s, and 12.7% of Maia 9’s. That is a difference in these samples, not evidence that moving to a harder Maia causes people to change openings.</p>
+<p class="micro">Opening families describe the resulting position and include moves from both players. These are the top categories returned by Insights, not a complete opening census. Color-filtered queries select a different 15,000-game slice, so they should not be added to these counts.</p></section>
+<section><div class="section-head"><h2>5 · Your people questions</h2><p>Answerability is part of the result</p></div>
+<div class="answers">
+<div class="answer"><span class="badge no">Not measurable yet</span><h3>How many unique accounts played Maia?</h3><p>The public profile counters count games, not distinct opponents. A person can also use multiple accounts. We need game-level opponents for all three bots to count unique Lichess accounts reliably.</p></div>
+<div class="answer"><span class="badge no">Not measurable yet</span><h3>Average games per account?</h3><p>That is total bot games divided by unique opposing accounts, after de-duplicating games and deciding how to handle bot opponents. The denominator is unavailable from the working endpoints.</p></div>
+<div class="answer"><span class="badge no">Not measurable yet</span><h3>Who plays Maia the most?</h3><p>No honest lifetime leaderboard is possible from aggregate profiles or Insights. Any names from a small visible page would be a biased sample, not the heaviest users.</p></div>
+<div class="answer"><span class="badge no">Not established</span><h3>Can we see players improving and graduating?</h3><p>Not without opponent-level games in date order. Even rising win rates could mean repeatable opening tricks or changed time controls. A convincing example would show enough games at each bot level, stronger results over time, and a move to Maia 5 or 9.</p></div>
+</div></section>
+<section><div class="section-head"><h2>How to read this</h2></div><div class="method">
+<p><b>Three public data sources.</b> Game totals, rated totals, and lifetime bot results come from the three <a href="https://lichess.org/api/user/maia1">public profile APIs</a>. Pairwise <a href="https://lichess.org/api/crosstable/maia1/maia5">crosstables</a> identify 21 games between the three bots, which were subtracted once from the sum of profile games. The color, speed, and opening charts come from <a href="https://lichess.org/insights/maia1">Lichess Insights</a> for each account. Insights returned a 15,000-game rated slice for each bot; the indexed collections were marked <i>stale</i>. A game between bots could appear in two Insights slices; 45,000 means account-game records, not necessarily unique game IDs.</p>
+<p><b>Not current game samples.</b> The last displayed date-bin labels were Maia 1: 2026-01-24, Maia 5: 2026-01-12, Maia 9: 2026-03-27. These are chart-bin labels, not exact latest-game timestamps. The samples span different periods and are not random lifetime samples. Do not generalize their percentages to all 6,486,805 games.</p>
+<p><b>Why the missing answers?</b> The documented <a href="https://lichess.org/api#operation/apiGamesUser">user-game export</a> initially returned HTTP 404 with a generic User-Agent; that did not establish an outage. A later two-game request with a custom User-Agent returned HTTP 429 (“Please only run 1 request(s) at a time”) at 2026-10-04 07:39 UTC. A complete lifetime export has not yet been obtained. The <a href="https://database.lichess.org/">monthly open database</a> contains rated games only and would exclude most Maia games; reconstructing opponent histories from it would still be incomplete.</p>
+<p><b>Definitions.</b> “Casual” = all profile games minus rated profile games. “Win” means a bot win. “Unique accounts” is not the same as unique people. Official-bot identity was checked against the <a href="https://lichess.org/team/maia-bots">Maia Bots team</a> and <a href="https://lichess.org/player/bots">Lichess featured-bots listing</a>.</p>
+</div></section>
+<section class="sources"><b>Source links:</b> <a href="https://lichess.org/@/maia1">Maia 1</a> · <a href="https://lichess.org/@/maia5">Maia 5</a> · <a href="https://lichess.org/@/maia9">Maia 9</a> · <a href="https://lichess.org/insights/maia1">Maia 1 Insights</a> · <a href="https://lichess.org/insights/maia5">Maia 5 Insights</a> · <a href="https://lichess.org/insights/maia9">Maia 9 Insights</a> · <a href="https://database.lichess.org/">Lichess open database</a>.<br>Data and reproducible collection code accompany this report. <a href="https://github.com/Dash1971/researching-maia-games-on-lichess/blob/main/RESEARCH_PLAN.md">Read the proposed full-history research plan.</a> No opponent usernames were collected or published.</section>
+</main><footer><div class="wrap">Independent fan research · Snapshot, not an official Maia or Lichess publication · Report built October 4, 2026</div></footer></body></html>
