@@ -1,0 +1,3567 @@
+{
+  "scope": {
+    "records": 1425567,
+    "start_utc_inclusive": "2023-10-04T00:00:00Z",
+    "end_utc_exclusive": "2026-10-04T09:00:00Z"
+  },
+  "definitions": {
+    "question": "How did persistent accounts score in their early versus later observed games against the same Maia and exact clock?",
+    "matching": "Same opponent account, Maia bot, clock initial seconds, increment seconds, and Lichess speed category. Valid outcome games ordered by creation time then game ID.",
+    "selection": "For each cohort independently, each account contributes once: select its eligible matching stratum with the most games; ties by bot, initial seconds, increment seconds, speed, ascending.",
+    "score": "Opponent score: win=1, draw=0.5, loss=0. First 20 versus last 20 valid games; windows never overlap. Summaries weight each selected account equally.",
+    "gap": "At least 30 days between the last early and first late game in main cohort; 90 days in sensitivity. Sensitivity additionally requires at least 60 valid games in the stratum.",
+    "rating": "Mean recorded opponent Lichess ratings in the early/later windows, within matching bot/clock/speed. Accounts can play and train elsewhere. Bot rating and color mix shifts are reported as potential confounders.",
+    "limits": "Descriptive association among selected persistent accounts, not proof that playing Maia improves skill. Selection/survivorship bias, regression to the mean, external training, bot changes and color mix can affect the result. Game outcomes and Lichess ratings are different measures; Maia level is not a measured skill gain.",
+    "input_verification": "This script verifies published shard SHA-256 hashes and row counts before analysis."
+  },
+  "excluded_games": {
+    "unknown_outcome": 3161,
+    "cheat_status": 110,
+    "missing_account": 147
+  },
+  "cohorts": [
+    {
+      "name": "main",
+      "minimum_games_in_matching_stratum": 40,
+      "early_games": 20,
+      "late_games": 20,
+      "minimum_gap_between_windows_days": 30,
+      "overall": {
+        "accounts": 1066,
+        "compared_games": 42640,
+        "improved_accounts": 543,
+        "unchanged_accounts": 96,
+        "declined_accounts": 427,
+        "mean_early_score_pct": 45.101,
+        "mean_late_score_pct": 48.288,
+        "mean_score_change_pp": 3.187,
+        "median_score_change_pp": 2.5,
+        "mean_opponent_rating_change": 41.765,
+        "median_opponent_rating_change": 34.375,
+        "accounts_with_rating_comparison": 1066,
+        "mean_bot_rating_change": 10.036,
+        "mean_early_white_pct": 55.746,
+        "mean_late_white_pct": 55.333,
+        "median_gap_days": 131.947,
+        "change_distribution": [
+          {
+            "label": "−100 to <−20 pp",
+            "accounts": 90
+          },
+          {
+            "label": "−20 to <0 pp",
+            "accounts": 337
+          },
+          {
+            "label": "0 pp",
+            "accounts": 96
+          },
+          {
+            "label": ">0 to <20 pp",
+            "accounts": 349
+          },
+          {
+            "label": "20 to 100 pp",
+            "accounts": 194
+          }
+        ]
+      },
+      "by_bot": [
+        {
+          "bot": "maia1",
+          "accounts": 681,
+          "compared_games": 27240,
+          "improved_accounts": 356,
+          "unchanged_accounts": 57,
+          "declined_accounts": 268,
+          "mean_early_score_pct": 43.399,
+          "mean_late_score_pct": 47.412,
+          "mean_score_change_pp": 4.012,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 51.357,
+          "median_opponent_rating_change": 45.6,
+          "accounts_with_rating_comparison": 681,
+          "mean_bot_rating_change": 7.617,
+          "mean_early_white_pct": 56.116,
+          "mean_late_white_pct": 55.683,
+          "median_gap_days": 118.101,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 53
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 215
+            },
+            {
+              "label": "0 pp",
+              "accounts": 57
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 220
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 136
+            }
+          ]
+        },
+        {
+          "bot": "maia5",
+          "accounts": 176,
+          "compared_games": 7040,
+          "improved_accounts": 91,
+          "unchanged_accounts": 17,
+          "declined_accounts": 68,
+          "mean_early_score_pct": 46.648,
+          "mean_late_score_pct": 50.043,
+          "mean_score_change_pp": 3.395,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 20.489,
+          "median_opponent_rating_change": 14.725,
+          "accounts_with_rating_comparison": 176,
+          "mean_bot_rating_change": 9.616,
+          "mean_early_white_pct": 56.108,
+          "mean_late_white_pct": 55.312,
+          "median_gap_days": 160.574,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 16
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 52
+            },
+            {
+              "label": "0 pp",
+              "accounts": 17
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 57
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 34
+            }
+          ]
+        },
+        {
+          "bot": "maia9",
+          "accounts": 209,
+          "compared_games": 8360,
+          "improved_accounts": 96,
+          "unchanged_accounts": 22,
+          "declined_accounts": 91,
+          "mean_early_score_pct": 49.342,
+          "mean_late_score_pct": 49.665,
+          "mean_score_change_pp": 0.323,
+          "median_score_change_pp": 0.0,
+          "mean_opponent_rating_change": 28.426,
+          "median_opponent_rating_change": 22.95,
+          "accounts_with_rating_comparison": 209,
+          "mean_bot_rating_change": 18.27,
+          "mean_early_white_pct": 54.234,
+          "mean_late_white_pct": 54.211,
+          "median_gap_days": 174.067,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 21
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 70
+            },
+            {
+              "label": "0 pp",
+              "accounts": 22
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 72
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 24
+            }
+          ]
+        }
+      ],
+      "by_speed": [
+        {
+          "speed": "blitz",
+          "accounts": 290,
+          "compared_games": 11600,
+          "improved_accounts": 154,
+          "unchanged_accounts": 20,
+          "declined_accounts": 116,
+          "mean_early_score_pct": 47.284,
+          "mean_late_score_pct": 51.707,
+          "mean_score_change_pp": 4.422,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 18.889,
+          "median_opponent_rating_change": 11.425,
+          "accounts_with_rating_comparison": 290,
+          "mean_bot_rating_change": -3.376,
+          "mean_early_white_pct": 53.707,
+          "mean_late_white_pct": 52.707,
+          "median_gap_days": 171.945,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 20
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 96
+            },
+            {
+              "label": "0 pp",
+              "accounts": 20
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 98
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 56
+            }
+          ]
+        },
+        {
+          "speed": "bullet",
+          "accounts": 84,
+          "compared_games": 3360,
+          "improved_accounts": 43,
+          "unchanged_accounts": 9,
+          "declined_accounts": 32,
+          "mean_early_score_pct": 55.714,
+          "mean_late_score_pct": 57.292,
+          "mean_score_change_pp": 1.577,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 69.004,
+          "median_opponent_rating_change": 51.625,
+          "accounts_with_rating_comparison": 84,
+          "mean_bot_rating_change": 36.854,
+          "mean_early_white_pct": 53.869,
+          "mean_late_white_pct": 54.405,
+          "median_gap_days": 148.908,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 10
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 22
+            },
+            {
+              "label": "0 pp",
+              "accounts": 9
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 32
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 11
+            }
+          ]
+        },
+        {
+          "speed": "classical",
+          "accounts": 128,
+          "compared_games": 5120,
+          "improved_accounts": 48,
+          "unchanged_accounts": 12,
+          "declined_accounts": 68,
+          "mean_early_score_pct": 46.309,
+          "mean_late_score_pct": 45.527,
+          "mean_score_change_pp": -0.781,
+          "median_score_change_pp": -2.5,
+          "mean_opponent_rating_change": 36.012,
+          "median_opponent_rating_change": 38.375,
+          "accounts_with_rating_comparison": 128,
+          "mean_bot_rating_change": 32.077,
+          "mean_early_white_pct": 59.961,
+          "mean_late_white_pct": 59.727,
+          "median_gap_days": 117.185,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 17
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 51
+            },
+            {
+              "label": "0 pp",
+              "accounts": 12
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 26
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 22
+            }
+          ]
+        },
+        {
+          "speed": "rapid",
+          "accounts": 564,
+          "compared_games": 22560,
+          "improved_accounts": 298,
+          "unchanged_accounts": 55,
+          "declined_accounts": 211,
+          "mean_early_score_pct": 42.123,
+          "mean_late_score_pct": 45.816,
+          "mean_score_change_pp": 3.692,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 50.776,
+          "median_opponent_rating_change": 42.475,
+          "accounts_with_rating_comparison": 564,
+          "mean_bot_rating_change": 7.936,
+          "mean_early_white_pct": 56.117,
+          "mean_late_white_pct": 55.824,
+          "median_gap_days": 124.509,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 43
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 168
+            },
+            {
+              "label": "0 pp",
+              "accounts": 55
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 193
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 105
+            }
+          ]
+        }
+      ],
+      "selected_clock_counts": [
+        {
+          "bot": "maia1",
+          "initial_seconds": 0,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 0,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 15,
+          "increment_seconds": 3,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 15,
+          "increment_seconds": 4,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 30,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 45,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 45,
+          "increment_seconds": 3,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 6
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 6
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 6,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 20
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 15
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 5
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 26
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 6,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 240,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 240,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 240,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 11
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 8
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 80
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 15
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 7
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 20,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 360,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 360,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 360,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 420,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 15,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 540,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 120
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 19
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 54
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 16
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 14,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 15,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 16,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 20,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 720,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 780,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 9,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 13,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 15
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 13
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 52
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 11,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 14,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 960,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 960,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1020,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1020,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1080,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1080,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 12
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 5
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 8
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 16
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 1,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 2,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2400,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 45,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 3600,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 3600,
+          "increment_seconds": 8,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 5400,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 5400,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 7200,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 9900,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 6
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 120,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 180,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 120,
+          "increment_seconds": 7,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 11
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 30,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 240,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 18
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 360,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 360,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 360,
+          "increment_seconds": 9,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 420,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 420,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 480,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 480,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 480,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 12
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 15
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 4
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 20,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 720,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 720,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 4
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 4
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 20
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1080,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1140,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1500,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1500,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 2,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 2100,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 2100,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 2400,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 3600,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 30,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 60,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 7
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 7
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 90,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 120,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 120,
+          "increment_seconds": 12,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 6
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 9
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 7,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 6
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 28
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 360,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 360,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 480,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 14
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 12
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 660,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 720,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 26
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 960,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 180,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 2700,
+          "increment_seconds": 45,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 3600,
+          "increment_seconds": 8,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 3600,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 3600,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 5400,
+          "increment_seconds": 2,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 5400,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 7200,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 10800,
+          "increment_seconds": 180,
+          "speed": "classical",
+          "accounts": 1
+        }
+      ]
+    },
+    {
+      "name": "sensitivity",
+      "minimum_games_in_matching_stratum": 60,
+      "early_games": 20,
+      "late_games": 20,
+      "minimum_gap_between_windows_days": 90,
+      "overall": {
+        "accounts": 649,
+        "compared_games": 25960,
+        "improved_accounts": 333,
+        "unchanged_accounts": 47,
+        "declined_accounts": 269,
+        "mean_early_score_pct": 47.084,
+        "mean_late_score_pct": 49.965,
+        "mean_score_change_pp": 2.881,
+        "median_score_change_pp": 2.5,
+        "mean_opponent_rating_change": 45.777,
+        "median_opponent_rating_change": 33.6,
+        "accounts_with_rating_comparison": 649,
+        "mean_bot_rating_change": 14.688,
+        "mean_early_white_pct": 55.385,
+        "mean_late_white_pct": 54.353,
+        "median_gap_days": 245.933,
+        "change_distribution": [
+          {
+            "label": "−100 to <−20 pp",
+            "accounts": 58
+          },
+          {
+            "label": "−20 to <0 pp",
+            "accounts": 211
+          },
+          {
+            "label": "0 pp",
+            "accounts": 47
+          },
+          {
+            "label": ">0 to <20 pp",
+            "accounts": 215
+          },
+          {
+            "label": "20 to 100 pp",
+            "accounts": 118
+          }
+        ]
+      },
+      "by_bot": [
+        {
+          "bot": "maia1",
+          "accounts": 386,
+          "compared_games": 15440,
+          "improved_accounts": 208,
+          "unchanged_accounts": 28,
+          "declined_accounts": 150,
+          "mean_early_score_pct": 47.345,
+          "mean_late_score_pct": 51.69,
+          "mean_score_change_pp": 4.346,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 59.782,
+          "median_opponent_rating_change": 47.475,
+          "accounts_with_rating_comparison": 386,
+          "mean_bot_rating_change": 14.279,
+          "mean_early_white_pct": 55.868,
+          "mean_late_white_pct": 54.249,
+          "median_gap_days": 239.107,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 30
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 120
+            },
+            {
+              "label": "0 pp",
+              "accounts": 28
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 127
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 81
+            }
+          ]
+        },
+        {
+          "bot": "maia5",
+          "accounts": 127,
+          "compared_games": 5080,
+          "improved_accounts": 70,
+          "unchanged_accounts": 6,
+          "declined_accounts": 51,
+          "mean_early_score_pct": 44.724,
+          "mean_late_score_pct": 48.012,
+          "mean_score_change_pp": 3.287,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 22.464,
+          "median_opponent_rating_change": 18.05,
+          "accounts_with_rating_comparison": 127,
+          "mean_bot_rating_change": 13.013,
+          "mean_early_white_pct": 55.669,
+          "mean_late_white_pct": 55.197,
+          "median_gap_days": 266.695,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 13
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 38
+            },
+            {
+              "label": "0 pp",
+              "accounts": 6
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 45
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 25
+            }
+          ]
+        },
+        {
+          "bot": "maia9",
+          "accounts": 136,
+          "compared_games": 5440,
+          "improved_accounts": 55,
+          "unchanged_accounts": 13,
+          "declined_accounts": 68,
+          "mean_early_score_pct": 48.548,
+          "mean_late_score_pct": 46.893,
+          "mean_score_change_pp": -1.654,
+          "median_score_change_pp": -1.25,
+          "mean_opponent_rating_change": 27.795,
+          "median_opponent_rating_change": 21.9,
+          "accounts_with_rating_comparison": 136,
+          "mean_bot_rating_change": 17.414,
+          "mean_early_white_pct": 53.75,
+          "mean_late_white_pct": 53.86,
+          "median_gap_days": 276.483,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 15
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 53
+            },
+            {
+              "label": "0 pp",
+              "accounts": 13
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 43
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 12
+            }
+          ]
+        }
+      ],
+      "by_speed": [
+        {
+          "speed": "blitz",
+          "accounts": 191,
+          "compared_games": 7640,
+          "improved_accounts": 98,
+          "unchanged_accounts": 11,
+          "declined_accounts": 82,
+          "mean_early_score_pct": 48.246,
+          "mean_late_score_pct": 51.571,
+          "mean_score_change_pp": 3.325,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 12.999,
+          "median_opponent_rating_change": 4.3,
+          "accounts_with_rating_comparison": 191,
+          "mean_bot_rating_change": -4.196,
+          "mean_early_white_pct": 54.005,
+          "mean_late_white_pct": 52.435,
+          "median_gap_days": 294.395,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 16
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 66
+            },
+            {
+              "label": "0 pp",
+              "accounts": 11
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 63
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 35
+            }
+          ]
+        },
+        {
+          "speed": "bullet",
+          "accounts": 45,
+          "compared_games": 1800,
+          "improved_accounts": 20,
+          "unchanged_accounts": 5,
+          "declined_accounts": 20,
+          "mean_early_score_pct": 58.722,
+          "mean_late_score_pct": 57.222,
+          "mean_score_change_pp": -1.5,
+          "median_score_change_pp": 0.0,
+          "mean_opponent_rating_change": 74.553,
+          "median_opponent_rating_change": 60.8,
+          "accounts_with_rating_comparison": 45,
+          "mean_bot_rating_change": 36.258,
+          "mean_early_white_pct": 53.444,
+          "mean_late_white_pct": 52.111,
+          "median_gap_days": 268.686,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 8
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 12
+            },
+            {
+              "label": "0 pp",
+              "accounts": 5
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 15
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 5
+            }
+          ]
+        },
+        {
+          "speed": "classical",
+          "accounts": 73,
+          "compared_games": 2920,
+          "improved_accounts": 30,
+          "unchanged_accounts": 6,
+          "declined_accounts": 37,
+          "mean_early_score_pct": 49.966,
+          "mean_late_score_pct": 49.623,
+          "mean_score_change_pp": -0.342,
+          "median_score_change_pp": -2.5,
+          "mean_opponent_rating_change": 49.521,
+          "median_opponent_rating_change": 47.1,
+          "accounts_with_rating_comparison": 73,
+          "mean_bot_rating_change": 46.896,
+          "mean_early_white_pct": 60.411,
+          "mean_late_white_pct": 59.658,
+          "median_gap_days": 199.302,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 8
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 29
+            },
+            {
+              "label": "0 pp",
+              "accounts": 6
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 18
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 12
+            }
+          ]
+        },
+        {
+          "speed": "rapid",
+          "accounts": 340,
+          "compared_games": 13600,
+          "improved_accounts": 185,
+          "unchanged_accounts": 25,
+          "declined_accounts": 130,
+          "mean_early_score_pct": 44.272,
+          "mean_late_score_pct": 48.176,
+          "mean_score_change_pp": 3.904,
+          "median_score_change_pp": 2.5,
+          "mean_opponent_rating_change": 59.577,
+          "median_opponent_rating_change": 45.35,
+          "accounts_with_rating_comparison": 340,
+          "mean_bot_rating_change": 15.527,
+          "mean_early_white_pct": 55.338,
+          "mean_late_white_pct": 54.588,
+          "median_gap_days": 231.645,
+          "change_distribution": [
+            {
+              "label": "−100 to <−20 pp",
+              "accounts": 26
+            },
+            {
+              "label": "−20 to <0 pp",
+              "accounts": 104
+            },
+            {
+              "label": "0 pp",
+              "accounts": 25
+            },
+            {
+              "label": ">0 to <20 pp",
+              "accounts": 119
+            },
+            {
+              "label": "20 to 100 pp",
+              "accounts": 66
+            }
+          ]
+        }
+      ],
+      "selected_clock_counts": [
+        {
+          "bot": "maia1",
+          "initial_seconds": 0,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 15,
+          "increment_seconds": 3,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 15,
+          "increment_seconds": 4,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 30,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 45,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 45,
+          "increment_seconds": 3,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 60,
+          "increment_seconds": 6,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 11
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 120,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 8
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 12
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 180,
+          "increment_seconds": 6,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 240,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 5
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 57
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 11
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 300,
+          "increment_seconds": 20,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 360,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 420,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 480,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 540,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 54
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 8
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 34
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 10
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 15,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 20,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 600,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 780,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 9,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 840,
+          "increment_seconds": 13,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 9
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 8,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 38
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 11,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 14,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 900,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1080,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1080,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 6
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1500,
+          "increment_seconds": 6,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 7
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 2700,
+          "increment_seconds": 45,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 3600,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 5400,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 5400,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 7200,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia1",
+          "initial_seconds": 10800,
+          "increment_seconds": 180,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 0,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 60,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 120,
+          "increment_seconds": 7,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 8
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 180,
+          "increment_seconds": 30,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 240,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 240,
+          "increment_seconds": 5,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 11
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 360,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 360,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 420,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 420,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 480,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 480,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 10
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 8
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 11
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 720,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 720,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 13
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1080,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 1800,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 2100,
+          "increment_seconds": 3,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 2400,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia5",
+          "initial_seconds": 3600,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 60,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 60,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 90,
+          "increment_seconds": 2,
+          "speed": "bullet",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 120,
+          "increment_seconds": 1,
+          "speed": "bullet",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 120,
+          "increment_seconds": 12,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 1,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 6
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 180,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 0,
+          "speed": "blitz",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 2,
+          "speed": "blitz",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 3,
+          "speed": "blitz",
+          "accounts": 19
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 4,
+          "speed": "blitz",
+          "accounts": 4
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 300,
+          "increment_seconds": 30,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 360,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 480,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 480,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 9
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 1,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 5
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 9
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 600,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 4
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 660,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 720,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 2,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 3,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 5,
+          "speed": "rapid",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 6,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 10,
+          "speed": "rapid",
+          "accounts": 19
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 900,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 960,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 0,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 7,
+          "speed": "rapid",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1200,
+          "increment_seconds": 10,
+          "speed": "classical",
+          "accounts": 3
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1500,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 2
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 4
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 5,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 1800,
+          "increment_seconds": 15,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 2400,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 2700,
+          "increment_seconds": 45,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 3600,
+          "increment_seconds": 8,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 3600,
+          "increment_seconds": 20,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 5400,
+          "increment_seconds": 2,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 7200,
+          "increment_seconds": 0,
+          "speed": "classical",
+          "accounts": 1
+        },
+        {
+          "bot": "maia9",
+          "initial_seconds": 10800,
+          "increment_seconds": 180,
+          "speed": "classical",
+          "accounts": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,872 @@
+{
+  "scope": {
+    "all_time_profile_snapshot_utc": "2026-10-04T07:12:48+00:00",
+    "rated_export_start_utc": "2023-10-04T00:00:00+00:00",
+    "rated_export_end_exclusive_utc": "2026-10-04T09:00:00+00:00",
+    "rated_export_timestamp_field": "last_move_at_ms (last recorded move, not necessarily game termination)"
+  },
+  "all_time": {
+    "bot_game_entries": 6486805,
+    "rated_bot_entries": 2681461,
+    "casual_bot_entries": 3805344,
+    "cross_bot_duplicate_entries": 21,
+    "unique_games": 6486784,
+    "per_bot": {
+      "maia1": {
+        "all": 3661291,
+        "rated": 1513490,
+        "win": 2082285,
+        "draw": 234716,
+        "loss": 1344290,
+        "playing": 12
+      },
+      "maia5": {
+        "all": 1430845,
+        "rated": 575010,
+        "win": 796735,
+        "draw": 103298,
+        "loss": 530812,
+        "playing": 2
+      },
+      "maia9": {
+        "all": 1394669,
+        "rated": 592961,
+        "win": 776640,
+        "draw": 104623,
+        "loss": 513406,
+        "playing": 6
+      }
+    }
+  },
+  "rated_three_years": {
+    "bot_game_entries": 1425567,
+    "unique_games": 1425567,
+    "cross_bot_duplicate_entries": 0,
+    "per_bot": {
+      "maia1": 835333,
+      "maia5": 288278,
+      "maia9": 301956
+    },
+    "opposing_accounts": 93020,
+    "unknown_opponent_games": 147,
+    "missing_opponent_ratings": 0,
+    "first_12_complete_months": {
+      "months": [
+        "2023-11",
+        "2024-10"
+      ],
+      "games": 350152
+    },
+    "last_12_complete_months": {
+      "months": [
+        "2025-10",
+        "2026-09"
+      ],
+      "games": 628041
+    },
+    "peak_complete_month": {
+      "month": "2026-05",
+      "games": 70936
+    },
+    "monthly_complete": [
+      {
+        "month": "2023-11",
+        "per_bot": {
+          "maia1": 15025,
+          "maia5": 7934,
+          "maia9": 7830
+        },
+        "bot_game_entries": 30789,
+        "unique_games": 30789
+      },
+      {
+        "month": "2023-12",
+        "per_bot": {
+          "maia1": 16716,
+          "maia5": 7592,
+          "maia9": 8489
+        },
+        "bot_game_entries": 32797,
+        "unique_games": 32797
+      },
+      {
+        "month": "2024-01",
+        "per_bot": {
+          "maia1": 16318,
+          "maia5": 8794,
+          "maia9": 8782
+        },
+        "bot_game_entries": 33894,
+        "unique_games": 33894
+      },
+      {
+        "month": "2024-02",
+        "per_bot": {
+          "maia1": 15337,
+          "maia5": 7402,
+          "maia9": 7773
+        },
+        "bot_game_entries": 30512,
+        "unique_games": 30512
+      },
+      {
+        "month": "2024-03",
+        "per_bot": {
+          "maia1": 16080,
+          "maia5": 7070,
+          "maia9": 7541
+        },
+        "bot_game_entries": 30691,
+        "unique_games": 30691
+      },
+      {
+        "month": "2024-04",
+        "per_bot": {
+          "maia1": 16146,
+          "maia5": 6209,
+          "maia9": 10011
+        },
+        "bot_game_entries": 32366,
+        "unique_games": 32366
+      },
+      {
+        "month": "2024-05",
+        "per_bot": {
+          "maia1": 15347,
+          "maia5": 6294,
+          "maia9": 6602
+        },
+        "bot_game_entries": 28243,
+        "unique_games": 28243
+      },
+      {
+        "month": "2024-06",
+        "per_bot": {
+          "maia1": 14909,
+          "maia5": 6448,
+          "maia9": 6550
+        },
+        "bot_game_entries": 27907,
+        "unique_games": 27907
+      },
+      {
+        "month": "2024-07",
+        "per_bot": {
+          "maia1": 12660,
+          "maia5": 4640,
+          "maia9": 6490
+        },
+        "bot_game_entries": 23790,
+        "unique_games": 23790
+      },
+      {
+        "month": "2024-08",
+        "per_bot": {
+          "maia1": 15068,
+          "maia5": 5354,
+          "maia9": 6101
+        },
+        "bot_game_entries": 26523,
+        "unique_games": 26523
+      },
+      {
+        "month": "2024-09",
+        "per_bot": {
+          "maia1": 13626,
+          "maia5": 5216,
+          "maia9": 5722
+        },
+        "bot_game_entries": 24564,
+        "unique_games": 24564
+      },
+      {
+        "month": "2024-10",
+        "per_bot": {
+          "maia1": 14941,
+          "maia5": 5935,
+          "maia9": 7200
+        },
+        "bot_game_entries": 28076,
+        "unique_games": 28076
+      },
+      {
+        "month": "2024-11",
+        "per_bot": {
+          "maia1": 15024,
+          "maia5": 5700,
+          "maia9": 6852
+        },
+        "bot_game_entries": 27576,
+        "unique_games": 27576
+      },
+      {
+        "month": "2024-12",
+        "per_bot": {
+          "maia1": 18592,
+          "maia5": 7528,
+          "maia9": 7253
+        },
+        "bot_game_entries": 33373,
+        "unique_games": 33373
+      },
+      {
+        "month": "2025-01",
+        "per_bot": {
+          "maia1": 22725,
+          "maia5": 7575,
+          "maia9": 8240
+        },
+        "bot_game_entries": 38540,
+        "unique_games": 38540
+      },
+      {
+        "month": "2025-02",
+        "per_bot": {
+          "maia1": 18333,
+          "maia5": 7513,
+          "maia9": 7078
+        },
+        "bot_game_entries": 32924,
+        "unique_games": 32924
+      },
+      {
+        "month": "2025-03",
+        "per_bot": {
+          "maia1": 19614,
+          "maia5": 7577,
+          "maia9": 7477
+        },
+        "bot_game_entries": 34668,
+        "unique_games": 34668
+      },
+      {
+        "month": "2025-04",
+        "per_bot": {
+          "maia1": 20713,
+          "maia5": 7635,
+          "maia9": 7149
+        },
+        "bot_game_entries": 35497,
+        "unique_games": 35497
+      },
+      {
+        "month": "2025-05",
+        "per_bot": {
+          "maia1": 23450,
+          "maia5": 7720,
+          "maia9": 10669
+        },
+        "bot_game_entries": 41839,
+        "unique_games": 41839
+      },
+      {
+        "month": "2025-06",
+        "per_bot": {
+          "maia1": 26275,
+          "maia5": 7525,
+          "maia9": 11412
+        },
+        "bot_game_entries": 45212,
+        "unique_games": 45212
+      },
+      {
+        "month": "2025-07",
+        "per_bot": {
+          "maia1": 25369,
+          "maia5": 8052,
+          "maia9": 10832
+        },
+        "bot_game_entries": 44253,
+        "unique_games": 44253
+      },
+      {
+        "month": "2025-08",
+        "per_bot": {
+          "maia1": 23557,
+          "maia5": 6510,
+          "maia9": 6908
+        },
+        "bot_game_entries": 36975,
+        "unique_games": 36975
+      },
+      {
+        "month": "2025-09",
+        "per_bot": {
+          "maia1": 26776,
+          "maia5": 7095,
+          "maia9": 6502
+        },
+        "bot_game_entries": 40373,
+        "unique_games": 40373
+      },
+      {
+        "month": "2025-10",
+        "per_bot": {
+          "maia1": 23076,
+          "maia5": 5833,
+          "maia9": 5321
+        },
+        "bot_game_entries": 34230,
+        "unique_games": 34230
+      },
+      {
+        "month": "2025-11",
+        "per_bot": {
+          "maia1": 28745,
+          "maia5": 7096,
+          "maia9": 6444
+        },
+        "bot_game_entries": 42285,
+        "unique_games": 42285
+      },
+      {
+        "month": "2025-12",
+        "per_bot": {
+          "maia1": 30216,
+          "maia5": 8251,
+          "maia9": 7752
+        },
+        "bot_game_entries": 46219,
+        "unique_games": 46219
+      },
+      {
+        "month": "2026-01",
+        "per_bot": {
+          "maia1": 25542,
+          "maia5": 6138,
+          "maia9": 6221
+        },
+        "bot_game_entries": 37901,
+        "unique_games": 37901
+      },
+      {
+        "month": "2026-02",
+        "per_bot": {
+          "maia1": 26263,
+          "maia5": 7367,
+          "maia9": 6229
+        },
+        "bot_game_entries": 39859,
+        "unique_games": 39859
+      },
+      {
+        "month": "2026-03",
+        "per_bot": {
+          "maia1": 30903,
+          "maia5": 9930,
+          "maia9": 8576
+        },
+        "bot_game_entries": 49409,
+        "unique_games": 49409
+      },
+      {
+        "month": "2026-04",
+        "per_bot": {
+          "maia1": 35524,
+          "maia5": 11322,
+          "maia9": 10385
+        },
+        "bot_game_entries": 57231,
+        "unique_games": 57231
+      },
+      {
+        "month": "2026-05",
+        "per_bot": {
+          "maia1": 44199,
+          "maia5": 13968,
+          "maia9": 12769
+        },
+        "bot_game_entries": 70936,
+        "unique_games": 70936
+      },
+      {
+        "month": "2026-06",
+        "per_bot": {
+          "maia1": 40730,
+          "maia5": 13263,
+          "maia9": 13650
+        },
+        "bot_game_entries": 67643,
+        "unique_games": 67643
+      },
+      {
+        "month": "2026-07",
+        "per_bot": {
+          "maia1": 34756,
+          "maia5": 10934,
+          "maia9": 13130
+        },
+        "bot_game_entries": 58820,
+        "unique_games": 58820
+      },
+      {
+        "month": "2026-08",
+        "per_bot": {
+          "maia1": 39090,
+          "maia5": 12248,
+          "maia9": 11039
+        },
+        "bot_game_entries": 62377,
+        "unique_games": 62377
+      },
+      {
+        "month": "2026-09",
+        "per_bot": {
+          "maia1": 36233,
+          "maia5": 13183,
+          "maia9": 11715
+        },
+        "bot_game_entries": 61131,
+        "unique_games": 61131
+      }
+    ],
+    "partial_months": {
+      "2023-10": 29225,
+      "2026-10": 6919
+    },
+    "top_controls": [
+      {
+        "initial_seconds": 600,
+        "increment_seconds": 0,
+        "label": "10+0",
+        "games": 214879
+      },
+      {
+        "initial_seconds": 300,
+        "increment_seconds": 3,
+        "label": "5+3",
+        "games": 142986
+      },
+      {
+        "initial_seconds": 600,
+        "increment_seconds": 5,
+        "label": "10+5",
+        "games": 87149
+      },
+      {
+        "initial_seconds": 180,
+        "increment_seconds": 2,
+        "label": "3+2",
+        "games": 67850
+      },
+      {
+        "initial_seconds": 900,
+        "increment_seconds": 10,
+        "label": "15+10",
+        "games": 66378
+      },
+      {
+        "initial_seconds": 180,
+        "increment_seconds": 0,
+        "label": "3+0",
+        "games": 40455
+      },
+      {
+        "initial_seconds": 300,
+        "increment_seconds": 0,
+        "label": "5+0",
+        "games": 38838
+      },
+      {
+        "initial_seconds": 600,
+        "increment_seconds": 3,
+        "label": "10+3",
+        "games": 37962
+      },
+      {
+        "initial_seconds": 60,
+        "increment_seconds": 0,
+        "label": "1+0",
+        "games": 34849
+      },
+      {
+        "initial_seconds": 180,
+        "increment_seconds": 1,
+        "label": "3+1",
+        "games": 31186
+      },
+      {
+        "initial_seconds": 120,
+        "increment_seconds": 1,
+        "label": "2+1",
+        "games": 30526
+      },
+      {
+        "initial_seconds": 1800,
+        "increment_seconds": 0,
+        "label": "30+0",
+        "games": 25802
+      },
+      {
+        "initial_seconds": 600,
+        "increment_seconds": 10,
+        "label": "10+10",
+        "games": 24974
+      },
+      {
+        "initial_seconds": 60,
+        "increment_seconds": 1,
+        "label": "1+1",
+        "games": 23093
+      },
+      {
+        "initial_seconds": 300,
+        "increment_seconds": 4,
+        "label": "5+4",
+        "games": 23048
+      },
+      {
+        "initial_seconds": 900,
+        "increment_seconds": 0,
+        "label": "15+0",
+        "games": 22731
+      },
+      {
+        "initial_seconds": 60,
+        "increment_seconds": 2,
+        "label": "1+2",
+        "games": 22589
+      },
+      {
+        "initial_seconds": 30,
+        "increment_seconds": 0,
+        "label": "30s+0s",
+        "games": 16612
+      },
+      {
+        "initial_seconds": 300,
+        "increment_seconds": 5,
+        "label": "5+5",
+        "games": 16539
+      },
+      {
+        "initial_seconds": 1200,
+        "increment_seconds": 0,
+        "label": "20+0",
+        "games": 16096
+      }
+    ],
+    "speed": {
+      "rapid": 659704,
+      "blitz": 433649,
+      "classical": 164289,
+      "bullet": 167925
+    },
+    "rating": {
+      "game_weighted_mean": 1515,
+      "account_weighted_mean": 1438,
+      "per_bot": {
+        "maia1": {
+          "game_mean": 1453,
+          "median": 1463,
+          "p10": 1145,
+          "p90": 1750,
+          "account_mean": 1411
+        },
+        "maia5": {
+          "game_mean": 1570,
+          "median": 1561,
+          "p10": 1299,
+          "p90": 1840,
+          "account_mean": 1488
+        },
+        "maia9": {
+          "game_mean": 1631,
+          "median": 1630,
+          "p10": 1337,
+          "p90": 1908,
+          "account_mean": 1561
+        }
+      }
+    },
+    "accounts": {
+      "one_game": 42055,
+      "median_games": 2.0,
+      "mean_games": 15.3,
+      "top_one_percent_share": 0.5771,
+      "more_than_one_bot": 21193,
+      "all_three_bots": 6830,
+      "active_first_last_bot": {
+        "eligible": 2629,
+        "higher": 696,
+        "lower": 355,
+        "same": 1578
+      }
+    },
+    "top_accounts": [
+      {
+        "handle": "toadp",
+        "games": 13951,
+        "per_bot": {
+          "maia1": 13780,
+          "maia5": 171
+        }
+      },
+      {
+        "handle": "shaartah",
+        "games": 12413,
+        "per_bot": {
+          "maia1": 10796,
+          "maia5": 1610,
+          "maia9": 7
+        }
+      },
+      {
+        "handle": "humanoid_1800",
+        "games": 10865,
+        "per_bot": {
+          "maia1": 213,
+          "maia5": 220,
+          "maia9": 10432
+        }
+      },
+      {
+        "handle": "colaptes",
+        "games": 8009,
+        "per_bot": {
+          "maia5": 7991,
+          "maia9": 18
+        }
+      },
+      {
+        "handle": "bwvolker",
+        "games": 7425,
+        "per_bot": {
+          "maia1": 908,
+          "maia5": 6177,
+          "maia9": 340
+        }
+      },
+      {
+        "handle": "clemson2024",
+        "games": 7073,
+        "per_bot": {
+          "maia1": 6254,
+          "maia5": 768,
+          "maia9": 51
+        }
+      },
+      {
+        "handle": "amoroso",
+        "games": 6798,
+        "per_bot": {
+          "maia1": 6684,
+          "maia5": 113,
+          "maia9": 1
+        }
+      },
+      {
+        "handle": "anationofconquerors",
+        "games": 6697,
+        "per_bot": {
+          "maia1": 6619,
+          "maia5": 76,
+          "maia9": 2
+        }
+      },
+      {
+        "handle": "golismeando-manchego",
+        "games": 6527,
+        "per_bot": {
+          "maia9": 6527
+        }
+      },
+      {
+        "handle": "sunshine_arete",
+        "games": 6004,
+        "per_bot": {
+          "maia5": 310,
+          "maia9": 5694
+        }
+      },
+      {
+        "handle": "the_old_yorker",
+        "games": 5844,
+        "per_bot": {
+          "maia1": 5361,
+          "maia5": 476,
+          "maia9": 7
+        }
+      },
+      {
+        "handle": "dnk710",
+        "games": 5729,
+        "per_bot": {
+          "maia1": 4744,
+          "maia5": 671,
+          "maia9": 314
+        }
+      },
+      {
+        "handle": "jkist3",
+        "games": 5702,
+        "per_bot": {
+          "maia1": 4804,
+          "maia5": 614,
+          "maia9": 284
+        }
+      },
+      {
+        "handle": "rustmonster",
+        "games": 5587,
+        "per_bot": {
+          "maia9": 5587
+        }
+      },
+      {
+        "handle": "aarslevloberen",
+        "games": 5092,
+        "per_bot": {
+          "maia5": 5092
+        }
+      },
+      {
+        "handle": "perpingpong",
+        "games": 5005,
+        "per_bot": {
+          "maia1": 4928,
+          "maia5": 74,
+          "maia9": 3
+        }
+      },
+      {
+        "handle": "paulbonomi",
+        "games": 4878,
+        "per_bot": {
+          "maia1": 4855,
+          "maia5": 23
+        }
+      },
+      {
+        "handle": "poffertjes",
+        "games": 4731,
+        "per_bot": {
+          "maia1": 4684,
+          "maia5": 43,
+          "maia9": 4
+        }
+      },
+      {
+        "handle": "maj0ran",
+        "games": 4608,
+        "per_bot": {
+          "maia1": 2860,
+          "maia5": 1739,
+          "maia9": 9
+        }
+      },
+      {
+        "handle": "t35t0r",
+        "games": 4573,
+        "per_bot": {
+          "maia1": 13,
+          "maia9": 4560
+        }
+      }
+    ],
+    "opening_families": [
+      {
+        "name": "Sicilian Defense",
+        "games": 141375
+      },
+      {
+        "name": "Queen's Pawn Game",
+        "games": 136511
+      },
+      {
+        "name": "French Defense",
+        "games": 84991
+      },
+      {
+        "name": "Scandinavian Defense",
+        "games": 78670
+      },
+      {
+        "name": "Caro-Kann Defense",
+        "games": 64909
+      },
+      {
+        "name": "Italian Game",
+        "games": 64802
+      },
+      {
+        "name": "King's Pawn Game",
+        "games": 60430
+      },
+      {
+        "name": "Four Knights Game",
+        "games": 41327
+      },
+      {
+        "name": "English Opening",
+        "games": 40184
+      },
+      {
+        "name": "Philidor Defense",
+        "games": 38506
+      },
+      {
+        "name": "Ruy Lopez",
+        "games": 38067
+      },
+      {
+        "name": "Zukertort Opening",
+        "games": 36468
+      },
+      {
+        "name": "Scotch Game",
+        "games": 33905
+      },
+      {
+        "name": "Queen's Gambit Declined",
+        "games": 33058
+      },
+      {
+        "name": "Petrov's Defense",
+        "games": 31579
+      },
+      {
+        "name": "Queen's Gambit Accepted",
+        "games": 26623
+      },
+      {
+        "name": "Indian Defense",
+        "games": 25948
+      },
+      {
+        "name": "Pirc Defense",
+        "games": 25423
+      },
+      {
+        "name": "Van't Kruijs Opening",
+        "games": 23413
+      },
+      {
+        "name": "Modern Defense",
+        "games": 20792
+      }
+    ],
+    "bot_color": {
+      "maia1": {
+        "white": 366298,
+        "black": 469035
+      },
+      "maia5": {
+        "white": 126214,
+        "black": 162064
+      },
+      "maia9": {
+        "white": 136092,
+        "black": 165864
+      }
+    }
+  },
+  "limitations": [
+    "All-time profile counters and three-year rated export use different scopes and collection times.",
+    "Month-by-month casual games were not downloaded.",
+    "October 2023 and October 2026 are partial months, excluded from monthly trend table and growth comparison.",
+    "Opposing accounts are public Lichess handles, not verified unique people.",
+    "No move lists or PGNs were downloaded; opening labels are Lichess metadata.",
+    "First-to-last bot level is descriptive, not proof of improvement or a causal effect of playing Maia."
+  ]
+}
