@@ -2,7 +2,8 @@
   "scope": {
     "all_time_profile_snapshot_utc": "2026-10-04T07:12:48+00:00",
     "rated_export_start_utc": "2023-10-04T00:00:00+00:00",
-    "rated_export_end_exclusive_utc": "2026-10-04T09:00:00+00:00"
+    "rated_export_end_exclusive_utc": "2026-10-04T09:00:00+00:00",
+    "rated_export_timestamp_field": "last_move_at_ms (last recorded move, not necessarily game termination)"
   },
   "all_time": {
     "bot_game_entries": 6486805,

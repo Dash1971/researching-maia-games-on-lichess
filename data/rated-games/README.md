@@ -1,15 +1,15 @@
 # Three-year rated game metadata
 
-**1,425,567 records** from official Lichess `maia1`, `maia5`, and `maia9`, finished in `[2023-10-04T00:00:00Z, 2026-10-04T09:00:00Z)`. One CSV row represents one bot/game pair. There were no Maia-vs-Maia games in this interval, so every row has a distinct game ID. This is **rated-only** data; it does not contain all-time or casual games.
+**1,425,567 records** from official Lichess `maia1`, `maia5`, and `maia9`, with last recorded move timestamps in `[2023-10-04T00:00:00Z, 2026-10-04T09:00:00Z)`. One CSV row represents one bot/game pair. There were no Maia-vs-Maia games in this interval, so every row has a distinct game ID. This is **rated-only** data; it does not contain all-time or casual games.
 
-The 12 files are split by bot and **UTC finish year**, gzip-compressed CSV with a header, UTF-8 and LF line endings. [`manifest.json`](manifest.json) records the field list, row counts, byte counts, and SHA-256 checksums. Gzip timestamps are zeroed for deterministic exports.
+The 12 files are split by bot and **UTC last-move year**, gzip-compressed CSV with a header, UTF-8 and LF line endings. [`manifest.json`](manifest.json) records the field list, row counts, byte counts, and SHA-256 checksums. Gzip timestamps are zeroed for deterministic exports.
 
 | Field | Meaning |
 | --- | --- |
 | `bot` | `maia1`, `maia5`, or `maia9` |
 | `game_id` | Public Lichess game ID; game URL is `https://lichess.org/<game_id>` |
 | `opponent_id` | Public opposing Lichess account handle; blank in 147 rows |
-| `created_at_ms`, `last_move_at_ms` | Unix milliseconds in UTC for game start and finish. **Finish** determines scope and month. |
+| `created_at_ms`, `last_move_at_ms` | Unix milliseconds in UTC for game start and last recorded move. The latter determines scope and month; it can precede resignation or flag fall. |
 | `bot_color`, `winner` | Bot side and winning side (`white`, `black`, or blank for no winner) |
 | `status` | Lichess game-end status, such as `mate`, `resign`, `draw`, or `outoftime` |
 | `speed`, `perf` | Lichess speed/performance categories |

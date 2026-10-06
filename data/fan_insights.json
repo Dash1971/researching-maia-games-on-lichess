@@ -1,0 +1,1641 @@
+{
+  "dataset": {
+    "records": 1425567,
+    "start_utc_inclusive": "2023-10-04T00:00:00Z",
+    "end_utc_exclusive": "2026-10-04T09:00:00Z",
+    "scope": "Rated standard games against official Maia 1, 5 and 9; last-recorded-move-time bounded."
+  },
+  "definitions": {
+    "outcomes": "Opponent perspective. Win/loss require a white/black winner. Blank winner is a draw only when status is draw or stalemate; otherwise unknown.",
+    "win_pct": "Wins divided by all games, with draws and unknowns retained in denominator.",
+    "score_pct": "(Wins + half draws) divided by games with known outcomes.",
+    "rating_bands": "Recorded opponent Lichess rating at game time. Speed pools differ; distributions and outcomes mix speeds and do not estimate skill or causal effects.",
+    "opening_families": "Opening name before the first colon, reached by both players. Not a first-move reconstruction or a causal estimate of opening strength. Top 12 by volume per bot and opponent color.",
+    "quick_return": "The same public opponent account starts its next observed rated game against any of the three Maia bots 0–600 seconds after the prior game last_move_at_ms (last recorded move, which may precede resignation or flagging). Same-Maia subset also requires the next bot to match. No claim of a formal Lichess rematch or complete account history.",
+    "quick_return_denominator": "All games with a known opponent ID and nonnegative recorded duration, with last_move_at_ms at least 10 minutes before dataset end. Includes games with no observed next game. Last-move-time scope may omit games continuing past the end; casual games and games against other accounts are unobserved.",
+    "return_comparison": "Descriptive game-level rates, not independent-player experiments. Accounts with many games have more weight. Prior results may correlate with ratings, clocks, and individual habits.",
+    "gaps": "Between consecutive observed Maia rated games per opponent account, ordered by created_at_ms then game_id; negative gaps are counted separately as overlaps.",
+    "accounts": "Public account IDs, not necessarily distinct people. Account activity includes all three bots."
+  },
+  "missing_fields": {
+    "opponent_id": 147
+  },
+  "status_winner_counts": [
+    {
+      "status": "cheat",
+      "winner": "black",
+      "games": 79
+    },
+    {
+      "status": "cheat",
+      "winner": "white",
+      "games": 31
+    },
+    {
+      "status": "draw",
+      "winner": null,
+      "games": 85446
+    },
+    {
+      "status": "insufficientMaterialClaim",
+      "winner": null,
+      "games": 214
+    },
+    {
+      "status": "mate",
+      "winner": "black",
+      "games": 344998
+    },
+    {
+      "status": "mate",
+      "winner": "white",
+      "games": 424109
+    },
+    {
+      "status": "outoftime",
+      "winner": null,
+      "games": 2780
+    },
+    {
+      "status": "outoftime",
+      "winner": "black",
+      "games": 63051
+    },
+    {
+      "status": "outoftime",
+      "winner": "white",
+      "games": 55807
+    },
+    {
+      "status": "resign",
+      "winner": "black",
+      "games": 236583
+    },
+    {
+      "status": "resign",
+      "winner": "white",
+      "games": 191913
+    },
+    {
+      "status": "stalemate",
+      "winner": null,
+      "games": 18204
+    },
+    {
+      "status": "timeout",
+      "winner": null,
+      "games": 167
+    },
+    {
+      "status": "timeout",
+      "winner": "black",
+      "games": 975
+    },
+    {
+      "status": "timeout",
+      "winner": "white",
+      "games": 1210
+    }
+  ],
+  "outcomes_by_bot": [
+    {
+      "bot": "maia1",
+      "games": 835333,
+      "win": 336824,
+      "draw": 55937,
+      "loss": 440822,
+      "unknown": 1750,
+      "win_pct_of_all_games": 40.322,
+      "score_pct_of_known_outcomes": 43.762
+    },
+    {
+      "bot": "maia5",
+      "games": 288278,
+      "win": 125746,
+      "draw": 22962,
+      "loss": 139070,
+      "unknown": 500,
+      "win_pct_of_all_games": 43.62,
+      "score_pct_of_known_outcomes": 47.685
+    },
+    {
+      "bot": "maia9",
+      "games": 301956,
+      "win": 124510,
+      "draw": 24751,
+      "loss": 151784,
+      "unknown": 911,
+      "win_pct_of_all_games": 41.234,
+      "score_pct_of_known_outcomes": 45.47
+    }
+  ],
+  "outcomes_by_bot_and_opponent_color": [
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "games": 469035,
+      "win": 198864,
+      "draw": 31136,
+      "loss": 238036,
+      "unknown": 999,
+      "win_pct_of_all_games": 42.399,
+      "score_pct_of_known_outcomes": 45.815
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "games": 366298,
+      "win": 137960,
+      "draw": 24801,
+      "loss": 202786,
+      "unknown": 751,
+      "win_pct_of_all_games": 37.663,
+      "score_pct_of_known_outcomes": 41.133
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "games": 162064,
+      "win": 72371,
+      "draw": 12500,
+      "loss": 76907,
+      "unknown": 286,
+      "win_pct_of_all_games": 44.656,
+      "score_pct_of_known_outcomes": 48.598
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "games": 126214,
+      "win": 53375,
+      "draw": 10462,
+      "loss": 62163,
+      "unknown": 214,
+      "win_pct_of_all_games": 42.289,
+      "score_pct_of_known_outcomes": 46.513
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "games": 165864,
+      "win": 68484,
+      "draw": 13480,
+      "loss": 83382,
+      "unknown": 518,
+      "win_pct_of_all_games": 41.289,
+      "score_pct_of_known_outcomes": 45.495
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "games": 136092,
+      "win": 56026,
+      "draw": 11271,
+      "loss": 68402,
+      "unknown": 393,
+      "win_pct_of_all_games": 41.168,
+      "score_pct_of_known_outcomes": 45.44
+    }
+  ],
+  "rating_bands_by_bot": [
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "<1000",
+      "games": 36622,
+      "win": 2563,
+      "draw": 1736,
+      "loss": 32290,
+      "unknown": 33,
+      "win_pct_of_all_games": 6.999,
+      "score_pct_of_known_outcomes": 9.377,
+      "speed_counts": {
+        "blitz": 8061,
+        "bullet": 3539,
+        "classical": 1211,
+        "rapid": 23811
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "1000–1199",
+      "games": 75677,
+      "win": 9985,
+      "draw": 4780,
+      "loss": 60794,
+      "unknown": 118,
+      "win_pct_of_all_games": 13.194,
+      "score_pct_of_known_outcomes": 16.378,
+      "speed_counts": {
+        "blitz": 20349,
+        "bullet": 6024,
+        "classical": 5617,
+        "rapid": 43687
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "1200–1399",
+      "games": 209439,
+      "win": 55108,
+      "draw": 14918,
+      "loss": 139064,
+      "unknown": 349,
+      "win_pct_of_all_games": 26.312,
+      "score_pct_of_known_outcomes": 29.923,
+      "speed_counts": {
+        "blitz": 80199,
+        "bullet": 17209,
+        "classical": 17625,
+        "rapid": 94406
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "1400–1599",
+      "games": 316890,
+      "win": 134749,
+      "draw": 23153,
+      "loss": 158285,
+      "unknown": 703,
+      "win_pct_of_all_games": 42.522,
+      "score_pct_of_known_outcomes": 46.278,
+      "speed_counts": {
+        "blitz": 86474,
+        "bullet": 33871,
+        "classical": 36652,
+        "rapid": 159893
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "1600–1799",
+      "games": 132732,
+      "win": 83869,
+      "draw": 8710,
+      "loss": 39833,
+      "unknown": 320,
+      "win_pct_of_all_games": 63.187,
+      "score_pct_of_known_outcomes": 66.628,
+      "speed_counts": {
+        "blitz": 25533,
+        "bullet": 27274,
+        "classical": 22469,
+        "rapid": 57456
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "1800–1999",
+      "games": 46054,
+      "win": 35729,
+      "draw": 2127,
+      "loss": 8064,
+      "unknown": 134,
+      "win_pct_of_all_games": 77.581,
+      "score_pct_of_known_outcomes": 80.123,
+      "speed_counts": {
+        "blitz": 6116,
+        "bullet": 11037,
+        "classical": 10489,
+        "rapid": 18412
+      }
+    },
+    {
+      "bot": "maia1",
+      "opponent_rating_band": "2000+",
+      "games": 17919,
+      "win": 14821,
+      "draw": 513,
+      "loss": 2492,
+      "unknown": 93,
+      "win_pct_of_all_games": 82.711,
+      "score_pct_of_known_outcomes": 84.582,
+      "speed_counts": {
+        "blitz": 4007,
+        "bullet": 6003,
+        "classical": 3088,
+        "rapid": 4821
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "<1000",
+      "games": 4906,
+      "win": 199,
+      "draw": 178,
+      "loss": 4527,
+      "unknown": 2,
+      "win_pct_of_all_games": 4.056,
+      "score_pct_of_known_outcomes": 5.873,
+      "speed_counts": {
+        "blitz": 1146,
+        "bullet": 456,
+        "classical": 229,
+        "rapid": 3075
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "1000–1199",
+      "games": 11536,
+      "win": 887,
+      "draw": 592,
+      "loss": 10045,
+      "unknown": 12,
+      "win_pct_of_all_games": 7.689,
+      "score_pct_of_known_outcomes": 10.266,
+      "speed_counts": {
+        "blitz": 3173,
+        "bullet": 1612,
+        "classical": 576,
+        "rapid": 6175
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "1200–1399",
+      "games": 38520,
+      "win": 7085,
+      "draw": 2928,
+      "loss": 28432,
+      "unknown": 75,
+      "win_pct_of_all_games": 18.393,
+      "score_pct_of_known_outcomes": 22.237,
+      "speed_counts": {
+        "blitz": 16493,
+        "bullet": 2961,
+        "classical": 2762,
+        "rapid": 16304
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "1400–1599",
+      "games": 112239,
+      "win": 40732,
+      "draw": 10382,
+      "loss": 60905,
+      "unknown": 220,
+      "win_pct_of_all_games": 36.29,
+      "score_pct_of_known_outcomes": 40.996,
+      "speed_counts": {
+        "blitz": 43260,
+        "bullet": 8560,
+        "classical": 12343,
+        "rapid": 48076
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "1600–1799",
+      "games": 83627,
+      "win": 46636,
+      "draw": 7061,
+      "loss": 29801,
+      "unknown": 129,
+      "win_pct_of_all_games": 55.767,
+      "score_pct_of_known_outcomes": 60.081,
+      "speed_counts": {
+        "blitz": 19911,
+        "bullet": 8372,
+        "classical": 13331,
+        "rapid": 42013
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "1800–1999",
+      "games": 27515,
+      "win": 21421,
+      "draw": 1562,
+      "loss": 4485,
+      "unknown": 47,
+      "win_pct_of_all_games": 77.852,
+      "score_pct_of_known_outcomes": 80.829,
+      "speed_counts": {
+        "blitz": 9766,
+        "bullet": 4841,
+        "classical": 3336,
+        "rapid": 9572
+      }
+    },
+    {
+      "bot": "maia5",
+      "opponent_rating_band": "2000+",
+      "games": 9935,
+      "win": 8786,
+      "draw": 259,
+      "loss": 875,
+      "unknown": 15,
+      "win_pct_of_all_games": 88.435,
+      "score_pct_of_known_outcomes": 89.874,
+      "speed_counts": {
+        "blitz": 3245,
+        "bullet": 2676,
+        "classical": 1226,
+        "rapid": 2788
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "<1000",
+      "games": 4177,
+      "win": 142,
+      "draw": 120,
+      "loss": 3915,
+      "unknown": 0,
+      "win_pct_of_all_games": 3.4,
+      "score_pct_of_known_outcomes": 4.836,
+      "speed_counts": {
+        "blitz": 841,
+        "bullet": 538,
+        "classical": 196,
+        "rapid": 2602
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "1000–1199",
+      "games": 8269,
+      "win": 443,
+      "draw": 331,
+      "loss": 7486,
+      "unknown": 9,
+      "win_pct_of_all_games": 5.357,
+      "score_pct_of_known_outcomes": 7.367,
+      "speed_counts": {
+        "blitz": 2186,
+        "bullet": 811,
+        "classical": 493,
+        "rapid": 4779
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "1200–1399",
+      "games": 32303,
+      "win": 4280,
+      "draw": 2018,
+      "loss": 25947,
+      "unknown": 58,
+      "win_pct_of_all_games": 13.25,
+      "score_pct_of_known_outcomes": 16.403,
+      "speed_counts": {
+        "blitz": 13623,
+        "bullet": 1753,
+        "classical": 4454,
+        "rapid": 12473
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "1400–1599",
+      "games": 91020,
+      "win": 26481,
+      "draw": 8731,
+      "loss": 55308,
+      "unknown": 500,
+      "win_pct_of_all_games": 29.094,
+      "score_pct_of_known_outcomes": 34.077,
+      "speed_counts": {
+        "blitz": 48511,
+        "bullet": 6523,
+        "classical": 7232,
+        "rapid": 28754
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "1600–1799",
+      "games": 100887,
+      "win": 46948,
+      "draw": 9399,
+      "loss": 44364,
+      "unknown": 176,
+      "win_pct_of_all_games": 46.535,
+      "score_pct_of_known_outcomes": 51.283,
+      "speed_counts": {
+        "blitz": 22867,
+        "bullet": 8670,
+        "classical": 13500,
+        "rapid": 55850
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "1800–1999",
+      "games": 46605,
+      "win": 30857,
+      "draw": 3410,
+      "loss": 12258,
+      "unknown": 80,
+      "win_pct_of_all_games": 66.21,
+      "score_pct_of_known_outcomes": 69.988,
+      "speed_counts": {
+        "blitz": 12545,
+        "bullet": 7787,
+        "classical": 5699,
+        "rapid": 20574
+      }
+    },
+    {
+      "bot": "maia9",
+      "opponent_rating_band": "2000+",
+      "games": 18695,
+      "win": 15359,
+      "draw": 742,
+      "loss": 2506,
+      "unknown": 88,
+      "win_pct_of_all_games": 82.156,
+      "score_pct_of_known_outcomes": 84.538,
+      "speed_counts": {
+        "blitz": 5343,
+        "bullet": 7408,
+        "classical": 1761,
+        "rapid": 4183
+      }
+    }
+  ],
+  "opening_families_by_bot_and_opponent_color": [
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Queen's Pawn Game",
+      "games": 51913,
+      "win": 22286,
+      "draw": 3573,
+      "loss": 25973,
+      "unknown": 81,
+      "win_pct_of_all_games": 42.93,
+      "score_pct_of_known_outcomes": 46.443
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Scandinavian Defense",
+      "games": 30343,
+      "win": 12752,
+      "draw": 2041,
+      "loss": 15479,
+      "unknown": 71,
+      "win_pct_of_all_games": 42.026,
+      "score_pct_of_known_outcomes": 45.496
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Sicilian Defense",
+      "games": 28863,
+      "win": 10821,
+      "draw": 2011,
+      "loss": 15961,
+      "unknown": 70,
+      "win_pct_of_all_games": 37.491,
+      "score_pct_of_known_outcomes": 41.074
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Italian Game",
+      "games": 27891,
+      "win": 15383,
+      "draw": 1557,
+      "loss": 10915,
+      "unknown": 36,
+      "win_pct_of_all_games": 55.154,
+      "score_pct_of_known_outcomes": 58.02
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "King's Pawn Game",
+      "games": 27034,
+      "win": 9024,
+      "draw": 1711,
+      "loss": 16252,
+      "unknown": 47,
+      "win_pct_of_all_games": 33.38,
+      "score_pct_of_known_outcomes": 36.608
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "French Defense",
+      "games": 23396,
+      "win": 9063,
+      "draw": 1535,
+      "loss": 12752,
+      "unknown": 46,
+      "win_pct_of_all_games": 38.737,
+      "score_pct_of_known_outcomes": 42.101
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Four Knights Game",
+      "games": 18936,
+      "win": 7579,
+      "draw": 1356,
+      "loss": 9955,
+      "unknown": 46,
+      "win_pct_of_all_games": 40.024,
+      "score_pct_of_known_outcomes": 43.711
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Philidor Defense",
+      "games": 17903,
+      "win": 7671,
+      "draw": 1296,
+      "loss": 8895,
+      "unknown": 41,
+      "win_pct_of_all_games": 42.848,
+      "score_pct_of_known_outcomes": 46.574
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Zukertort Opening",
+      "games": 15461,
+      "win": 7419,
+      "draw": 1154,
+      "loss": 6852,
+      "unknown": 36,
+      "win_pct_of_all_games": 47.985,
+      "score_pct_of_known_outcomes": 51.838
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Ruy Lopez",
+      "games": 14328,
+      "win": 7232,
+      "draw": 958,
+      "loss": 6093,
+      "unknown": 45,
+      "win_pct_of_all_games": 50.475,
+      "score_pct_of_known_outcomes": 53.987
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Scotch Game",
+      "games": 14117,
+      "win": 8352,
+      "draw": 639,
+      "loss": 5093,
+      "unknown": 33,
+      "win_pct_of_all_games": 59.163,
+      "score_pct_of_known_outcomes": 61.57
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "white",
+      "opening_family": "Petrov's Defense",
+      "games": 13682,
+      "win": 6257,
+      "draw": 879,
+      "loss": 6522,
+      "unknown": 24,
+      "win_pct_of_all_games": 45.732,
+      "score_pct_of_known_outcomes": 49.03
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Sicilian Defense",
+      "games": 36151,
+      "win": 16963,
+      "draw": 2353,
+      "loss": 16768,
+      "unknown": 67,
+      "win_pct_of_all_games": 46.923,
+      "score_pct_of_known_outcomes": 50.27
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Queen's Pawn Game",
+      "games": 33587,
+      "win": 11915,
+      "draw": 2352,
+      "loss": 19247,
+      "unknown": 73,
+      "win_pct_of_all_games": 35.475,
+      "score_pct_of_known_outcomes": 39.061
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Caro-Kann Defense",
+      "games": 26615,
+      "win": 12323,
+      "draw": 1799,
+      "loss": 12439,
+      "unknown": 54,
+      "win_pct_of_all_games": 46.301,
+      "score_pct_of_known_outcomes": 49.782
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "French Defense",
+      "games": 23524,
+      "win": 10390,
+      "draw": 1741,
+      "loss": 11332,
+      "unknown": 61,
+      "win_pct_of_all_games": 44.168,
+      "score_pct_of_known_outcomes": 47.993
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "King's Pawn Game",
+      "games": 21707,
+      "win": 6261,
+      "draw": 1416,
+      "loss": 13995,
+      "unknown": 35,
+      "win_pct_of_all_games": 28.843,
+      "score_pct_of_known_outcomes": 32.157
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Scandinavian Defense",
+      "games": 20063,
+      "win": 7590,
+      "draw": 1290,
+      "loss": 11138,
+      "unknown": 45,
+      "win_pct_of_all_games": 37.831,
+      "score_pct_of_known_outcomes": 41.138
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Italian Game",
+      "games": 15176,
+      "win": 5754,
+      "draw": 868,
+      "loss": 8531,
+      "unknown": 23,
+      "win_pct_of_all_games": 37.915,
+      "score_pct_of_known_outcomes": 40.837
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Four Knights Game",
+      "games": 11182,
+      "win": 4064,
+      "draw": 816,
+      "loss": 6288,
+      "unknown": 14,
+      "win_pct_of_all_games": 36.344,
+      "score_pct_of_known_outcomes": 40.043
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Pirc Defense",
+      "games": 9767,
+      "win": 4182,
+      "draw": 678,
+      "loss": 4890,
+      "unknown": 17,
+      "win_pct_of_all_games": 42.818,
+      "score_pct_of_known_outcomes": 46.369
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Van't Kruijs Opening",
+      "games": 9704,
+      "win": 3597,
+      "draw": 620,
+      "loss": 5465,
+      "unknown": 22,
+      "win_pct_of_all_games": 37.067,
+      "score_pct_of_known_outcomes": 40.353
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Petrov's Defense",
+      "games": 8926,
+      "win": 2964,
+      "draw": 471,
+      "loss": 5480,
+      "unknown": 11,
+      "win_pct_of_all_games": 33.206,
+      "score_pct_of_known_outcomes": 35.889
+    },
+    {
+      "bot": "maia1",
+      "opponent_color": "black",
+      "opening_family": "Philidor Defense",
+      "games": 8015,
+      "win": 2602,
+      "draw": 590,
+      "loss": 4808,
+      "unknown": 15,
+      "win_pct_of_all_games": 32.464,
+      "score_pct_of_known_outcomes": 36.212
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Sicilian Defense",
+      "games": 17569,
+      "win": 7508,
+      "draw": 1295,
+      "loss": 8742,
+      "unknown": 24,
+      "win_pct_of_all_games": 42.734,
+      "score_pct_of_known_outcomes": 46.483
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Queen's Pawn Game",
+      "games": 15957,
+      "win": 6936,
+      "draw": 1251,
+      "loss": 7746,
+      "unknown": 24,
+      "win_pct_of_all_games": 43.467,
+      "score_pct_of_known_outcomes": 47.458
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "French Defense",
+      "games": 10456,
+      "win": 4497,
+      "draw": 776,
+      "loss": 5169,
+      "unknown": 14,
+      "win_pct_of_all_games": 43.009,
+      "score_pct_of_known_outcomes": 46.782
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Scandinavian Defense",
+      "games": 7998,
+      "win": 3462,
+      "draw": 586,
+      "loss": 3939,
+      "unknown": 11,
+      "win_pct_of_all_games": 43.286,
+      "score_pct_of_known_outcomes": 47.014
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Italian Game",
+      "games": 7236,
+      "win": 3171,
+      "draw": 494,
+      "loss": 3560,
+      "unknown": 11,
+      "win_pct_of_all_games": 43.823,
+      "score_pct_of_known_outcomes": 47.308
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Philidor Defense",
+      "games": 5882,
+      "win": 2763,
+      "draw": 458,
+      "loss": 2647,
+      "unknown": 14,
+      "win_pct_of_all_games": 46.974,
+      "score_pct_of_known_outcomes": 50.988
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Ruy Lopez",
+      "games": 5561,
+      "win": 2922,
+      "draw": 467,
+      "loss": 2168,
+      "unknown": 4,
+      "win_pct_of_all_games": 52.545,
+      "score_pct_of_known_outcomes": 56.784
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Scotch Game",
+      "games": 4973,
+      "win": 3179,
+      "draw": 249,
+      "loss": 1540,
+      "unknown": 5,
+      "win_pct_of_all_games": 63.925,
+      "score_pct_of_known_outcomes": 66.496
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Queen's Gambit Declined",
+      "games": 4783,
+      "win": 2507,
+      "draw": 344,
+      "loss": 1923,
+      "unknown": 9,
+      "win_pct_of_all_games": 52.415,
+      "score_pct_of_known_outcomes": 56.116
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Caro-Kann Defense",
+      "games": 4635,
+      "win": 1924,
+      "draw": 355,
+      "loss": 2349,
+      "unknown": 7,
+      "win_pct_of_all_games": 41.51,
+      "score_pct_of_known_outcomes": 45.408
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "Queen's Gambit Accepted",
+      "games": 4429,
+      "win": 2323,
+      "draw": 352,
+      "loss": 1749,
+      "unknown": 5,
+      "win_pct_of_all_games": 52.45,
+      "score_pct_of_known_outcomes": 56.487
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "white",
+      "opening_family": "English Opening",
+      "games": 4408,
+      "win": 2297,
+      "draw": 420,
+      "loss": 1682,
+      "unknown": 9,
+      "win_pct_of_all_games": 52.11,
+      "score_pct_of_known_outcomes": 56.99
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Sicilian Defense",
+      "games": 16187,
+      "win": 8304,
+      "draw": 1321,
+      "loss": 6532,
+      "unknown": 30,
+      "win_pct_of_all_games": 51.3,
+      "score_pct_of_known_outcomes": 55.484
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Queen's Pawn Game",
+      "games": 10710,
+      "win": 4241,
+      "draw": 886,
+      "loss": 5564,
+      "unknown": 19,
+      "win_pct_of_all_games": 39.599,
+      "score_pct_of_known_outcomes": 43.813
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Caro-Kann Defense",
+      "games": 9322,
+      "win": 3867,
+      "draw": 822,
+      "loss": 4617,
+      "unknown": 16,
+      "win_pct_of_all_games": 41.483,
+      "score_pct_of_known_outcomes": 45.97
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "French Defense",
+      "games": 7549,
+      "win": 3396,
+      "draw": 701,
+      "loss": 3437,
+      "unknown": 15,
+      "win_pct_of_all_games": 44.986,
+      "score_pct_of_known_outcomes": 49.728
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Scandinavian Defense",
+      "games": 6119,
+      "win": 2440,
+      "draw": 492,
+      "loss": 3178,
+      "unknown": 9,
+      "win_pct_of_all_games": 39.876,
+      "score_pct_of_known_outcomes": 43.961
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Italian Game",
+      "games": 5652,
+      "win": 2322,
+      "draw": 392,
+      "loss": 2924,
+      "unknown": 14,
+      "win_pct_of_all_games": 41.083,
+      "score_pct_of_known_outcomes": 44.661
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Queen's Gambit Declined",
+      "games": 4099,
+      "win": 1682,
+      "draw": 334,
+      "loss": 2076,
+      "unknown": 7,
+      "win_pct_of_all_games": 41.034,
+      "score_pct_of_known_outcomes": 45.186
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Four Knights Game",
+      "games": 3913,
+      "win": 1797,
+      "draw": 325,
+      "loss": 1788,
+      "unknown": 3,
+      "win_pct_of_all_games": 45.924,
+      "score_pct_of_known_outcomes": 50.115
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "English Opening",
+      "games": 3871,
+      "win": 1568,
+      "draw": 327,
+      "loss": 1969,
+      "unknown": 7,
+      "win_pct_of_all_games": 40.506,
+      "score_pct_of_known_outcomes": 44.811
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Pirc Defense",
+      "games": 3258,
+      "win": 1378,
+      "draw": 263,
+      "loss": 1614,
+      "unknown": 3,
+      "win_pct_of_all_games": 42.296,
+      "score_pct_of_known_outcomes": 46.375
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "King's Pawn Game",
+      "games": 3210,
+      "win": 1066,
+      "draw": 242,
+      "loss": 1897,
+      "unknown": 5,
+      "win_pct_of_all_games": 33.209,
+      "score_pct_of_known_outcomes": 37.036
+    },
+    {
+      "bot": "maia5",
+      "opponent_color": "black",
+      "opening_family": "Indian Defense",
+      "games": 3038,
+      "win": 1460,
+      "draw": 276,
+      "loss": 1295,
+      "unknown": 7,
+      "win_pct_of_all_games": 48.058,
+      "score_pct_of_known_outcomes": 52.722
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Sicilian Defense",
+      "games": 27185,
+      "win": 10690,
+      "draw": 2132,
+      "loss": 14287,
+      "unknown": 76,
+      "win_pct_of_all_games": 39.323,
+      "score_pct_of_known_outcomes": 43.366
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Queen's Pawn Game",
+      "games": 13286,
+      "win": 5271,
+      "draw": 1083,
+      "loss": 6892,
+      "unknown": 40,
+      "win_pct_of_all_games": 39.673,
+      "score_pct_of_known_outcomes": 43.881
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "French Defense",
+      "games": 13280,
+      "win": 5204,
+      "draw": 1081,
+      "loss": 6953,
+      "unknown": 42,
+      "win_pct_of_all_games": 39.187,
+      "score_pct_of_known_outcomes": 43.394
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Scandinavian Defense",
+      "games": 8731,
+      "win": 3580,
+      "draw": 698,
+      "loss": 4420,
+      "unknown": 33,
+      "win_pct_of_all_games": 41.003,
+      "score_pct_of_known_outcomes": 45.171
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Caro-Kann Defense",
+      "games": 8324,
+      "win": 3397,
+      "draw": 691,
+      "loss": 4206,
+      "unknown": 30,
+      "win_pct_of_all_games": 40.81,
+      "score_pct_of_known_outcomes": 45.123
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "English Opening",
+      "games": 5010,
+      "win": 2456,
+      "draw": 468,
+      "loss": 2072,
+      "unknown": 14,
+      "win_pct_of_all_games": 49.022,
+      "score_pct_of_known_outcomes": 53.843
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Indian Defense",
+      "games": 4813,
+      "win": 1957,
+      "draw": 398,
+      "loss": 2441,
+      "unknown": 17,
+      "win_pct_of_all_games": 40.661,
+      "score_pct_of_known_outcomes": 44.954
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Ruy Lopez",
+      "games": 4319,
+      "win": 1994,
+      "draw": 331,
+      "loss": 1989,
+      "unknown": 5,
+      "win_pct_of_all_games": 46.168,
+      "score_pct_of_known_outcomes": 50.058
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Queen's Gambit Declined",
+      "games": 4105,
+      "win": 1890,
+      "draw": 351,
+      "loss": 1854,
+      "unknown": 10,
+      "win_pct_of_all_games": 46.041,
+      "score_pct_of_known_outcomes": 50.44
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Pirc Defense",
+      "games": 4063,
+      "win": 1554,
+      "draw": 296,
+      "loss": 2204,
+      "unknown": 9,
+      "win_pct_of_all_games": 38.248,
+      "score_pct_of_known_outcomes": 41.983
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Modern Defense",
+      "games": 3960,
+      "win": 1577,
+      "draw": 333,
+      "loss": 2040,
+      "unknown": 10,
+      "win_pct_of_all_games": 39.823,
+      "score_pct_of_known_outcomes": 44.139
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "white",
+      "opening_family": "Zukertort Opening",
+      "games": 3775,
+      "win": 1645,
+      "draw": 384,
+      "loss": 1731,
+      "unknown": 15,
+      "win_pct_of_all_games": 43.576,
+      "score_pct_of_known_outcomes": 48.856
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Sicilian Defense",
+      "games": 15420,
+      "win": 7373,
+      "draw": 1272,
+      "loss": 6721,
+      "unknown": 54,
+      "win_pct_of_all_games": 47.815,
+      "score_pct_of_known_outcomes": 52.122
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Queen's Pawn Game",
+      "games": 11058,
+      "win": 4167,
+      "draw": 969,
+      "loss": 5893,
+      "unknown": 29,
+      "win_pct_of_all_games": 37.683,
+      "score_pct_of_known_outcomes": 42.175
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Caro-Kann Defense",
+      "games": 8300,
+      "win": 3552,
+      "draw": 754,
+      "loss": 3967,
+      "unknown": 27,
+      "win_pct_of_all_games": 42.795,
+      "score_pct_of_known_outcomes": 47.492
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "French Defense",
+      "games": 6786,
+      "win": 2829,
+      "draw": 619,
+      "loss": 3314,
+      "unknown": 24,
+      "win_pct_of_all_games": 41.689,
+      "score_pct_of_known_outcomes": 46.414
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "English Opening",
+      "games": 6001,
+      "win": 2339,
+      "draw": 497,
+      "loss": 3150,
+      "unknown": 15,
+      "win_pct_of_all_games": 38.977,
+      "score_pct_of_known_outcomes": 43.226
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Queen's Gambit Declined",
+      "games": 5637,
+      "win": 2193,
+      "draw": 468,
+      "loss": 2959,
+      "unknown": 17,
+      "win_pct_of_all_games": 38.904,
+      "score_pct_of_known_outcomes": 43.185
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Scandinavian Defense",
+      "games": 5416,
+      "win": 2137,
+      "draw": 495,
+      "loss": 2762,
+      "unknown": 22,
+      "win_pct_of_all_games": 39.457,
+      "score_pct_of_known_outcomes": 44.207
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Italian Game",
+      "games": 5260,
+      "win": 2053,
+      "draw": 378,
+      "loss": 2819,
+      "unknown": 10,
+      "win_pct_of_all_games": 39.03,
+      "score_pct_of_known_outcomes": 42.705
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Indian Defense",
+      "games": 3606,
+      "win": 1779,
+      "draw": 307,
+      "loss": 1509,
+      "unknown": 11,
+      "win_pct_of_all_games": 49.334,
+      "score_pct_of_known_outcomes": 53.755
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Ruy Lopez",
+      "games": 3526,
+      "win": 1416,
+      "draw": 264,
+      "loss": 1837,
+      "unknown": 9,
+      "win_pct_of_all_games": 40.159,
+      "score_pct_of_known_outcomes": 44.015
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Scotch Game",
+      "games": 2969,
+      "win": 1191,
+      "draw": 222,
+      "loss": 1549,
+      "unknown": 7,
+      "win_pct_of_all_games": 40.115,
+      "score_pct_of_known_outcomes": 43.957
+    },
+    {
+      "bot": "maia9",
+      "opponent_color": "black",
+      "opening_family": "Zukertort Opening",
+      "games": 2923,
+      "win": 1109,
+      "draw": 258,
+      "loss": 1540,
+      "unknown": 16,
+      "win_pct_of_all_games": 37.94,
+      "score_pct_of_known_outcomes": 42.587
+    }
+  ],
+  "quick_returns_by_bot_and_prior_outcome": [
+    {
+      "bot": "maia1",
+      "previous_opponent_outcome": "win",
+      "eligible_games": 336815,
+      "quick_return_any_maia": 155682,
+      "quick_return_same_maia": 145343,
+      "same_maia_pct": 43.152
+    },
+    {
+      "bot": "maia1",
+      "previous_opponent_outcome": "draw",
+      "eligible_games": 55937,
+      "quick_return_any_maia": 29801,
+      "quick_return_same_maia": 28701,
+      "same_maia_pct": 51.31
+    },
+    {
+      "bot": "maia1",
+      "previous_opponent_outcome": "loss",
+      "eligible_games": 440703,
+      "quick_return_any_maia": 243708,
+      "quick_return_same_maia": 235616,
+      "same_maia_pct": 53.464
+    },
+    {
+      "bot": "maia1",
+      "previous_opponent_outcome": "unknown",
+      "eligible_games": 1750,
+      "quick_return_any_maia": 867,
+      "quick_return_same_maia": 810,
+      "same_maia_pct": 46.286
+    },
+    {
+      "bot": "maia5",
+      "previous_opponent_outcome": "win",
+      "eligible_games": 125744,
+      "quick_return_any_maia": 43962,
+      "quick_return_same_maia": 37876,
+      "same_maia_pct": 30.122
+    },
+    {
+      "bot": "maia5",
+      "previous_opponent_outcome": "draw",
+      "eligible_games": 22962,
+      "quick_return_any_maia": 9736,
+      "quick_return_same_maia": 8644,
+      "same_maia_pct": 37.645
+    },
+    {
+      "bot": "maia5",
+      "previous_opponent_outcome": "loss",
+      "eligible_games": 139050,
+      "quick_return_any_maia": 72860,
+      "quick_return_same_maia": 65323,
+      "same_maia_pct": 46.978
+    },
+    {
+      "bot": "maia5",
+      "previous_opponent_outcome": "unknown",
+      "eligible_games": 500,
+      "quick_return_any_maia": 199,
+      "quick_return_same_maia": 169,
+      "same_maia_pct": 33.8
+    },
+    {
+      "bot": "maia9",
+      "previous_opponent_outcome": "win",
+      "eligible_games": 124509,
+      "quick_return_any_maia": 41599,
+      "quick_return_same_maia": 38254,
+      "same_maia_pct": 30.724
+    },
+    {
+      "bot": "maia9",
+      "previous_opponent_outcome": "draw",
+      "eligible_games": 24749,
+      "quick_return_any_maia": 10556,
+      "quick_return_same_maia": 9733,
+      "same_maia_pct": 39.327
+    },
+    {
+      "bot": "maia9",
+      "previous_opponent_outcome": "loss",
+      "eligible_games": 151774,
+      "quick_return_any_maia": 79041,
+      "quick_return_same_maia": 72854,
+      "same_maia_pct": 48.002
+    },
+    {
+      "bot": "maia9",
+      "previous_opponent_outcome": "unknown",
+      "eligible_games": 911,
+      "quick_return_any_maia": 582,
+      "quick_return_same_maia": 550,
+      "same_maia_pct": 60.373
+    }
+  ],
+  "consecutive_observed_game_gaps": {
+    "1–10 minutes": 166442,
+    "1+ days": 150388,
+    "0–1 minute": 522155,
+    "1–24 hours": 342560,
+    "10–60 minutes": 144165,
+    "overlapping_next_game": 6690
+  },
+  "opponent_accounts": {
+    "accounts": 93020,
+    "games_with_known_account": 1425420,
+    "accounts_with_at_least_one_quick_return": 42888,
+    "game_count_buckets": {
+      "1": 42055,
+      "2–9": 38515,
+      "50–199": 2240,
+      "10–49": 9187,
+      "200+": 1023
+    }
+  },
+  "game_starts_by_utc_hour": [
+    {
+      "utc_hour": 0,
+      "games": 44145
+    },
+    {
+      "utc_hour": 1,
+      "games": 43160
+    },
+    {
+      "utc_hour": 2,
+      "games": 41498
+    },
+    {
+      "utc_hour": 3,
+      "games": 41188
+    },
+    {
+      "utc_hour": 4,
+      "games": 40964
+    },
+    {
+      "utc_hour": 5,
+      "games": 42948
+    },
+    {
+      "utc_hour": 6,
+      "games": 46335
+    },
+    {
+      "utc_hour": 7,
+      "games": 51472
+    },
+    {
+      "utc_hour": 8,
+      "games": 57035
+    },
+    {
+      "utc_hour": 9,
+      "games": 61973
+    },
+    {
+      "utc_hour": 10,
+      "games": 67143
+    },
+    {
+      "utc_hour": 11,
+      "games": 71111
+    },
+    {
+      "utc_hour": 12,
+      "games": 71758
+    },
+    {
+      "utc_hour": 13,
+      "games": 74919
+    },
+    {
+      "utc_hour": 14,
+      "games": 77328
+    },
+    {
+      "utc_hour": 15,
+      "games": 76070
+    },
+    {
+      "utc_hour": 16,
+      "games": 73592
+    },
+    {
+      "utc_hour": 17,
+      "games": 72451
+    },
+    {
+      "utc_hour": 18,
+      "games": 72504
+    },
+    {
+      "utc_hour": 19,
+      "games": 67912
+    },
+    {
+      "utc_hour": 20,
+      "games": 67255
+    },
+    {
+      "utc_hour": 21,
+      "games": 61698
+    },
+    {
+      "utc_hour": 22,
+      "games": 54758
+    },
+    {
+      "utc_hour": 23,
+      "games": 46350
+    }
+  ]
+}
