@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 *.pdf
 !20261004_v1_researching_maia_games_report.pdf
+!20261006_v2_maia_games_report.pdf
+*.sqlite3
+*.db

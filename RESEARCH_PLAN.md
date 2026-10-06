@@ -1,49 +1,36 @@
-# Full-history Maia research plan — approval draft
+# Maia research methods and remaining questions
 
-**Status:** planning only. No full-history games have been downloaded. The public [snapshot report](index.html) uses Lichess profile totals and limited, stale Insights slices; it is **not** a lifetime game-level study.
+## Status and scope
 
-## Scope and questions
+The **rated-only three-year** export is complete. It covers official `maia1`, `maia5`, and `maia9` games **finished** from 2023-10-04 00:00 UTC through, but not including, 2026-10-04 09:00 UTC. The repo contains all collected game metadata, a checksum manifest, reproducible analysis, and visual report.
 
-Study every available **finished** game of the three official Lichess accounts `maia1`, `maia5`, and `maia9`, from each account's creation through a frozen cutoff chosen when the run is approved. Include **rated and casual** games and all time controls. Retain the distinction between standard-start games, games from a custom position, and any other variants.
+The earlier ambition—an **all-time game-level** study including casual games—is **not complete**. The separate all-time profile snapshot gives aggregate rated/casual counts, not casual players or monthly casual play.
 
-The study should answer:
+## Collection and validation
 
-1. How many distinct opposing Lichess **accounts** played at least one of the bots, per bot and across all three? An account is not necessarily a unique person.
-2. How many games did an opposing account play on average? Report mean, median, percentiles, and the one-game share; the mean alone may be misleading.
-3. Which accounts played the most games, and how many? Separate human and bot opponents. Named-account publication will be reviewed separately before it goes public.
-4. Are there **plausible** examples of improvement and progression from Maia 1 to Maia 5 or 9? Show time-ordered results and enough games per level, compare like-for-like time controls and colors, and avoid claiming that Maia caused improvement.
-5. Which openings and first moves occur most often against each bot? Split by human color, time control, and standard versus nonstandard starts.
-6. How often does each Maia bot play White or Black over its **full history**? Compare this with the current Insights-slice result.
-7. Additional descriptive patterns: rated/casual mix, time controls, changes by year, rematches, and concentration of games among heavy users.
+Lichess's [user-game export](https://lichess.org/api#operation/apiGamesUser) was requested sequentially with `rated=true`, `moves=false`, `clocks=false`, `evals=false`, and `opening=true`. A local SQLite database stored minimal fields; response bodies, credentials, and the working database are not published.
 
-## Source and collection method
+Filtered requests were observed to stop at 10,000 responses. The collector split date ranges until each completed request returned fewer than 9,900 raw responses. Its 342 final ranges cover the frozen interval without gaps for each bot. The local SQLite `quick_check` passed; all 1,425,567 rows finished within scope and had unique `(bot,game_id)` keys. No game ID appeared under two Maia bots in this rated interval. Unknown opponent handles: 147. The published-data verifier independently checks hashes, CSV row counts, finish-time bounds, and unique game IDs.
 
-Use Lichess's [user-game export](https://github.com/lichess-org/api/blob/master/doc/specs/tags/games/api-games-user-username.yaml) with `Accept: application/x-ndjson`, an identifying User-Agent, and the least-privilege OAuth token. The endpoint documents a **30-games/second** OAuth stream for games of other accounts, compared with 20 games/second anonymously. It supports `since`, `until`, `sort`, `moves`, and `opening` parameters. The key is held outside this repository; the collector must never log it.
+**Coverage limitation:** raw response counts per final range were not retained in the public dataset. Cap protection depends on the completed collector run and its reviewed splitting logic; the public verifier cannot prove Lichess did not omit a game for another reason.
 
-Proposed fields: game ID, bot ID, opposing account ID, timestamp, players and color, result, rated/casual status, time control/variant, opening name/ECO if available, and opponent rating if available. Request `moves=false`, `clocks=false`, `evals=false`, and `opening=true` initially. A small pilot must verify that those parameters really preserve all needed fields; otherwise revise before scaling. Do not save the full NDJSON response or PGN move text by default.
+## Definitions
 
-Process **one API request at a time**, in bounded date windows, with a durable checkpoint only after each window completes. Deduplicate on game ID (a Maia-versus-Maia game appears in two bot exports). Reconcile window totals with profile counts captured at the cutoff, allowing for games finished around the boundary and API exclusions. A 429 response means stop requesting for at least one minute and reduce the pace; repeated 429s should pause the run and be reported, not looped through. This follows [Lichess API guidance](https://lichess.org/page/api-tips).
+- **All-time bot-game entries:** sum of profile game counters, rated and casual. A Maia-vs-Maia game contributes twice.
+- **All-time unique games:** entries minus 21 Maia-vs-Maia overlaps in the 2026-10-04 profile/crosstable snapshot. These moving server counters may not synchronize to the second.
+- **Three-year rated bot-game entries:** one published CSV row per bot/game pair within the frozen finish-time interval.
+- **Three-year unique games:** distinct game IDs. Here they equal bot-game entries because no Maia-vs-Maia game occurred in the export.
+- **Monthly popularity:** rated entries by UTC finish month. Both October edge months are partial and excluded from the trend table and comparable 12-month totals.
+- **Account-weighted rating:** average each opposing account's recorded Lichess ratings, then average those account means. The game-weighted mean lets frequent players count more. Neither is FIDE Elo.
+- **Opening family:** Lichess's opening name before its first colon. This is a classification of the position reached by both sides, not the opponent's first move.
+- **First-to-last bot:** among accounts with at least 20 games spanning 180 days, compare the first and last Maia opponent observed. This is descriptive and noisy, not proof of improvement or causality.
 
-## Size and time budget before a download
+## Limitations and follow-on work
 
-The October 4 profile snapshot contained **6,486,805 bot-account game entries**: Maia 1, 3,661,291; Maia 5, 1,430,845; Maia 9, 1,394,669. These counters keep moving. Subtracting the 21 games between two of these bots gives 6,486,784 distinct games at that snapshot; the API will still need to export both account entries for those 21 matches.
+1. Casual games were not downloaded at game level. There is no monthly **all-games** time series, casual-account leaderboard, or all-time opposing-account count. Do not extrapolate the rated trend to casual play.
+2. No moves, PGNs, or clocks-by-move were downloaded. Opening metadata cannot establish first-move frequencies or chess-quality improvement.
+3. Lichess handles are public, but an account is not necessarily a person, and every opponent's bot status was not verified. Leaderboards are descriptive only.
+4. A credible individual improvement study needs matched time controls, colors, sufficient time-ordered games at each level, and outside-activity context. Even then, a causal claim would need a comparison design.
+5. The all-time profile snapshot and rated export were collected at different times and cover different periods. Treat them as two views, not additive pieces of one population.
 
-At Lichess's documented 30 games/second OAuth rate, the **mathematical minimum** is about **33.9 hours for Maia 1**, **13.3 hours for Maia 5**, and **12.9 hours for Maia 9**—**60.1 hours total**. This is a floor, not a completion promise. It assumes an uninterrupted stream at the full allowance, with no 429s, connection failures, processing, or re-reads. Plan operationally for **3–5 days**, and reassess from measured pilot throughput. An anonymous export's corresponding floor is about **90.1 hours**.
-
-**Storage is an estimate, not a measurement.** With 6.49 million records, 250–1,000 bytes of compact retained data per game would be **1.6–6.5 GB before SQLite indexes and overhead**. Budget **2–10 GB** for the private game-level database and **15 GB free-space headroom** for indexing, checkpoints, and rework. The machine had about **63 GiB free** during this planning review; recheck before any approved run. Do not put raw games, opponent IDs, a database, a token, or local paths in the public repo.
-
-### Gate 1 — small calibration, separately approved
-
-After review, make one small, sequential export pilot (proposed **1,000 games**, not a full run). Confirm token acceptance, fields, record bytes, actual throughput, date-window boundaries, and whether `moves=false` preserves opening data. Estimate database bytes per game using a real private SQLite prototype. Publish only aggregate measurements and a revised time/storage budget. **Do not continue automatically to millions of games.**
-
-### Gate 2 — full run, separately approved
-
-Only after Dash reviews Gate 1, freeze the cutoff and launch the resumable full-history export. Store minimal game-level records in a private local data area with restrictive permissions, outside this repo. Monitor Lichess rate limits and disk headroom. Stop on repeated 429s, sustained schema errors, an unexpectedly high storage estimate, or less than the agreed free-space reserve. A multi-day run should have durable progress and an explicit stop procedure.
-
-### Gate 3 — analysis and publication review
-
-Validate unique game IDs, per-bot counts, opponent normalization, color/result logic, opening coverage, and missing/closed accounts. Report both raw counts and limitations. Produce a new visual report and reproducible aggregate tables. Review any proposed named-account examples or leaderboards for privacy, accuracy, and fair framing **before** a separate public update. No credential, raw game record, opponent-level database, or private identity mapping goes to GitHub.
-
-## Current blockers and decision requested
-
-Two small anonymous export probes returned HTTP 429, including one after a 15-minute wait. An earlier generic-User-Agent request returned 404, which did **not** prove the endpoint was down. The supplied OAuth token has been stored securely, but it has **not been used for a game export** and its Lichess validity has not yet been tested. The next decision is whether to authorize **Gate 1 only**, after reviewing this plan. Publishing this plan does **not** authorize Gate 1 or Gate 2.
+Run `python3 scripts/build_rated_report.py` to verify the published shards and regenerate aggregate JSON/HTML. The [manifest](data/rated-games/manifest.json) pins each CSV.gz SHA-256. `scripts/export_rated_games.py --db /path/to/games.sqlite3` creates deterministic gzip files (`mtime=0`) from a compatible private source. The older `data/summary.json`, `scripts/collect.py`, and `scripts/build_report.py` remain for historical snapshot reproducibility; the older PDF is superseded.
