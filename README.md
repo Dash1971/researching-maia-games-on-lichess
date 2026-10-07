@@ -4,9 +4,9 @@ Independent research on official [Maia 1](https://lichess.org/@/maia1), [Maia 5]
 
 **[Read the visual report](https://dash1971.github.io/researching-maia-games-on-lichess/)** · **[Download the PDF](maia-fan-report.pdf)** · [Game-level data and field guide](data/rated-games/README.md) · [Aggregate results](data/rated_summary.json) · [Fan insights](data/fan_insights.json) · [Early/later analysis](data/learning_insights.json) · [Methods and limits](RESEARCH_PLAN.md)
 
-**New supplement:** [Casual versus rated visual comparison](casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json) · [Behavior comparisons](data/comparison_behaviour.json)
+**New supplement:** [Casual versus rated visual comparison](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json) · [Behavior comparisons](data/comparison_behaviour.json)
 
-In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](casual-vs-rated.html) also shows a sensitivity check excluding only that account’s September 2026 games. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
+In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) also shows a sensitivity check excluding only that account’s September 2026 games. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
 
 ## Three scopes
 
@@ -27,9 +27,9 @@ For **2,982 accounts regularly playing standard games in both formats**, an acco
 - All **rated and casual game metadata** saved by the downloaders: 12 year/bot CSV.gz shards per format with public Lichess opponent handles and game IDs. Row counts and SHA-256 hashes are in the [rated](data/rated-games/manifest.json) and [casual](data/casual-games/manifest.json) manifests. No moves, PGNs, chat, private identity mapping, or credentials were collected or included.
 - A [field guide](data/rated-games/README.md), [aggregate JSON](data/rated_summary.json), [fan-insight JSON](data/fan_insights.json), and Python standard-library scripts to export and rebuild the report.
 - A more visual report: all-time rated/casual bars, monthly rated-game chart, public-account leaderboard, repeat-play concentration, clocks, ratings, and openings, plus results by color, rating bands, and quick returns after wins or losses.
-- A separate [casual/rated supplement](casual-vs-rated.html) with a complete-month trend, account activity, clocks, quick returns across formats, and matched standard-game scores. The behavior JSON separates all collected games from standard-only comparisons and includes sensitivity checks. The original rated-focused report is unchanged.
+- A separate [casual/rated supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) with a complete-month trend, account activity, clocks, quick returns across formats, and matched standard-game scores. The behavior JSON separates all collected games from standard-only comparisons and includes sensitivity checks. The original rated-focused report is unchanged.
 
-From the repository root, verify the frozen dataset and reproduce all three JSON outputs and the HTML offline:
+From the repository root, verify the frozen datasets and reproduce both HTML reports, their aggregate JSON, and the monthly CSV offline:
 
 ```sh
 python3 scripts/build_rated_report.py
