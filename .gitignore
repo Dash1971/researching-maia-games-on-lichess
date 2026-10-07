@@ -8,5 +8,6 @@ __pycache__/
 *.db
 
 !maia-fan-report.pdf
+!20261008_v0_maia_casual_comparison.pdf
 work/
 _site/
