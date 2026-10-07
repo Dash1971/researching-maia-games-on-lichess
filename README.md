@@ -4,9 +4,9 @@ Independent research on official [Maia 1](https://lichess.org/@/maia1), [Maia 5]
 
 **[Read the visual report](https://dash1971.github.io/researching-maia-games-on-lichess/)** · **[Download the PDF](maia-fan-report.pdf)** · [Game-level data and field guide](data/rated-games/README.md) · [Aggregate results](data/rated_summary.json) · [Fan insights](data/fan_insights.json) · [Early/later analysis](data/learning_insights.json) · [Methods and limits](RESEARCH_PLAN.md)
 
-**New supplement:** [Casual versus rated visual comparison](casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json)
+**New supplement:** [Casual versus rated visual comparison](casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json) · [Behavior comparisons](data/comparison_behaviour.json)
 
-In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](casual-vs-rated.html) also shows the trend without that account. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
+In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](casual-vs-rated.html) also shows a sensitivity check excluding only that account’s September 2026 games. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
 
 ## Three scopes
 
@@ -14,16 +14,20 @@ In the three-year exports, casual games number **2,040,728** versus **1,425,567*
 | --- | --- | --- |
 | **All-time profile snapshot**, 2026-10-04 07:12 UTC | 6,486,805 summed bot-game entries, rated **and casual**. Twenty-one Maia-vs-Maia games appear twice, leaving 6,486,784 unique games. | Historical scale and rated/casual mix. Not a monthly series or count of people. |
 | **Three-year rated export**, games with last recorded move 2023-10-04 00:00 UTC to before 2026-10-04 09:00 UTC | 1,425,567 game-level metadata records. There is no Maia-vs-Maia overlap in this window, so all 1,425,567 are unique games. | Monthly rated play, opponent accounts and ratings, exact clocks, color, and openings. **Not casual or all-time play.** |
-| **Three-year casual export**, same last-move window and bots | 2,040,728 game-level metadata records, all with unique game IDs within and across the rated export. | Like-for-like casual/rated volume, accounts, clocks, ratings, and outcomes. **Not all-time play.** |
+| **Three-year casual export**, same last-move window and bots | 2,040,728 game-level metadata records, all with unique game IDs within and across the rated export. | Casual/rated volume and descriptive account, clock, rating, and outcome comparisons. **Not all-time play.** |
 
 “Bot-game entry” means one game attached to one bot account. “Unique game” means one game ID counted once even if two Maia bots played each other. The report never switches denominator without saying so. The last recorded move timestamp sets the export's scope and monthly counts; it can precede resignation or flag fall. October 2023 and October 2026 are partial months, omitted from the monthly chart/table and growth comparison.
+
+The casual export includes **118,056 `fromPosition` games** and **1,922,672 standard games**; all rated records are standard. Volume and monthly charts count all collected games. Matched behavior comparisons use standard games in both formats to avoid comparing custom starting positions with normal chess.
+
+For **2,982 accounts regularly playing standard games in both formats**, an account-equal comparison puts quick returns at **50.6% in each**. Weighting the same accounts by games instead gives 50.7% rated versus 53.9% casual: frequent accounts change the story. Among **900 accounts matched by Maia, exact clock, speed, and color**, opponent score averages 42.6% rated versus 38.7% casual, a 3.9-point difference. The formats’ mean play dates are typically separated by 39.8 days, so this does not establish that the rated setting causes different results or that either format improves chess skill.
 
 ## What is published
 
 - All **rated and casual game metadata** saved by the downloaders: 12 year/bot CSV.gz shards per format with public Lichess opponent handles and game IDs. Row counts and SHA-256 hashes are in the [rated](data/rated-games/manifest.json) and [casual](data/casual-games/manifest.json) manifests. No moves, PGNs, chat, private identity mapping, or credentials were collected or included.
 - A [field guide](data/rated-games/README.md), [aggregate JSON](data/rated_summary.json), [fan-insight JSON](data/fan_insights.json), and Python standard-library scripts to export and rebuild the report.
 - A more visual report: all-time rated/casual bars, monthly rated-game chart, public-account leaderboard, repeat-play concentration, clocks, ratings, and openings, plus results by color, rating bands, and quick returns after wins or losses.
-- A separate [casual/rated supplement](casual-vs-rated.html) with a complete-month trend, bot and clock comparisons, account overlap, rating perspectives, and outcome caveats. The original rated-focused report is unchanged.
+- A separate [casual/rated supplement](casual-vs-rated.html) with a complete-month trend, account activity, clocks, quick returns across formats, and matched standard-game scores. The behavior JSON separates all collected games from standard-only comparisons and includes sensitivity checks. The original rated-focused report is unchanged.
 
 From the repository root, verify the frozen dataset and reproduce all three JSON outputs and the HTML offline:
 

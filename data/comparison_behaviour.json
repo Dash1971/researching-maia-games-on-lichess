@@ -1,0 +1,568 @@
+{
+  "scope": {
+    "start_utc_inclusive": "2023-10-04T00:00:00Z",
+    "end_utc_exclusive": "2026-10-04T09:00:00Z",
+    "time_basis": "last recorded move",
+    "games": {
+      "rated": 1425567,
+      "casual": 2040728
+    }
+  },
+  "definitions": {
+    "activity": "Game counts per public opposing account within each format; IDs are not necessarily distinct people. Median includes one-game accounts. Top1% selects max(1,round(accounts*.01)) most active accounts; share denominator all format games.",
+    "outcomes": "Opponent perspective: winner white/black gives win/loss. Draw only for draw/stalemate status and no winner, other no-winner statuses unknown.",
+    "quick_return": "First next observed game of the same opponent across both formats, ordered by created timestamp then game ID; 0–600 seconds from prior last recorded move. Last move may precede actual resignation or flagging. Same/opposite format counts partition all quick returns; no formal rematch claim.",
+    "eligible": "Known account, created<=last recorded move, last recorded move at least10 minutes before scope end; no-next games included. Outside-scope, other-opponent, or private activity unobserved.",
+    "standard_returns": "Prior must be standard; first next observed event must also be standard for quick return. An intervening custom-position event is never skipped.",
+    "shared_regular": "Accounts with >=10 eligible standard games in each format. Every qualifying account equal weight for account-equal rates; outcome-specific rates include accounts with >=1 eligible game of that outcome. Game-weighted rates use same selected cohort.",
+    "matched_outcomes": "Known outcome, non-cheat standard games; same account, bot, exact clock, speed, and opponent color, >=10 games per format. One stratum per account: maximize smaller mode game count, then combined game count, ties ascending(bot,clock-string,speed,color). Means weight accounts equally. Whole-period formats need not coincide in time; mean-created-time gaps are reported. Not a randomized or causal comparison.",
+    "outlier": "Identify largest September2026 casual account, then remove ALL its casual games across full observation window for full-window clock/speed sensitivity; report September count separately. No assertion about identity or motive."
+  },
+  "modes": {
+    "rated": {
+      "games": 1425567,
+      "accounts": 93020,
+      "median_games_per_account": 2.0,
+      "one_game_accounts": 42055,
+      "one_game_accounts_pct": 45.2107,
+      "top_1pct_games": 822752,
+      "bot_shares": [
+        {
+          "label": "maia1",
+          "games": 835333,
+          "pct": 58.5965
+        },
+        {
+          "label": "maia9",
+          "games": 301956,
+          "pct": 21.1815
+        },
+        {
+          "label": "maia5",
+          "games": 288278,
+          "pct": 20.222
+        }
+      ],
+      "top_clocks": [
+        {
+          "label": "600+0",
+          "games": 214879,
+          "pct": 15.0732
+        },
+        {
+          "label": "300+3",
+          "games": 142986,
+          "pct": 10.0301
+        },
+        {
+          "label": "600+5",
+          "games": 87149,
+          "pct": 6.1133
+        },
+        {
+          "label": "180+2",
+          "games": 67850,
+          "pct": 4.7595
+        },
+        {
+          "label": "900+10",
+          "games": 66378,
+          "pct": 4.6563
+        },
+        {
+          "label": "180+0",
+          "games": 40455,
+          "pct": 2.8378
+        },
+        {
+          "label": "300+0",
+          "games": 38838,
+          "pct": 2.7244
+        },
+        {
+          "label": "600+3",
+          "games": 37962,
+          "pct": 2.6629
+        }
+      ],
+      "speed_shares": [
+        {
+          "label": "rapid",
+          "games": 659704,
+          "pct": 46.2766
+        },
+        {
+          "label": "blitz",
+          "games": 433649,
+          "pct": 30.4194
+        },
+        {
+          "label": "bullet",
+          "games": 167925,
+          "pct": 11.7795
+        },
+        {
+          "label": "classical",
+          "games": 164289,
+          "pct": 11.5245
+        }
+      ],
+      "variant_counts": {
+        "standard": 1425567
+      }
+    },
+    "casual": {
+      "games": 2040728,
+      "accounts": 128628,
+      "median_games_per_account": 2.0,
+      "one_game_accounts": 52836,
+      "one_game_accounts_pct": 41.0766,
+      "top_1pct_games": 1101381,
+      "bot_shares": [
+        {
+          "label": "maia1",
+          "games": 1199409,
+          "pct": 58.7736
+        },
+        {
+          "label": "maia9",
+          "games": 420832,
+          "pct": 20.6217
+        },
+        {
+          "label": "maia5",
+          "games": 420487,
+          "pct": 20.6048
+        }
+      ],
+      "top_clocks": [
+        {
+          "label": "600+0",
+          "games": 339890,
+          "pct": 16.6553
+        },
+        {
+          "label": "300+3",
+          "games": 190489,
+          "pct": 9.3344
+        },
+        {
+          "label": "600+5",
+          "games": 138747,
+          "pct": 6.7989
+        },
+        {
+          "label": "60+0",
+          "games": 128979,
+          "pct": 6.3202
+        },
+        {
+          "label": "900+10",
+          "games": 119119,
+          "pct": 5.8371
+        },
+        {
+          "label": "180+2",
+          "games": 93182,
+          "pct": 4.5661
+        },
+        {
+          "label": "300+0",
+          "games": 80528,
+          "pct": 3.946
+        },
+        {
+          "label": "180+0",
+          "games": 59453,
+          "pct": 2.9133
+        }
+      ],
+      "speed_shares": [
+        {
+          "label": "rapid",
+          "games": 1005130,
+          "pct": 49.2535
+        },
+        {
+          "label": "blitz",
+          "games": 529111,
+          "pct": 25.9276
+        },
+        {
+          "label": "classical",
+          "games": 260688,
+          "pct": 12.7743
+        },
+        {
+          "label": "bullet",
+          "games": 245799,
+          "pct": 12.0447
+        }
+      ],
+      "variant_counts": {
+        "standard": 1922672,
+        "fromPosition": 118056
+      }
+    }
+  },
+  "variant_outcomes": [
+    {
+      "mode": "casual",
+      "variant": "fromPosition",
+      "games": 118056,
+      "win": 45401,
+      "loss": 65388,
+      "draw": 6375,
+      "unknown": 892
+    },
+    {
+      "mode": "casual",
+      "variant": "standard",
+      "games": 1922672,
+      "win": 555620,
+      "loss": 1265674,
+      "draw": 98008,
+      "unknown": 3370
+    },
+    {
+      "mode": "rated",
+      "variant": "standard",
+      "games": 1425567,
+      "win": 587080,
+      "loss": 731676,
+      "draw": 103650,
+      "unknown": 3161
+    }
+  ],
+  "quick_returns_all_variants": [
+    {
+      "mode": "rated",
+      "prior_outcome": "win",
+      "eligible_games": 587068,
+      "quick_any_mode": 242816,
+      "quick_same_mode": 241082,
+      "quick_other_mode": 1734,
+      "quick_same_bot": 222446,
+      "quick_any_mode_pct": 41.3608
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "loss",
+      "eligible_games": 731527,
+      "quick_any_mode": 399431,
+      "quick_same_mode": 395050,
+      "quick_other_mode": 4381,
+      "quick_same_bot": 376981,
+      "quick_any_mode_pct": 54.6024
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "draw",
+      "eligible_games": 103648,
+      "quick_any_mode": 50389,
+      "quick_same_mode": 50069,
+      "quick_other_mode": 320,
+      "quick_same_bot": 47298,
+      "quick_any_mode_pct": 48.6155
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "unknown",
+      "eligible_games": 3161,
+      "quick_any_mode": 1661,
+      "quick_same_mode": 1646,
+      "quick_other_mode": 15,
+      "quick_same_bot": 1540,
+      "quick_any_mode_pct": 52.5467
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "win",
+      "eligible_games": 601016,
+      "quick_any_mode": 256932,
+      "quick_same_mode": 251847,
+      "quick_other_mode": 5085,
+      "quick_same_bot": 239835,
+      "quick_any_mode_pct": 42.7496
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "loss",
+      "eligible_games": 1331050,
+      "quick_any_mode": 806951,
+      "quick_same_mode": 802940,
+      "quick_other_mode": 4011,
+      "quick_same_bot": 781580,
+      "quick_any_mode_pct": 60.6251
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "draw",
+      "eligible_games": 104383,
+      "quick_any_mode": 53074,
+      "quick_same_mode": 52488,
+      "quick_other_mode": 586,
+      "quick_same_bot": 51274,
+      "quick_any_mode_pct": 50.8454
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "unknown",
+      "eligible_games": 4262,
+      "quick_any_mode": 2295,
+      "quick_same_mode": 2254,
+      "quick_other_mode": 41,
+      "quick_same_bot": 2180,
+      "quick_any_mode_pct": 53.848
+    }
+  ],
+  "quick_returns_standard": [
+    {
+      "mode": "rated",
+      "prior_outcome": "win",
+      "eligible_games": 587068,
+      "quick_any_mode": 242727,
+      "quick_same_mode": 241082,
+      "quick_other_mode": 1645,
+      "quick_same_bot": 222374,
+      "quick_any_mode_pct": 41.3456
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "loss",
+      "eligible_games": 731527,
+      "quick_any_mode": 398598,
+      "quick_same_mode": 395050,
+      "quick_other_mode": 3548,
+      "quick_same_bot": 376350,
+      "quick_any_mode_pct": 54.4885
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "draw",
+      "eligible_games": 103648,
+      "quick_any_mode": 50352,
+      "quick_same_mode": 50069,
+      "quick_other_mode": 283,
+      "quick_same_bot": 47267,
+      "quick_any_mode_pct": 48.5798
+    },
+    {
+      "mode": "rated",
+      "prior_outcome": "unknown",
+      "eligible_games": 3161,
+      "quick_any_mode": 1660,
+      "quick_same_mode": 1646,
+      "quick_other_mode": 14,
+      "quick_same_bot": 1539,
+      "quick_any_mode_pct": 52.515
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "win",
+      "eligible_games": 555615,
+      "quick_any_mode": 230984,
+      "quick_same_mode": 226186,
+      "quick_other_mode": 4798,
+      "quick_same_bot": 217081,
+      "quick_any_mode_pct": 41.5727
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "loss",
+      "eligible_games": 1265662,
+      "quick_any_mode": 749482,
+      "quick_same_mode": 745869,
+      "quick_other_mode": 3613,
+      "quick_same_bot": 725502,
+      "quick_any_mode_pct": 59.2166
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "draw",
+      "eligible_games": 98008,
+      "quick_any_mode": 48530,
+      "quick_same_mode": 47968,
+      "quick_other_mode": 562,
+      "quick_same_bot": 47012,
+      "quick_any_mode_pct": 49.5164
+    },
+    {
+      "mode": "casual",
+      "prior_outcome": "unknown",
+      "eligible_games": 3370,
+      "quick_any_mode": 1671,
+      "quick_same_mode": 1633,
+      "quick_other_mode": 38,
+      "quick_same_bot": 1598,
+      "quick_any_mode_pct": 49.5846
+    }
+  ],
+  "shared_regular_accounts_standard": {
+    "accounts": 2982,
+    "minimum_eligible_games_per_mode": 10,
+    "rates": [
+      {
+        "mode": "rated",
+        "prior_outcome": "all",
+        "accounts_with_denominator": 2982,
+        "eligible_games": 586231,
+        "quick_returns": 297229,
+        "game_weighted_pct": 50.7017,
+        "account_equal_pct": 50.6297
+      },
+      {
+        "mode": "rated",
+        "prior_outcome": "win",
+        "accounts_with_denominator": 2796,
+        "eligible_games": 260827,
+        "quick_returns": 115620,
+        "game_weighted_pct": 44.3282,
+        "account_equal_pct": 39.3243
+      },
+      {
+        "mode": "rated",
+        "prior_outcome": "loss",
+        "accounts_with_denominator": 2937,
+        "eligible_games": 282555,
+        "quick_returns": 160265,
+        "game_weighted_pct": 56.7199,
+        "account_equal_pct": 57.3579
+      },
+      {
+        "mode": "casual",
+        "prior_outcome": "all",
+        "accounts_with_denominator": 2982,
+        "eligible_games": 455703,
+        "quick_returns": 245613,
+        "game_weighted_pct": 53.8976,
+        "account_equal_pct": 50.612
+      },
+      {
+        "mode": "casual",
+        "prior_outcome": "win",
+        "accounts_with_denominator": 2781,
+        "eligible_games": 163311,
+        "quick_returns": 70608,
+        "game_weighted_pct": 43.2353,
+        "account_equal_pct": 38.5758
+      },
+      {
+        "mode": "casual",
+        "prior_outcome": "loss",
+        "accounts_with_denominator": 2954,
+        "eligible_games": 264991,
+        "quick_returns": 160978,
+        "game_weighted_pct": 60.7485,
+        "account_equal_pct": 56.2173
+      }
+    ]
+  },
+  "matched_standard_outcomes": {
+    "accounts": 900,
+    "minimum_known_games_per_mode_per_stratum": 10,
+    "rated_games": 104666,
+    "casual_games": 73796,
+    "mean_rated_score_pct": 42.6466,
+    "mean_casual_score_pct": 38.7427,
+    "mean_casual_minus_rated_pp": -3.9038,
+    "median_casual_minus_rated_pp": -3.6247,
+    "casual_score_higher_accounts": 335,
+    "same_score_accounts": 13,
+    "casual_score_lower_accounts": 552,
+    "mean_casual_minus_rated_mean_created_days": -11.323,
+    "median_absolute_mean_created_gap_days": 39.823,
+    "by_bot": [
+      {
+        "bot": "maia1",
+        "accounts": 605,
+        "mean_casual_minus_rated_pp": -4.2345
+      },
+      {
+        "bot": "maia5",
+        "accounts": 146,
+        "mean_casual_minus_rated_pp": -2.9948
+      },
+      {
+        "bot": "maia9",
+        "accounts": 149,
+        "mean_casual_minus_rated_pp": -3.452
+      }
+    ]
+  },
+  "outlier_sensitivity": {
+    "september_2026_top_account_games": 63504,
+    "top_account_full_window_casual_games": 63504,
+    "september_variant_counts": {
+      "standard": 63504
+    },
+    "full_window_variant_counts": {
+      "standard": 63504
+    },
+    "casual_games_excluding_account": 1977224,
+    "casual_top_clocks_without_account": [
+      {
+        "label": "600+0",
+        "games": 339890,
+        "pct": 17.1903
+      },
+      {
+        "label": "300+3",
+        "games": 190489,
+        "pct": 9.6342
+      },
+      {
+        "label": "600+5",
+        "games": 138747,
+        "pct": 7.0173
+      },
+      {
+        "label": "900+10",
+        "games": 119119,
+        "pct": 6.0246
+      },
+      {
+        "label": "180+2",
+        "games": 93182,
+        "pct": 4.7128
+      },
+      {
+        "label": "300+0",
+        "games": 80528,
+        "pct": 4.0728
+      },
+      {
+        "label": "60+0",
+        "games": 65475,
+        "pct": 3.3115
+      },
+      {
+        "label": "180+0",
+        "games": 59453,
+        "pct": 3.0069
+      }
+    ],
+    "casual_speed_shares_without_account": [
+      {
+        "label": "rapid",
+        "games": 1005130,
+        "pct": 50.8354
+      },
+      {
+        "label": "blitz",
+        "games": 529111,
+        "pct": 26.7603
+      },
+      {
+        "label": "classical",
+        "games": 260688,
+        "pct": 13.1845
+      },
+      {
+        "label": "bullet",
+        "games": 182295,
+        "pct": 9.2197
+      }
+    ]
+  }
+}

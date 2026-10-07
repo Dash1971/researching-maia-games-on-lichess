@@ -7,7 +7,7 @@ requested with `rated=false`. One CSV row represents one bot/game pair. No
 game ID appears under two Maia bots in this interval, so the row count also
 equals the number of unique game IDs. This is **casual-only**, not all-time
 play. The separate [rated export](../rated-games/README.md) uses the same
-window and field layout.
+window and field layout. The casual files include 1,922,672 `standard` games and 118,056 `fromPosition` games; the rated files contain only standard games. All collected games contribute to volume charts; matched behavior comparisons use standard games from both formats.
 
 The 12 files are split by bot and **UTC last-move year**, gzip-compressed CSV
 with a header, UTF-8 and LF line endings. [`manifest.json`](manifest.json)
@@ -31,7 +31,7 @@ timestamps are zeroed for deterministic exports.
 Blank CSV cells mean missing/null source values. There are no moves, PGNs,
 chat messages, private account mappings, credentials, or internal download
 window IDs. The [supplemental aggregates](../casual_comparison.json) and
-[monthly CSV](../casual_comparison_monthly.csv) compare these records with the
+[behavior comparisons](../comparison_behaviour.json) and [monthly CSV](../casual_comparison_monthly.csv) compare these records with the
 rated export. Partial October 2023 and October 2026 are excluded from its
 complete-month trend.
 

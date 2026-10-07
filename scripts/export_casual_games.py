@@ -84,7 +84,7 @@ def main():
         "source_url": "https://lichess.org/api#operation/apiGamesUser",
         "start_utc_inclusive": "2023-10-04T00:00:00Z",
         "end_utc_exclusive": "2026-10-04T09:00:00Z",
-        "time_basis": "last_move_at_ms (game finish)",
+        "time_basis": "last_move_at_ms (last recorded move; may precede resignation or flag fall)",
         "records": sum(counts.values()),
         "distinct_game_ids": len(seen_ids),
         "fields": COLUMNS,

@@ -41,6 +41,8 @@ and [monthly CSV](data/casual_comparison_monthly.csv). No game ID appears under
 two bots or in both formats in these exports, so bot-game entries equal unique
 games here. This equality is observed for these exports, not assumed generally.
 
+Casual records include 118,056 `fromPosition` games and 1,922,672 standard games; all rated records are standard. All collected variants remain in volume, monthly, and overall descriptive aggregates. Matched behavior analyses use only standard games in both formats.
+
 The supplement uses bot-game entries for volume and monthly charts; both
 partial October months are excluded from its 35 complete-month series. Its
 first/last 12-month comparisons are November 2023–October 2024 and October
@@ -58,6 +60,18 @@ sensitivity subtracts that month's games from its single highest-volume
 casual account, then recomputes the final 12-month casual total. It is not an
 estimate of how the month would have evolved without that account, and it
 does not label the account's behavior as improper.
+
+### Behavior comparisons across formats
+
+The [behavior JSON](data/comparison_behaviour.json), built by `scripts/comparison_behaviour.py`, verifies both published corpora and distinguishes all collected games from standard-only comparisons.
+
+- Activity concentration counts games per public account within each format. Median activity includes one-game accounts. The top 1% uses `max(1, round(account_count × 0.01))` accounts, with all games in that format as the share denominator.
+- Quick returns find the first next observed Maia game for the account across both formats, ordered by creation timestamp and game ID. A return starts 0–600 seconds after the prior last recorded move. Eligible prior games have a known account, a last move no earlier than creation, and a last move at least ten minutes before the window ends. No-next games stay in the denominator. The standard-only version requires both prior and next games to be standard; it never skips an intervening custom-position game. These are observed returns, not formal rematches or complete account histories.
+- Shared regular accounts have at least ten eligible standard games in each format. Account-equal rates give each selected account equal weight; game-weighted rates count their eligible games. Outcome-specific account means use selected accounts with at least one eligible prior game of that outcome.
+- Matched outcome comparisons require known outcomes, non-cheat standard games, the same account, Maia, exact clock, speed, and opponent color, with at least ten games in each format. Each account contributes the eligible group maximizing the smaller of its two format counts first, then combined games; ties resolve by ascending bot, clock string, speed, and color. Means weight accounts equally. Formats are compared over the entire window and need not occur at the same time, so matching does not establish causality.
+- Two outlier checks answer different questions. The monthly growth check excludes only the largest September 2026 casual account’s games in that month. The clock/speed sensitivity removes that account’s casual games across the full window. In these exports both exclusions remove the same 63,504 games because all that account’s collected casual games fall in September 2026; the definitions remain different. Neither identifies the account’s motives or treats its games as invalid.
+
+The 2,982 shared regular standard-game accounts have virtually identical account-equal quick-return rates: 50.6297% rated and 50.6120% casual. Game-weighting the same cohort instead gives 50.7% and 53.9%, showing that frequent-account weighting changes the comparison. Among 900 matched accounts, mean opponent score is 42.6% rated and 38.7% casual (casual minus rated: −3.9 percentage points). The median absolute gap between the formats’ mean game-start dates is 39.8 days. These games can occur at different stages of an account’s chess activity, and matching does not prove a format effect or training benefit.
 
 ## Definitions
 

@@ -89,7 +89,69 @@
     },
     "variant": {
       "standard": 1425567
-    }
+    },
+    "status": {
+      "outoftime": 121638,
+      "mate": 769107,
+      "resign": 428496,
+      "draw": 85446,
+      "stalemate": 18204,
+      "cheat": 110,
+      "timeout": 2352,
+      "insufficientMaterialClaim": 214
+    },
+    "outcomes_all_games": [
+      {
+        "bot": "maia1",
+        "games": 835333,
+        "win": 440822,
+        "draw": 55937,
+        "loss": 336824,
+        "unknown": 1750
+      },
+      {
+        "bot": "maia5",
+        "games": 288278,
+        "win": 139070,
+        "draw": 22962,
+        "loss": 125746,
+        "unknown": 500
+      },
+      {
+        "bot": "maia9",
+        "games": 301956,
+        "win": 151784,
+        "draw": 24751,
+        "loss": 124510,
+        "unknown": 911
+      }
+    ],
+    "outcomes_standard": [
+      {
+        "bot": "maia1",
+        "games": 835333,
+        "win": 440822,
+        "draw": 55937,
+        "loss": 336824,
+        "unknown": 1750
+      },
+      {
+        "bot": "maia5",
+        "games": 288278,
+        "win": 139070,
+        "draw": 22962,
+        "loss": 125746,
+        "unknown": 500
+      },
+      {
+        "bot": "maia9",
+        "games": 301956,
+        "win": 151784,
+        "draw": 24751,
+        "loss": 124510,
+        "unknown": 911
+      }
+    ]
   },
   "casual": {
     "bot_game_entries": 2040728,
@@ -177,7 +239,69 @@
     "variant": {
       "standard": 1922672,
       "fromPosition": 118056
-    }
+    },
+    "status": {
+      "mate": 833986,
+      "resign": 911863,
+      "draw": 83572,
+      "outoftime": 187155,
+      "stalemate": 20811,
+      "cheat": 491,
+      "timeout": 2237,
+      "insufficientMaterialClaim": 613
+    },
+    "outcomes_all_games": [
+      {
+        "bot": "maia1",
+        "games": 1199409,
+        "win": 804142,
+        "draw": 57542,
+        "loss": 335375,
+        "unknown": 2350
+      },
+      {
+        "bot": "maia5",
+        "games": 420487,
+        "win": 264369,
+        "draw": 22889,
+        "loss": 132468,
+        "unknown": 761
+      },
+      {
+        "bot": "maia9",
+        "games": 420832,
+        "win": 262551,
+        "draw": 23952,
+        "loss": 133178,
+        "unknown": 1151
+      }
+    ],
+    "outcomes_standard": [
+      {
+        "bot": "maia1",
+        "games": 1162531,
+        "win": 787391,
+        "draw": 55108,
+        "loss": 317998,
+        "unknown": 2034
+      },
+      {
+        "bot": "maia5",
+        "games": 389037,
+        "win": 243471,
+        "draw": 21653,
+        "loss": 123355,
+        "unknown": 558
+      },
+      {
+        "bot": "maia9",
+        "games": 371104,
+        "win": 234812,
+        "draw": 21247,
+        "loss": 114267,
+        "unknown": 778
+      }
+    ]
   },
   "combined_unique_games": 3466295,
   "account_overlap": {
@@ -470,6 +594,7 @@
   "september_2026_concentration": {
     "handle": "scissorsharpness",
     "games": 63504,
+    "sensitivity_definition": "Subtract only this account’s September 2026 casual games from the last 12-month total; retain its other months and the entire first period.",
     "share_of_september_pct": 55.6,
     "september_without_account": 50729,
     "august_games": 53754,
@@ -488,6 +613,8 @@
     "Account handles are not verified unique people; prolific accounts affect game-weighted metrics.",
     "A seven-day game-start lookback cannot guarantee capture of games lasting longer than seven days across the starting edge.",
     "No moves, PGNs, or chat were collected; opening names are source metadata.",
-    "Rated and casual players, clocks, and bot choices differ. Descriptive comparisons are not causal effects."
+    "Rated and casual accounts, clocks, bot choices and variant tags differ. Descriptive comparisons are not causal effects.",
+    "Casual includes fromPosition games; exact starting FENs were not collected. Standard-tagged subsets are shown separately.",
+    "Outcome percentages use all games as denominator unless explicitly labeled decisive-only or score."
   ]
 }

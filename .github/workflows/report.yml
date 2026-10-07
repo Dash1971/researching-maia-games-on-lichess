@@ -35,8 +35,9 @@ jobs:
           python3 scripts/build_casual_comparison.py
           test -s casual-vs-rated.html
           test -s data/casual_comparison.json
+          test -s data/comparison_behaviour.json
           test -s data/casual_comparison_monthly.csv
-          git diff --exit-code -- casual-vs-rated.html data/casual_comparison.json data/casual_comparison_monthly.csv
+          git diff --exit-code -- casual-vs-rated.html data/casual_comparison.json data/casual_comparison_monthly.csv data/comparison_behaviour.json
       - name: Stage public report
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
