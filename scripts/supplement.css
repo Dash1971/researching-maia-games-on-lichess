@@ -4,3 +4,11 @@
 
 .two-col>*{min-width:0}.pattern-bottom>.table-scroll{min-width:0}
 @media print{.supp-hero{padding-bottom:18px}.scope-strip{padding-top:8px;padding-bottom:8px}#habits{padding-bottom:0;margin-bottom:0;border:0}#habits .pattern-bottom{margin-top:18px}}
+
+.leaderboard-section table{min-width:650px;font-variant-numeric:tabular-nums}.leaderboard-section tbody th{text-transform:none;letter-spacing:0;font-size:inherit;white-space:nowrap}.leaderboard-section td:not(:first-child){text-align:right}.leaderboard-section thead th:nth-child(n+3){text-align:right}.leader-notes{margin-top:32px;gap:40px}.leaderboard-section tbody tr:first-child{background:#e9ede1}
+@media print{#regulars{padding-top:30px}#regulars h2{font-size:40px}#regulars table{min-width:0;font-size:11px;margin:25px 0}#regulars th,#regulars td{padding:10px 7px}#regulars .body-large{font-size:14px}#regulars .leader-notes{margin-top:25px;gap:30px}#regulars .leader-notes p{font-size:11px}#regulars .small{font-size:9px}#regulars .table-scroll{overflow:visible}}
+
+.position-facts{align-items:center;margin:32px 0;gap:45px}.position-facts .big-number{color:#457b5c}.position-share{margin:30px 0 42px}.position-track{height:32px;background:#dce3d4;border-radius:3px;overflow:hidden}.position-track i{display:block;height:100%;background:#457b5c}.position-share figcaption{display:flex;justify-content:space-between;gap:15px}.practice-cards{margin:25px 0}.practice-cards article{padding:24px;background:#e9ede1}.practice-cards article>span{font:32px Georgia,serif;color:#457b5c}.practice-cards h3{margin-top:18px;font-size:20px}.practice-cards p{font-size:14px}
+@media print{#positions{padding-top:30px}#positions h2{font-size:40px}.position-facts{margin:25px 0;gap:30px}.position-facts p{font-size:12px}.position-facts .big-number{font-size:72px}.position-share{margin:25px 0 30px}.position-track{height:24px}.practice-cards{gap:14px;margin:22px 0}.practice-cards article{padding:18px 14px}.practice-cards h3{font-size:15px}.practice-cards p{font-size:10px}#positions .callout{font-size:11px}#positions .small{font-size:9px}}
+
+.leaderboard-section th:nth-child(2){text-align:left}

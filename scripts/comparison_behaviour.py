@@ -134,6 +134,11 @@ def build_comparison_behaviour(data_root=None):
         # Build uniqueness in one sorted pass rather than random writes per row.
         db.execute('CREATE UNIQUE INDEX unique_games ON events(id)')
         db.execute('CREATE INDEX chronology ON events(account,created,id)')
+        casual_leaders = []
+        for account, count in sorted(accounts['casual'].items(), key=lambda item: (-item[1], item[0]))[:10]:
+            per_bot = dict(db.execute("SELECT bot,count(*) FROM events WHERE mode='casual' AND account=? GROUP BY bot", (account,)))
+            casual_leaders.append({'account': account, 'games': count,
+                                   'per_bot': {bot: per_bot.get(bot, 0) for bot in ('maia1', 'maia5', 'maia9')}})
         top_account = min(sept,key=lambda a:(-sept[a],a))
         outlier_sept = sept[top_account]
         for clock,speed,standard,n in db.execute('SELECT clock,speed,standard,count(*) FROM events WHERE mode="casual" AND account=? GROUP BY clock,speed,standard',(top_account,)):
@@ -240,6 +245,7 @@ def build_comparison_behaviour(data_root=None):
         'scope':{'start_utc_inclusive':'2023-10-04T00:00:00Z','end_utc_exclusive':'2026-10-04T09:00:00Z','time_basis':'last recorded move','games':dict(totals)},
         'definitions':{
             'activity':'Game counts per public opposing account within each format; IDs are not necessarily distinct people. Median includes one-game accounts. Top1% selects max(1,round(accounts*.01)) most active accounts; share denominator all format games.',
+            'casual_top_accounts':'Ten identified opposing accounts with most casual games across all variants in the observation window; descending games, ties ascending handle. Per-bot counts partition each total.',
             'outcomes':'Opponent perspective: winner white/black gives win/loss. Draw only for draw/stalemate status and no winner, other no-winner statuses unknown.',
             'quick_return':'First next observed game of the same opponent across both formats, ordered by created timestamp then game ID; 0–600 seconds from prior last recorded move. Last move may precede actual resignation or flagging. Same/opposite format counts partition all quick returns; no formal rematch claim.',
             'eligible':'Known account, created<=last recorded move, last recorded move at least10 minutes before scope end; no-next games included. Outside-scope, other-opponent, or private activity unobserved.',
@@ -248,6 +254,7 @@ def build_comparison_behaviour(data_root=None):
             'matched_outcomes':'Known outcome, non-cheat standard games; same account, bot, exact clock, speed, and opponent color, >=10 games per format. One stratum per account: maximize smaller mode game count, then combined game count, ties ascending(bot,clock-string,speed,color). Means weight accounts equally. Whole-period formats need not coincide in time; mean-created-time gaps are reported. Not a randomized or causal comparison.',
             'outlier':'Identify largest September2026 casual account, then remove ALL its casual games across full observation window for full-window clock/speed sensitivity; report September count separately. No assertion about identity or motive.'},
         'modes':{m:{'games':totals[m],'accounts':len(accounts[m]),'median_games_per_account':statistics.median(accounts[m].values()),'one_game_accounts':sum(n==1 for n in accounts[m].values()),'one_game_accounts_pct':pct(sum(n==1 for n in accounts[m].values()),len(accounts[m])),'top_1pct_games':sum(sorted(accounts[m].values(),reverse=True)[:max(1,round(len(accounts[m])*.01))]),'bot_shares':shares(bots[m],totals[m]),'top_clocks':shares(clocks[m],totals[m],8),'speed_shares':shares(speeds[m],totals[m]),'variant_counts':dict(variants[m])} for m in MODES},
+        'casual_top_accounts':casual_leaders,
         'variant_outcomes':[{'mode':m,'variant':v,'games':sum(c.values()),**{k:c[k] for k in ('win','loss','draw','unknown')}} for (m,v),c in sorted(variant_outcomes.items())],
         'quick_returns_all_variants':quick_rows('all_variants'),'quick_returns_standard':quick_rows('standard'),
         'shared_regular_accounts_standard':{'accounts':len(regular),'minimum_eligible_games_per_mode':10,'rates':shared_rates},

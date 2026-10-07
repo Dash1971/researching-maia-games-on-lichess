@@ -10,6 +10,7 @@
   },
   "definitions": {
     "activity": "Game counts per public opposing account within each format; IDs are not necessarily distinct people. Median includes one-game accounts. Top1% selects max(1,round(accounts*.01)) most active accounts; share denominator all format games.",
+    "casual_top_accounts": "Ten identified opposing accounts with most casual games across all variants in the observation window; descending games, ties ascending handle. Per-bot counts partition each total.",
     "outcomes": "Opponent perspective: winner white/black gives win/loss. Draw only for draw/stalemate status and no winner, other no-winner statuses unknown.",
     "quick_return": "First next observed game of the same opponent across both formats, ordered by created timestamp then game ID; 0–600 seconds from prior last recorded move. Last move may precede actual resignation or flagging. Same/opposite format counts partition all quick returns; no formal rematch claim.",
     "eligible": "Known account, created<=last recorded move, last recorded move at least10 minutes before scope end; no-next games included. Outside-scope, other-opponent, or private activity unobserved.",
@@ -205,6 +206,98 @@
       }
     }
   },
+  "casual_top_accounts": [
+    {
+      "account": "scissorsharpness",
+      "games": 63504,
+      "per_bot": {
+        "maia1": 57310,
+        "maia5": 6193,
+        "maia9": 1
+      }
+    },
+    {
+      "account": "top1mostplayedgames",
+      "games": 27506,
+      "per_bot": {
+        "maia1": 4999,
+        "maia5": 12042,
+        "maia9": 10465
+      }
+    },
+    {
+      "account": "jm_fosho",
+      "games": 12356,
+      "per_bot": {
+        "maia1": 692,
+        "maia5": 363,
+        "maia9": 11301
+      }
+    },
+    {
+      "account": "quiron2903",
+      "games": 8758,
+      "per_bot": {
+        "maia1": 8708,
+        "maia5": 45,
+        "maia9": 5
+      }
+    },
+    {
+      "account": "djwunited",
+      "games": 8660,
+      "per_bot": {
+        "maia1": 8577,
+        "maia5": 54,
+        "maia9": 29
+      }
+    },
+    {
+      "account": "svart7",
+      "games": 8650,
+      "per_bot": {
+        "maia1": 2761,
+        "maia5": 3697,
+        "maia9": 2192
+      }
+    },
+    {
+      "account": "kftpolaris",
+      "games": 7285,
+      "per_bot": {
+        "maia1": 0,
+        "maia5": 0,
+        "maia9": 7285
+      }
+    },
+    {
+      "account": "hutschigutschi",
+      "games": 7262,
+      "per_bot": {
+        "maia1": 2,
+        "maia5": 1813,
+        "maia9": 5447
+      }
+    },
+    {
+      "account": "mabotti",
+      "games": 5738,
+      "per_bot": {
+        "maia1": 1588,
+        "maia5": 3108,
+        "maia9": 1042
+      }
+    },
+    {
+      "account": "offroadtrip",
+      "games": 5628,
+      "per_bot": {
+        "maia1": 1132,
+        "maia5": 0,
+        "maia9": 4496
+      }
+    }
+  ],
   "variant_outcomes": [
     {
       "mode": "casual",
