@@ -1,0 +1,493 @@
+{
+  "scope": {
+    "start_utc_inclusive": "2023-10-04T00:00:00Z",
+    "end_utc_exclusive": "2026-10-04T09:00:00Z",
+    "time_basis": "last recorded move (last_move_at_ms)"
+  },
+  "rated": {
+    "bot_game_entries": 1425567,
+    "unique_games": 1425567,
+    "per_bot": {
+      "maia1": 835333,
+      "maia5": 288278,
+      "maia9": 301956
+    },
+    "opposing_accounts": 93020,
+    "missing_opponent_ids": 147,
+    "missing_opponent_ratings": 0,
+    "missing_clocks": 0,
+    "speed": {
+      "rapid": 659704,
+      "blitz": 433649,
+      "classical": 164289,
+      "bullet": 167925
+    },
+    "top_controls": [
+      {
+        "label": "10+0",
+        "games": 214879
+      },
+      {
+        "label": "5+3",
+        "games": 142986
+      },
+      {
+        "label": "10+5",
+        "games": 87149
+      },
+      {
+        "label": "3+2",
+        "games": 67850
+      },
+      {
+        "label": "15+10",
+        "games": 66378
+      },
+      {
+        "label": "3+0",
+        "games": 40455
+      },
+      {
+        "label": "5+0",
+        "games": 38838
+      },
+      {
+        "label": "10+3",
+        "games": 37962
+      },
+      {
+        "label": "1+0",
+        "games": 34849
+      },
+      {
+        "label": "3+1",
+        "games": 31186
+      }
+    ],
+    "rating": {
+      "game_weighted_mean": 1515,
+      "account_weighted_mean": 1438
+    },
+    "accounts": {
+      "one_game": 42055,
+      "top_one_percent_game_share": 0.5771
+    },
+    "bot_win_share_of_decisive": {
+      "maia1": 0.5669,
+      "maia5": 0.5252,
+      "maia9": 0.5494
+    },
+    "games_without_winner": 106811,
+    "first_12_complete_months": 350152,
+    "last_12_complete_months": 628041,
+    "partial_october": {
+      "2023-10": 29225,
+      "2026-10": 6919
+    },
+    "source": {
+      "friend": 1425567
+    },
+    "variant": {
+      "standard": 1425567
+    }
+  },
+  "casual": {
+    "bot_game_entries": 2040728,
+    "unique_games": 2040728,
+    "per_bot": {
+      "maia1": 1199409,
+      "maia5": 420487,
+      "maia9": 420832
+    },
+    "opposing_accounts": 128628,
+    "missing_opponent_ids": 2,
+    "missing_opponent_ratings": 0,
+    "missing_clocks": 0,
+    "speed": {
+      "classical": 260688,
+      "rapid": 1005130,
+      "blitz": 529111,
+      "bullet": 245799
+    },
+    "top_controls": [
+      {
+        "label": "10+0",
+        "games": 339890
+      },
+      {
+        "label": "5+3",
+        "games": 190489
+      },
+      {
+        "label": "10+5",
+        "games": 138747
+      },
+      {
+        "label": "1+0",
+        "games": 128979
+      },
+      {
+        "label": "15+10",
+        "games": 119119
+      },
+      {
+        "label": "3+2",
+        "games": 93182
+      },
+      {
+        "label": "5+0",
+        "games": 80528
+      },
+      {
+        "label": "3+0",
+        "games": 59453
+      },
+      {
+        "label": "10+3",
+        "games": 55079
+      },
+      {
+        "label": "30+0",
+        "games": 41569
+      }
+    ],
+    "rating": {
+      "game_weighted_mean": 1499,
+      "account_weighted_mean": 1458
+    },
+    "accounts": {
+      "one_game": 52836,
+      "top_one_percent_game_share": 0.5397
+    },
+    "bot_win_share_of_decisive": {
+      "maia1": 0.7057,
+      "maia5": 0.6662,
+      "maia9": 0.6635
+    },
+    "games_without_winner": 108645,
+    "first_12_complete_months": 478675,
+    "last_12_complete_months": 659197,
+    "partial_october": {
+      "2023-10": 35051,
+      "2026-10": 5407
+    },
+    "source": {
+      "friend": 2040728
+    },
+    "variant": {
+      "standard": 1922672,
+      "fromPosition": 118056
+    }
+  },
+  "combined_unique_games": 3466295,
+  "account_overlap": {
+    "both": 23542,
+    "rated_only": 69478,
+    "casual_only": 105086
+  },
+  "monthly_complete": [
+    {
+      "month": "2023-11",
+      "rated": 30789,
+      "casual": 37961,
+      "rated_accounts": 1471,
+      "casual_accounts": 2913,
+      "casual_share_pct": 55.2
+    },
+    {
+      "month": "2023-12",
+      "rated": 32797,
+      "casual": 41787,
+      "rated_accounts": 1675,
+      "casual_accounts": 3230,
+      "casual_share_pct": 56.0
+    },
+    {
+      "month": "2024-01",
+      "rated": 33894,
+      "casual": 45377,
+      "rated_accounts": 1722,
+      "casual_accounts": 3201,
+      "casual_share_pct": 57.2
+    },
+    {
+      "month": "2024-02",
+      "rated": 30512,
+      "casual": 39625,
+      "rated_accounts": 1547,
+      "casual_accounts": 2921,
+      "casual_share_pct": 56.5
+    },
+    {
+      "month": "2024-03",
+      "rated": 30691,
+      "casual": 36860,
+      "rated_accounts": 1634,
+      "casual_accounts": 3122,
+      "casual_share_pct": 54.6
+    },
+    {
+      "month": "2024-04",
+      "rated": 32366,
+      "casual": 37772,
+      "rated_accounts": 1531,
+      "casual_accounts": 3170,
+      "casual_share_pct": 53.9
+    },
+    {
+      "month": "2024-05",
+      "rated": 28243,
+      "casual": 41035,
+      "rated_accounts": 1574,
+      "casual_accounts": 3230,
+      "casual_share_pct": 59.2
+    },
+    {
+      "month": "2024-06",
+      "rated": 27907,
+      "casual": 36696,
+      "rated_accounts": 1590,
+      "casual_accounts": 3339,
+      "casual_share_pct": 56.8
+    },
+    {
+      "month": "2024-07",
+      "rated": 23790,
+      "casual": 37126,
+      "rated_accounts": 1480,
+      "casual_accounts": 2865,
+      "casual_share_pct": 60.9
+    },
+    {
+      "month": "2024-08",
+      "rated": 26523,
+      "casual": 40086,
+      "rated_accounts": 1536,
+      "casual_accounts": 3354,
+      "casual_share_pct": 60.2
+    },
+    {
+      "month": "2024-09",
+      "rated": 24564,
+      "casual": 40973,
+      "rated_accounts": 1442,
+      "casual_accounts": 3650,
+      "casual_share_pct": 62.5
+    },
+    {
+      "month": "2024-10",
+      "rated": 28076,
+      "casual": 43377,
+      "rated_accounts": 1696,
+      "casual_accounts": 3969,
+      "casual_share_pct": 60.7
+    },
+    {
+      "month": "2024-11",
+      "rated": 27576,
+      "casual": 56331,
+      "rated_accounts": 1870,
+      "casual_accounts": 5564,
+      "casual_share_pct": 67.1
+    },
+    {
+      "month": "2024-12",
+      "rated": 33373,
+      "casual": 70247,
+      "rated_accounts": 2334,
+      "casual_accounts": 8372,
+      "casual_share_pct": 67.8
+    },
+    {
+      "month": "2025-01",
+      "rated": 38540,
+      "casual": 72644,
+      "rated_accounts": 2662,
+      "casual_accounts": 9630,
+      "casual_share_pct": 65.3
+    },
+    {
+      "month": "2025-02",
+      "rated": 32924,
+      "casual": 76833,
+      "rated_accounts": 2476,
+      "casual_accounts": 9697,
+      "casual_share_pct": 70.0
+    },
+    {
+      "month": "2025-03",
+      "rated": 34668,
+      "casual": 90658,
+      "rated_accounts": 2771,
+      "casual_accounts": 11441,
+      "casual_share_pct": 72.3
+    },
+    {
+      "month": "2025-04",
+      "rated": 35497,
+      "casual": 88045,
+      "rated_accounts": 2576,
+      "casual_accounts": 10809,
+      "casual_share_pct": 71.3
+    },
+    {
+      "month": "2025-05",
+      "rated": 41839,
+      "casual": 87068,
+      "rated_accounts": 2742,
+      "casual_accounts": 10542,
+      "casual_share_pct": 67.5
+    },
+    {
+      "month": "2025-06",
+      "rated": 45212,
+      "casual": 86642,
+      "rated_accounts": 2839,
+      "casual_accounts": 10351,
+      "casual_share_pct": 65.7
+    },
+    {
+      "month": "2025-07",
+      "rated": 44253,
+      "casual": 94206,
+      "rated_accounts": 2882,
+      "casual_accounts": 10622,
+      "casual_share_pct": 68.0
+    },
+    {
+      "month": "2025-08",
+      "rated": 36975,
+      "casual": 88007,
+      "rated_accounts": 3001,
+      "casual_accounts": 10749,
+      "casual_share_pct": 70.4
+    },
+    {
+      "month": "2025-09",
+      "rated": 40373,
+      "casual": 51717,
+      "rated_accounts": 4900,
+      "casual_accounts": 5531,
+      "casual_share_pct": 56.2
+    },
+    {
+      "month": "2025-10",
+      "rated": 34230,
+      "casual": 41113,
+      "rated_accounts": 5983,
+      "casual_accounts": 5335,
+      "casual_share_pct": 54.6
+    },
+    {
+      "month": "2025-11",
+      "rated": 42285,
+      "casual": 48117,
+      "rated_accounts": 6676,
+      "casual_accounts": 5790,
+      "casual_share_pct": 53.2
+    },
+    {
+      "month": "2025-12",
+      "rated": 46219,
+      "casual": 51522,
+      "rated_accounts": 7477,
+      "casual_accounts": 6081,
+      "casual_share_pct": 52.7
+    },
+    {
+      "month": "2026-01",
+      "rated": 37901,
+      "casual": 36904,
+      "rated_accounts": 6526,
+      "casual_accounts": 5529,
+      "casual_share_pct": 49.3
+    },
+    {
+      "month": "2026-02",
+      "rated": 39859,
+      "casual": 37835,
+      "rated_accounts": 6476,
+      "casual_accounts": 5473,
+      "casual_share_pct": 48.7
+    },
+    {
+      "month": "2026-03",
+      "rated": 49409,
+      "casual": 43919,
+      "rated_accounts": 6699,
+      "casual_accounts": 4895,
+      "casual_share_pct": 47.1
+    },
+    {
+      "month": "2026-04",
+      "rated": 57231,
+      "casual": 54656,
+      "rated_accounts": 7877,
+      "casual_accounts": 5071,
+      "casual_share_pct": 48.8
+    },
+    {
+      "month": "2026-05",
+      "rated": 70936,
+      "casual": 75823,
+      "rated_accounts": 9169,
+      "casual_accounts": 5570,
+      "casual_share_pct": 51.7
+    },
+    {
+      "month": "2026-06",
+      "rated": 67643,
+      "casual": 52004,
+      "rated_accounts": 8310,
+      "casual_accounts": 5104,
+      "casual_share_pct": 43.5
+    },
+    {
+      "month": "2026-07",
+      "rated": 58820,
+      "casual": 49317,
+      "rated_accounts": 7105,
+      "casual_accounts": 4915,
+      "casual_share_pct": 45.6
+    },
+    {
+      "month": "2026-08",
+      "rated": 62377,
+      "casual": 53754,
+      "rated_accounts": 6379,
+      "casual_accounts": 4594,
+      "casual_share_pct": 46.3
+    },
+    {
+      "month": "2026-09",
+      "rated": 61131,
+      "casual": 114233,
+      "rated_accounts": 5923,
+      "casual_accounts": 4446,
+      "casual_share_pct": 65.1
+    }
+  ],
+  "september_2026_concentration": {
+    "handle": "scissorsharpness",
+    "games": 63504,
+    "share_of_september_pct": 55.6,
+    "september_without_account": 50729,
+    "august_games": 53754,
+    "september_accounts": 4446,
+    "august_accounts": 4594,
+    "one_plus_zero_games": 63504,
+    "by_bot": {
+      "maia1": 57310,
+      "maia5": 6193,
+      "maia9": 1
+    },
+    "growth_excluding_account_pct": 24.4
+  },
+  "limitations": [
+    "Partial October 2023 and October 2026 are excluded from month comparisons.",
+    "Account handles are not verified unique people; prolific accounts affect game-weighted metrics.",
+    "A seven-day game-start lookback cannot guarantee capture of games lasting longer than seven days across the starting edge.",
+    "No moves, PGNs, or chat were collected; opening names are source metadata.",
+    "Rated and casual players, clocks, and bot choices differ. Descriptive comparisons are not causal effects."
+  ]
+}

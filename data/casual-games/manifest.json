@@ -1,0 +1,109 @@
+{
+  "dataset": "Casual games involving official Lichess Maia 1, 5, and 9 bots",
+  "source": "Lichess user-game export API, filtered to casual (rated=false) games",
+  "source_url": "https://lichess.org/api#operation/apiGamesUser",
+  "start_utc_inclusive": "2023-10-04T00:00:00Z",
+  "end_utc_exclusive": "2026-10-04T09:00:00Z",
+  "time_basis": "last_move_at_ms (game finish)",
+  "records": 2040728,
+  "distinct_game_ids": 2040728,
+  "fields": [
+    "bot",
+    "game_id",
+    "opponent_id",
+    "created_at_ms",
+    "last_move_at_ms",
+    "bot_color",
+    "winner",
+    "status",
+    "speed",
+    "perf",
+    "variant",
+    "source",
+    "opening_eco",
+    "opening_name",
+    "bot_rating",
+    "opponent_rating",
+    "clock_initial_seconds",
+    "clock_increment_seconds"
+  ],
+  "shards": [
+    {
+      "file": "maia1_2023.csv.gz",
+      "rows": 57706,
+      "bytes": 1972296,
+      "sha256": "ab949cc5fdc1db03aad2876b5f4986e91a5d6d93938fdbd3c023f62701b009a0"
+    },
+    {
+      "file": "maia1_2024.csv.gz",
+      "rows": 274824,
+      "bytes": 9402304,
+      "sha256": "3f60e65a8c6ed88eee26c4ba71dfb02b753992089a008265ca2c461db40c2057"
+    },
+    {
+      "file": "maia1_2025.csv.gz",
+      "rows": 542885,
+      "bytes": 18733377,
+      "sha256": "949b46fd33a3aebdd947176e22afb8e31fd857a0a583c62cd565bffc63c625f0"
+    },
+    {
+      "file": "maia1_2026.csv.gz",
+      "rows": 323994,
+      "bytes": 10408898,
+      "sha256": "e17b3ae9cfc26d4e52be82c55746c7ed654420118e894de67fd48ed3884f4edc"
+    },
+    {
+      "file": "maia5_2023.csv.gz",
+      "rows": 29015,
+      "bytes": 1001379,
+      "sha256": "969dbea63dbd3ae36a377d8df94b960195e0cbd6e11d7521ca55d9588c712f01"
+    },
+    {
+      "file": "maia5_2024.csv.gz",
+      "rows": 115447,
+      "bytes": 3972983,
+      "sha256": "4648f1a18cff00d93041f0ae7c12d94866dd396739e0657e039f59622cfaad22"
+    },
+    {
+      "file": "maia5_2025.csv.gz",
+      "rows": 162602,
+      "bytes": 5654554,
+      "sha256": "2b137b24194ff8ba9d7b690661a7fcb01e6d3fd05a76d95b2abeeb468fddaf1c"
+    },
+    {
+      "file": "maia5_2026.csv.gz",
+      "rows": 113423,
+      "bytes": 3652557,
+      "sha256": "ffee58ee5b767096fb580703a505947322d6fd7d047681e507b27c3095fad9bd"
+    },
+    {
+      "file": "maia9_2023.csv.gz",
+      "rows": 28078,
+      "bytes": 971718,
+      "sha256": "9d29ce0ac7a6169ebdf9a3895ff0295059b7f3f6537b2e5138a60b3dadeb7051"
+    },
+    {
+      "file": "maia9_2024.csv.gz",
+      "rows": 135234,
+      "bytes": 4618847,
+      "sha256": "784f7050c9ce02a87b5e85d936014057a94ce49f284e9f1b7e1ff610258f0f58"
+    },
+    {
+      "file": "maia9_2025.csv.gz",
+      "rows": 171085,
+      "bytes": 5935608,
+      "sha256": "c16ca05d4ed52945783eeb04cd3e87fb370a3bc6dc26c485e7581e0f2d64d8b6"
+    },
+    {
+      "file": "maia9_2026.csv.gz",
+      "rows": 86435,
+      "bytes": 2886923,
+      "sha256": "1665e5a1eb3c79e7c2629e961e68c8af3d80cd1472c021026aa096fe5c880746"
+    }
+  ],
+  "notes": [
+    "One CSV row per bot/game pair; no Maia-versus-Maia duplicates occurred in this window.",
+    "The export contains metadata only. Moves, PGNs, chat and private account details were not collected.",
+    "Opponent IDs are public Lichess account handles; 2 records have no opponent ID."
+  ]
+}
