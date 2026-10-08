@@ -6,7 +6,7 @@ Independent research on official [Maia 1](https://lichess.org/@/maia1), [Maia 5]
 
 **New supplement:** [Casual versus rated visual comparison](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json) · [Behavior comparisons](data/comparison_behaviour.json)
 
-**High-volume account case study:** [Two contrasting Maia game patterns](maia-account-patterns.html) · [Case-study PDF](20261008_v1_maia_account_patterns.pdf) · [Full public moves, available clocks, hashes and methods](data/account-cases/README.md). Both accounts' public profiles currently return `disabled: true` without a reason; the game records cannot establish a ban, Terms-of-Service violation, automation, or who controlled either account.
+**High-volume account case study:** [Two contrasting Maia game patterns](https://dash1971.github.io/researching-maia-games-on-lichess/maia-account-patterns.html) · [Case-study PDF](20261008_v1_maia_account_patterns.pdf) · [Full public moves, available clocks, hashes and methods](data/account-cases/README.md). Both accounts' saved public profile responses from October 8, 2026 return `disabled: true` without a reason; the game records cannot establish a ban, Terms-of-Service violation, automation, or who controlled either account.
 
 In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) also shows a sensitivity check excluding only that account’s September 2026 games. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
 
@@ -26,7 +26,7 @@ For **2,982 accounts regularly playing standard games in both formats**, an acco
 
 ## What is published
 
-- All **rated and casual game metadata** saved by the downloaders: 12 year/bot CSV.gz shards per format with public Lichess opponent handles and game IDs. Row counts and SHA-256 hashes are in the [rated](data/rated-games/manifest.json) and [casual](data/casual-games/manifest.json) manifests. No moves, PGNs, chat, private identity mapping, or credentials were collected or included.
+- All **rated and casual game metadata** saved by the downloaders: 12 year/bot CSV.gz shards per format with public Lichess opponent handles and game IDs. Row counts and SHA-256 hashes are in the [rated](data/rated-games/manifest.json) and [casual](data/casual-games/manifest.json) manifests. These bulk metadata files contain no moves or starting boards. A separate follow-up publishes moves, FENs and available clocks for 91,010 games from the top two casual accounts. No chat, private identity mapping or credentials are included.
 - A [field guide](data/rated-games/README.md), [aggregate JSON](data/rated_summary.json), [fan-insight JSON](data/fan_insights.json), and Python standard-library scripts to export and rebuild the report.
 - A more visual report: all-time rated/casual bars, monthly rated-game chart, public-account leaderboard, repeat-play concentration, clocks, ratings, and openings, plus results by color, rating bands, and quick returns after wins or losses.
 - A separate [casual/rated supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) with a complete-month trend, account activity, clocks, quick returns across formats, and matched standard-game scores. The behavior JSON separates all collected games from standard-only comparisons and includes sensitivity checks. The original rated-focused report is unchanged.
@@ -34,6 +34,8 @@ For **2,982 accounts regularly playing standard games in both formats**, an acco
 From the repository root, verify the frozen datasets and reproduce all three HTML reports, their aggregate JSON, and the monthly CSV offline:
 
 ```sh
+python3 -m pip install chess==1.11.2
+python3 scripts/verify_account_mates.py
 python3 scripts/build_rated_report.py
 python3 scripts/build_casual_comparison.py
 python3 scripts/build_account_case_studies.py
@@ -56,6 +58,6 @@ In a selected group of 1,066 persistent accounts (about 1.15% of the 93,020 obse
 
 Sources: Lichess [profiles](https://lichess.org/api#operation/apiUser), [bot crosstables](https://lichess.org/api#operation/apiCrosstable), and [user-game export](https://lichess.org/api#operation/apiGamesUser). The old Insights slices were stale and are **not** used for the three-year analysis. The filtered export's observed 10,000-response cap was handled with smaller date ranges; see the [methods](RESEARCH_PLAN.md).
 
-Public account handles are not proof of distinct people. Neither ratings nor movement between bot levels show that Maia caused improvement. Casual/rated comparisons are observational: account mix, clocks, and bot choices differ. Opening names are Lichess metadata, reached by both players; first moves cannot be recovered without moves. The three-year exports are frozen sets of observed games, not guaranteed censuses: public metadata cannot independently prove that the API returned every eligible game. The all-time profile counters are a moving snapshot, not a complete all-time game-level archive.
+Public account handles are not proof of distinct people. Neither ratings nor movement between bot levels show that Maia caused improvement. Casual/rated comparisons are observational: account mix, clocks, and bot choices differ. Opening names are Lichess metadata, reached by both players; first moves cannot be recovered from the bulk metadata; move-level inspection is limited to the two-account follow-up. The three-year exports are frozen sets of observed games, not guaranteed censuses: public metadata cannot independently prove that the API returned every eligible game. The all-time profile counters are a moving snapshot, not a complete all-time game-level archive.
 
 The MIT license applies to original code, report writing, and visuals—not to Lichess or player-originated data. Consult [Lichess's terms](https://lichess.org/terms-of-service) and the [Lichess open database's separate license statement](https://database.lichess.org/). Independent fan research; not an official Lichess or Maia publication.

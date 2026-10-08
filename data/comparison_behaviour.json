@@ -298,6 +298,10 @@
       }
     }
   ],
+  "top_two_casual_accounts_rated_games": {
+    "scissorsharpness": 7,
+    "top1mostplayedgames": 0
+  },
   "variant_outcomes": [
     {
       "mode": "casual",

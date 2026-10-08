@@ -219,9 +219,9 @@ def main():
             "Partial October 2023 and October 2026 are excluded from month comparisons.",
             "Account handles are not verified unique people; prolific accounts affect game-weighted metrics.",
             "A seven-day game-start lookback cannot guarantee capture of games lasting longer than seven days across the starting edge.",
-            "No moves, PGNs, or chat were collected; opening names are source metadata.",
+            "Bulk metadata omits moves, starting boards and chat; a separate two-account follow-up includes public moves and FENs. Opening names are source metadata.",
             "Rated and casual accounts, clocks, bot choices and variant tags differ. Descriptive comparisons are not causal effects.",
-            "Casual includes fromPosition games; exact starting FENs were not collected. Standard-tagged subsets are shown separately.",
+            "Casual includes fromPosition games. Exact starting FENs are absent from the bulk metadata; the separate two-account follow-up collected them. Standard-tagged subsets are shown separately.",
             "Outcome percentages use all games as denominator unless explicitly labeled decisive-only or score.",
         ],
     }
@@ -232,7 +232,9 @@ def main():
     print("Computing cross-format behaviour…", flush=True)
     behaviour = build_behaviour()
     (ROOT / "data" / "comparison_behaviour.json").write_text(json.dumps(behaviour, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (ROOT / "casual-vs-rated.html").write_text(render(data, behaviour), encoding="utf-8")
+    from build_account_case_studies import main as build_cases
+    cases = build_cases(verbose=False)
+    (ROOT / "casual-vs-rated.html").write_text(render(data, behaviour, cases), encoding="utf-8")
     with (ROOT / "data" / "casual_comparison_monthly.csv").open("w", encoding="utf-8", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=("month", "rated", "casual", "casual_share_pct", "rated_accounts", "casual_accounts"), lineterminator="\n")
         writer.writeheader()

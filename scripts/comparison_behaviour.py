@@ -255,6 +255,7 @@ def build_comparison_behaviour(data_root=None):
             'outlier':'Identify largest September2026 casual account, then remove ALL its casual games across full observation window for full-window clock/speed sensitivity; report September count separately. No assertion about identity or motive.'},
         'modes':{m:{'games':totals[m],'accounts':len(accounts[m]),'median_games_per_account':statistics.median(accounts[m].values()),'one_game_accounts':sum(n==1 for n in accounts[m].values()),'one_game_accounts_pct':pct(sum(n==1 for n in accounts[m].values()),len(accounts[m])),'top_1pct_games':sum(sorted(accounts[m].values(),reverse=True)[:max(1,round(len(accounts[m])*.01))]),'bot_shares':shares(bots[m],totals[m]),'top_clocks':shares(clocks[m],totals[m],8),'speed_shares':shares(speeds[m],totals[m]),'variant_counts':dict(variants[m])} for m in MODES},
         'casual_top_accounts':casual_leaders,
+        'top_two_casual_accounts_rated_games':{row['account']:accounts['rated'][row['account']] for row in casual_leaders[:2]},
         'variant_outcomes':[{'mode':m,'variant':v,'games':sum(c.values()),**{k:c[k] for k in ('win','loss','draw','unknown')}} for (m,v),c in sorted(variant_outcomes.items())],
         'quick_returns_all_variants':quick_rows('all_variants'),'quick_returns_standard':quick_rows('standard'),
         'shared_regular_accounts_standard':{'accounts':len(regular),'minimum_eligible_games_per_mode':10,'rates':shared_rates},

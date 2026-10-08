@@ -14,6 +14,7 @@ records were recovered by their known IDs through Lichess's
 | `manifest.json` | Byte sizes, row counts, and SHA-256 hashes for both files |
 | `profile_status_20261008.json` | Minimal public profile-API snapshots, with retrieval time |
 | `summary.json` | Reproducible comparisons and daily counts |
+| `replay_verification.json` | Move replay, checkmate and starting-board validity checks |
 
 ## Observed patterns
 
@@ -24,6 +25,8 @@ records were recovered by their known IDs through Lichess's
   and one by resignation. This account contributed 23.3% of the broader
   casual corpus's `fromPosition` games. Its median gap between starts was
   2.09 seconds.
+
+All 27,505 mate-tagged games replay to checkmate on their supplied boards. However, 10,052 games use a starting board with 17 white pieces, including eight pawns; it fails basic orthodox validity. Passing basic validity for the other five boards does not prove historical reachability.
 
 These are behavioral descriptions, **not** findings of rule violations.
 
@@ -43,7 +46,7 @@ to verify the existing casual CSV manifest, both raw-game file hashes, every
 selected game ID and core metadata field, and regenerate `summary.json`.
 The analysis does not need a private database, API credentials, or new network
 requests.
-For a separate legal-move/checkmate replay of every custom-position game,
+For a separate move/checkmate replay and starting-board validity audit of every custom-position game,
 install the optional `chess==1.11.2` Python package and run
 `python3 scripts/verify_account_mates.py`. The published CI does this check;
 the library is not bundled into the repository.
@@ -55,7 +58,7 @@ the library is not bundled into the repository.
 - A public handle is not proof of a unique person. Game exports do not reveal
   who controlled an account, how a challenge was created, or whether moves
   came through the GUI or an official API.
-- Both profile responses currently contain `disabled: true` but **no public
+- Both saved profile responses contain `disabled: true` but **no public
   enforcement reason**. The flag alone does not establish a ban, cheating,
   automation, or a Terms-of-Service finding.
 - Observed Maia games are not all games these accounts may have played. The

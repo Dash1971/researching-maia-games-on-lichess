@@ -51,6 +51,29 @@
         "account_win": 8,
         "no_winner": 4
       },
+      "per_bot_outcomes": {
+        "maia1": {
+          "games": 57310,
+          "win": 57299,
+          "draw": 1,
+          "loss": 7,
+          "unknown": 3
+        },
+        "maia5": {
+          "games": 6193,
+          "win": 6192,
+          "draw": 0,
+          "loss": 1,
+          "unknown": 0
+        },
+        "maia9": {
+          "games": 1,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "unknown": 0
+        }
+      },
       "variant": {
         "standard": 63504
       },
@@ -205,6 +228,29 @@
       },
       "outcome": {
         "maia_win": 27506
+      },
+      "per_bot_outcomes": {
+        "maia1": {
+          "games": 4999,
+          "win": 4999,
+          "draw": 0,
+          "loss": 0,
+          "unknown": 0
+        },
+        "maia5": {
+          "games": 12042,
+          "win": 12042,
+          "draw": 0,
+          "loss": 0,
+          "unknown": 0
+        },
+        "maia9": {
+          "games": 10465,
+          "win": 10465,
+          "draw": 0,
+          "loss": 0,
+          "unknown": 0
+        }
       },
       "variant": {
         "fromPosition": 27506

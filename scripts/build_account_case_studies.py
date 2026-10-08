@@ -80,6 +80,7 @@ def analyze_account(account, metadata, input_spec):
     controls = collections.Counter()
     bots = collections.Counter()
     outcomes = collections.Counter()
+    bot_outcomes = collections.defaultdict(collections.Counter)
     fen_and_moves = collections.Counter()
     fens = collections.Counter()
     move_lists = collections.Counter()
@@ -102,6 +103,10 @@ def analyze_account(account, metadata, input_spec):
             assert game["lastMoveAt"] == int(row["last_move_at_ms"])
             assert game["status"] == row["status"]
             assert game["variant"] == row["variant"]
+            assert game.get("winner", "") == row["winner"], gid
+            assert game["speed"] == row["speed"], gid
+            assert game["clock"]["initial"] == int(row["clock_initial_seconds"]), gid
+            assert game["clock"]["increment"] == int(row["clock_increment_seconds"]), gid
             assert {side.get("user", {}).get("id") for side in game["players"].values()} >= {account, row["bot"]}
             account_color = "white" if game["players"]["white"].get("user", {}).get("id") == account else "black"
             assert account_color != row["bot_color"]
@@ -117,6 +122,10 @@ def analyze_account(account, metadata, input_spec):
             controls[f'{row["clock_initial_seconds"]}+{row["clock_increment_seconds"]}'] += 1
             bots[row["bot"]] += 1
             winner = game.get("winner")
+            bot_result = ("win" if winner == row["bot_color"] else "loss" if winner in ("white", "black")
+                          else "draw" if not winner and game["status"] in ("draw", "stalemate") else "unknown")
+            bot_outcomes[row["bot"]]["games"] += 1
+            bot_outcomes[row["bot"]][bot_result] += 1
             outcomes["account_win" if winner == account_color else "maia_win" if winner in ("white", "black") else "no_winner"] += 1
             fen = game.get("initialFen") or "standard start"
             fens[fen] += 1
@@ -126,6 +135,8 @@ def analyze_account(account, metadata, input_spec):
             last_move_lags.append((game["lastMoveAt"] - game["createdAt"]) / 1000)
             daily[iso(game["createdAt"])[:10]] += 1
     assert seen == set(metadata) and len(seen) == input_spec["records"]
+    assert all(counts["games"] == sum(counts[key] for key in ("win", "draw", "loss", "unknown"))
+               for counts in bot_outcomes.values())
     starts.sort()
     gaps = [(b - a) / 1000 for a, b in zip(starts, starts[1:])]
     left = 0
@@ -149,6 +160,8 @@ def analyze_account(account, metadata, input_spec):
         "account": account, "games": len(seen), "first_start_utc": iso(starts[0]), "last_start_utc": iso(starts[-1]),
         "active_utc_days": len(daily), "by_utc_day": dict(sorted(daily.items())),
         "bot": dict(bots), "status": dict(statuses), "outcome": dict(outcomes),
+        "per_bot_outcomes": {bot: {key: counts[key] for key in ("games", "win", "draw", "loss", "unknown")}
+                         for bot, counts in sorted(bot_outcomes.items())},
         "variant": dict(variants), "speed": dict(speeds), "top_exact_controls_seconds": controls.most_common(8),
         "plies": {"median": percentile(plies, .5), "p90": percentile(plies, .9),
                   "one": sum(x == 1 for x in plies), "at_most_six": sum(x <= 6 for x in plies)},
@@ -164,7 +177,7 @@ def analyze_account(account, metadata, input_spec):
     }
 
 
-def main():
+def main(verbose=True):
     metadata, leaders, from_position = read_published_casual_metadata()
     manifest = json.loads((CASES / "manifest.json").read_text(encoding="utf-8"))
     results = {account: analyze_account(account, metadata[account], manifest["accounts"][account]) for account in ACCOUNTS}
@@ -177,7 +190,9 @@ def main():
                            "public game exports do not reveal who controlled an account or which interface created a challenge",
                            "a disabled profile flag gives no public reason for closure or restriction"]}
     (CASES / "summary.json").write_text(json.dumps(out,indent=2,ensure_ascii=False) + "\n",encoding="utf-8")
-    print(json.dumps({a:{"games":x["games"],"status":x["status"],"plies":x["plies"],"account_moves":x["account_moves"],"top_position_and_move":x["top_position_and_move"][:2]} for a,x in results.items()},indent=2))
+    if verbose:
+        print(json.dumps({a:{"games":x["games"],"status":x["status"],"plies":x["plies"],"account_moves":x["account_moves"],"top_position_and_move":x["top_position_and_move"][:2]} for a,x in results.items()},indent=2))
+    return out
 
 
 if __name__ == "__main__":

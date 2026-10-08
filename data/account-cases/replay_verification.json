@@ -1,0 +1,15 @@
+{
+  "chess_version": "1.11.2",
+  "games_replayed": 27506,
+  "checkmates_on_supplied_boards": 27505,
+  "one_ply": 27504,
+  "invalid_initial_boards": 10052,
+  "invalid_initial_fens_status": {
+    "rkbq1bnr/pQpppppp/Kp6/1Q6/8/8/PPPPPPPP/RNB2BNR b - - 0 1": {
+      "games": 10052,
+      "status": 64,
+      "reason": "too many white pieces"
+    }
+  },
+  "validity_limit": "Basic validity checks do not prove historical reachability."
+}
