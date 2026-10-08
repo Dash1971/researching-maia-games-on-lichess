@@ -1,0 +1,16 @@
+{
+  "observed_utc": "2026-10-08T07:31:24+00:00",
+  "source": "https://lichess.org/api/user/{username}",
+  "accounts": {
+    "scissorsharpness": {
+      "id": "scissorsharpness",
+      "username": "Scissorsharpness",
+      "disabled": true
+    },
+    "top1mostplayedgames": {
+      "id": "top1mostplayedgames",
+      "username": "top1mostplayedgames",
+      "disabled": true
+    }
+  }
+}

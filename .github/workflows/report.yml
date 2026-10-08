@@ -22,6 +22,11 @@ jobs:
           persist-credentials: false
       - name: Test analysis
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Independently replay custom-position mates
+        run: |
+          python3 -m pip install chess==1.11.2
+          python3 scripts/verify_account_mates.py
+          git diff --exit-code -- data/account-cases/replay_verification.json
       - name: Verify data and reproduce report
         run: |
           python3 scripts/build_rated_report.py
@@ -38,11 +43,18 @@ jobs:
           test -s data/comparison_behaviour.json
           test -s data/casual_comparison_monthly.csv
           git diff --exit-code -- casual-vs-rated.html data/casual_comparison.json data/casual_comparison_monthly.csv data/comparison_behaviour.json
+      - name: Verify high-volume account case studies
+        run: |
+          python3 scripts/build_account_case_studies.py
+          python3 scripts/render_account_case_studies.py
+          test -s data/account-cases/summary.json
+          test -s maia-account-patterns.html
+          git diff --exit-code -- data/account-cases/summary.json maia-account-patterns.html
       - name: Stage public report
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
           mkdir -p _site
-          cp index.html maia-fan-report.pdf casual-vs-rated.html 20261008_v0_maia_casual_comparison.pdf README.md RESEARCH_PLAN.md _site/
+          cp index.html maia-fan-report.pdf casual-vs-rated.html 20261008_v0_maia_casual_comparison.pdf maia-account-patterns.html 20261008_v1_maia_account_patterns.pdf README.md RESEARCH_PLAN.md _site/
           cp -R data _site/data
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

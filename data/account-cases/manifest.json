@@ -1,0 +1,18 @@
+{
+  "source": "Lichess bulk export of known game IDs from the published casual Maia corpus",
+  "retrieved_utc_date": "2026-10-08",
+  "accounts": {
+    "scissorsharpness": {
+      "file": "scissorsharpness.ndjson.gz",
+      "records": 63504,
+      "bytes": 2487902,
+      "sha256": "c3eef0f7e21e5e5c0179274e332a6b757e6f8ed3ce9bf195d97a888d15f4f6c4"
+    },
+    "top1mostplayedgames": {
+      "file": "top1mostplayedgames.ndjson.gz",
+      "records": 27506,
+      "bytes": 577516,
+      "sha256": "a881b58abdad5d7a27e12710e98743481750d8a65da63fcebd9b19b63f405a57"
+    }
+  }
+}
