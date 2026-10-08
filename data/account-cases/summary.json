@@ -1,0 +1,392 @@
+{
+  "scope": "Collected casual games versus official Maia 1, 5 and 9 in the published three-year window; not account-wide histories",
+  "casual_corpus_games": 2040728,
+  "casual_from_position_games": 118056,
+  "leaderboard_top_two": [
+    {
+      "account": "scissorsharpness",
+      "games": 63504
+    },
+    {
+      "account": "top1mostplayedgames",
+      "games": 27506
+    }
+  ],
+  "accounts": {
+    "scissorsharpness": {
+      "account": "scissorsharpness",
+      "games": 63504,
+      "first_start_utc": "2026-09-08T11:34:34.507000+00:00",
+      "last_start_utc": "2026-09-22T11:54:12.691000+00:00",
+      "active_utc_days": 14,
+      "by_utc_day": {
+        "2026-09-08": 296,
+        "2026-09-09": 2002,
+        "2026-09-10": 1994,
+        "2026-09-12": 3136,
+        "2026-09-13": 3913,
+        "2026-09-14": 22,
+        "2026-09-15": 3986,
+        "2026-09-16": 8003,
+        "2026-09-17": 4647,
+        "2026-09-18": 2445,
+        "2026-09-19": 13104,
+        "2026-09-20": 12287,
+        "2026-09-21": 4973,
+        "2026-09-22": 2696
+      },
+      "bot": {
+        "maia1": 57310,
+        "maia5": 6193,
+        "maia9": 1
+      },
+      "status": {
+        "resign": 63343,
+        "mate": 144,
+        "outoftime": 16,
+        "draw": 1
+      },
+      "outcome": {
+        "maia_win": 63492,
+        "account_win": 8,
+        "no_winner": 4
+      },
+      "variant": {
+        "standard": 63504
+      },
+      "speed": {
+        "bullet": 63504
+      },
+      "top_exact_controls_seconds": [
+        [
+          "60+0",
+          63504
+        ]
+      ],
+      "plies": {
+        "median": 4,
+        "p90": 6,
+        "one": 0,
+        "at_most_six": 57911
+      },
+      "account_moves": {
+        "median": 2,
+        "zero": 0
+      },
+      "start_gap_seconds": {
+        "median": 3.71,
+        "p90": 5.8
+      },
+      "start_to_last_move_seconds": {
+        "median": 2.191,
+        "p90": 3.349
+      },
+      "peak_rolling_hour": {
+        "games": 1667,
+        "from_utc": "2026-09-20T04:48:55.211000+00:00",
+        "to_utc": "2026-09-20T05:48:54.731000+00:00"
+      },
+      "longest_no_gap_over_30_seconds": {
+        "games": 9890,
+        "span_hours": 7.45,
+        "first_start_utc": "2026-09-20T01:23:33.911000+00:00",
+        "last_start_utc": "2026-09-20T08:50:40.830000+00:00"
+      },
+      "unique_initial_positions": 1,
+      "unique_move_lists": 13916,
+      "top_initial_positions": [
+        {
+          "fen": "standard start",
+          "games": 63504
+        }
+      ],
+      "top_move_lists": [
+        {
+          "moves": "d4 d5 Nf3 Nc6",
+          "games": 530
+        },
+        {
+          "moves": "Nf3 d5",
+          "games": 436
+        },
+        {
+          "moves": "e4 e5 Nf3 Nc6 Bc4",
+          "games": 411
+        },
+        {
+          "moves": "e4 e5 Nf3 Nc6",
+          "games": 411
+        },
+        {
+          "moves": "e4 e5",
+          "games": 390
+        },
+        {
+          "moves": "f3 e5 g3 d5",
+          "games": 389
+        },
+        {
+          "moves": "e4 Nc6 Nf3",
+          "games": 370
+        },
+        {
+          "moves": "d4 d5 Nf3 Nf6",
+          "games": 365
+        }
+      ],
+      "top_position_and_move": [
+        {
+          "fen": "standard start",
+          "moves": "d4 d5 Nf3 Nc6",
+          "games": 530
+        },
+        {
+          "fen": "standard start",
+          "moves": "Nf3 d5",
+          "games": 436
+        },
+        {
+          "fen": "standard start",
+          "moves": "e4 e5 Nf3 Nc6 Bc4",
+          "games": 411
+        },
+        {
+          "fen": "standard start",
+          "moves": "e4 e5 Nf3 Nc6",
+          "games": 411
+        },
+        {
+          "fen": "standard start",
+          "moves": "e4 e5",
+          "games": 390
+        },
+        {
+          "fen": "standard start",
+          "moves": "f3 e5 g3 d5",
+          "games": 389
+        },
+        {
+          "fen": "standard start",
+          "moves": "e4 Nc6 Nf3",
+          "games": 370
+        },
+        {
+          "fen": "standard start",
+          "moves": "d4 d5 Nf3 Nf6",
+          "games": 365
+        }
+      ]
+    },
+    "top1mostplayedgames": {
+      "account": "top1mostplayedgames",
+      "games": 27506,
+      "first_start_utc": "2026-04-28T19:46:40.308000+00:00",
+      "last_start_utc": "2026-05-06T21:09:05.285000+00:00",
+      "active_utc_days": 9,
+      "by_utc_day": {
+        "2026-04-28": 294,
+        "2026-04-29": 1257,
+        "2026-04-30": 5841,
+        "2026-05-01": 488,
+        "2026-05-02": 2263,
+        "2026-05-03": 2579,
+        "2026-05-04": 1248,
+        "2026-05-05": 3482,
+        "2026-05-06": 10054
+      },
+      "bot": {
+        "maia1": 4999,
+        "maia5": 12042,
+        "maia9": 10465
+      },
+      "status": {
+        "mate": 27505,
+        "resign": 1
+      },
+      "outcome": {
+        "maia_win": 27506
+      },
+      "variant": {
+        "fromPosition": 27506
+      },
+      "speed": {
+        "rapid": 1551,
+        "bullet": 17565,
+        "classical": 1210,
+        "blitz": 7180
+      },
+      "top_exact_controls_seconds": [
+        [
+          "120+1",
+          10052
+        ],
+        [
+          "60+0",
+          5330
+        ],
+        [
+          "300+0",
+          3641
+        ],
+        [
+          "300+3",
+          3539
+        ],
+        [
+          "0+1",
+          2183
+        ],
+        [
+          "600+5",
+          1551
+        ],
+        [
+          "1800+0",
+          1210
+        ]
+      ],
+      "plies": {
+        "median": 1,
+        "p90": 1,
+        "one": 27504,
+        "at_most_six": 27506
+      },
+      "account_moves": {
+        "median": 0,
+        "zero": 27504
+      },
+      "start_gap_seconds": {
+        "median": 2.092,
+        "p90": 4.041
+      },
+      "start_to_last_move_seconds": {
+        "median": 0.699,
+        "p90": 1.838
+      },
+      "peak_rolling_hour": {
+        "games": 1769,
+        "from_utc": "2026-05-06T17:20:39.047000+00:00",
+        "to_utc": "2026-05-06T18:20:39.006000+00:00"
+      },
+      "longest_no_gap_over_30_seconds": {
+        "games": 8393,
+        "span_hours": 4.79,
+        "first_start_utc": "2026-05-06T15:36:53.001000+00:00",
+        "last_start_utc": "2026-05-06T20:23:59.176000+00:00"
+      },
+      "unique_initial_positions": 6,
+      "unique_move_lists": 5,
+      "top_initial_positions": [
+        {
+          "fen": "rkbq1bnr/pQpppppp/Kp6/1Q6/8/8/PPPPPPPP/RNB2BNR b - - 0 1",
+          "games": 10052
+        },
+        {
+          "fen": "rkq2bnr/pQ1ppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "games": 5841
+        },
+        {
+          "fen": "rkq2bnr/pQpppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "games": 5330
+        },
+        {
+          "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 0 1",
+          "games": 3484
+        },
+        {
+          "fen": "1kq5/1Q6/Kp6/1P6/8/8/8/8 b - - 0 1",
+          "games": 1551
+        },
+        {
+          "fen": "rkbq1bnr/pQpppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "games": 1248
+        }
+      ],
+      "top_move_lists": [
+        {
+          "moves": "Qxb7#",
+          "games": 12722
+        },
+        {
+          "moves": "Bxb7#",
+          "games": 11300
+        },
+        {
+          "moves": "Qxf7#",
+          "games": 3482
+        },
+        {
+          "moves": "Nf3 d5 Bxd5",
+          "games": 1
+        },
+        {
+          "moves": "Nf3 c6 Qxf7#",
+          "games": 1
+        }
+      ],
+      "top_position_and_move": [
+        {
+          "fen": "rkbq1bnr/pQpppppp/Kp6/1Q6/8/8/PPPPPPPP/RNB2BNR b - - 0 1",
+          "moves": "Bxb7#",
+          "games": 10052
+        },
+        {
+          "fen": "rkq2bnr/pQ1ppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "moves": "Qxb7#",
+          "games": 5841
+        },
+        {
+          "fen": "rkq2bnr/pQpppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "moves": "Qxb7#",
+          "games": 5330
+        },
+        {
+          "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 0 1",
+          "moves": "Qxf7#",
+          "games": 3482
+        },
+        {
+          "fen": "1kq5/1Q6/Kp6/1P6/8/8/8/8 b - - 0 1",
+          "moves": "Qxb7#",
+          "games": 1551
+        },
+        {
+          "fen": "rkbq1bnr/pQpppppp/Kp6/1P6/8/8/P1PPPPPP/RNB2BNR b - - 0 1",
+          "moves": "Bxb7#",
+          "games": 1248
+        },
+        {
+          "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 0 1",
+          "moves": "Nf3 d5 Bxd5",
+          "games": 1
+        },
+        {
+          "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 0 1",
+          "moves": "Nf3 c6 Qxf7#",
+          "games": 1
+        }
+      ]
+    }
+  },
+  "profile_snapshot": {
+    "observed_utc": "2026-10-08T07:31:24+00:00",
+    "source": "https://lichess.org/api/user/{username}",
+    "accounts": {
+      "scissorsharpness": {
+        "id": "scissorsharpness",
+        "username": "Scissorsharpness",
+        "disabled": true
+      },
+      "top1mostplayedgames": {
+        "id": "top1mostplayedgames",
+        "username": "top1mostplayedgames",
+        "disabled": true
+      }
+    }
+  },
+  "limitations": [
+    "lastMoveAt can precede resignation or time expiry and is not exact game duration",
+    "public game exports do not reveal who controlled an account or which interface created a challenge",
+    "a disabled profile flag gives no public reason for closure or restriction"
+  ]
+}

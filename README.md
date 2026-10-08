@@ -6,6 +6,8 @@ Independent research on official [Maia 1](https://lichess.org/@/maia1), [Maia 5]
 
 **New supplement:** [Casual versus rated visual comparison](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) · [Supplement PDF](20261008_v0_maia_casual_comparison.pdf) · [Casual game metadata](data/casual-games/README.md) · [Comparison aggregates](data/casual_comparison.json) · [Behavior comparisons](data/comparison_behaviour.json)
 
+**High-volume account case study:** [Two contrasting Maia game patterns](maia-account-patterns.html) · [Case-study PDF](20261008_v1_maia_account_patterns.pdf) · [Full public moves, available clocks, hashes and methods](data/account-cases/README.md). Both accounts' public profiles currently return `disabled: true` without a reason; the game records cannot establish a ban, Terms-of-Service violation, automation, or who controlled either account.
+
 In the three-year exports, casual games number **2,040,728** versus **1,425,567** rated games. Across comparable complete-year periods, rated games grew **79.4%** and casual games **37.7%**; one public account generated over half of September 2026's casual games, so the [supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) also shows a sensitivity check excluding only that account’s September 2026 games. These are observed game counts, not counts of people or evidence that one format causes different outcomes.
 
 ## Three scopes
@@ -29,18 +31,20 @@ For **2,982 accounts regularly playing standard games in both formats**, an acco
 - A more visual report: all-time rated/casual bars, monthly rated-game chart, public-account leaderboard, repeat-play concentration, clocks, ratings, and openings, plus results by color, rating bands, and quick returns after wins or losses.
 - A separate [casual/rated supplement](https://dash1971.github.io/researching-maia-games-on-lichess/casual-vs-rated.html) with a complete-month trend, account activity, clocks, quick returns across formats, and matched standard-game scores. The behavior JSON separates all collected games from standard-only comparisons and includes sensitivity checks. The original rated-focused report is unchanged.
 
-From the repository root, verify the frozen datasets and reproduce both HTML reports, their aggregate JSON, and the monthly CSV offline:
+From the repository root, verify the frozen datasets and reproduce all three HTML reports, their aggregate JSON, and the monthly CSV offline:
 
 ```sh
 python3 scripts/build_rated_report.py
 python3 scripts/build_casual_comparison.py
+python3 scripts/build_account_case_studies.py
+python3 scripts/render_account_case_studies.py
 ```
 
 These scripts check shard hashes and row counts, game time windows and unique IDs, and final record counts. The supplement builder also checks that no game ID occurs in both formats. To re-export shards from compatible, privately obtained SQLite sources, run `python3 scripts/export_rated_games.py --db /path/to/rated.sqlite3` and `python3 scripts/export_casual_games.py --db /path/to/casual.sqlite3`. The working databases and access token are **not** in this repository.
 
 The static report is self-contained: its charts and interactions work without remote assets, analytics, or tracking. GitHub Actions runs the analysis tests and checks that rebuilding produces no changes to the committed HTML or JSON. Validated changes on `main` publish the report and data to GitHub Pages.
 
-Both PDFs are A4 print renderings of their generated HTML pages, made with headless Chrome and its `--no-pdf-header-footer` option. The HTML pages are the reproducible report sources; they require no remote assets.
+The PDFs are A4 print renderings of their generated HTML pages, made with headless Chrome and its `--no-pdf-header-footer` option. The HTML pages are the reproducible report sources; they require no remote assets.
 
 The older profile/Insights [snapshot JSON](data/summary.json), [PDF](https://github.com/Dash1971/researching-maia-games-on-lichess/blob/main/20261004_v1_researching_maia_games_report.pdf), and scripts are retained for provenance. **That PDF is superseded** by the new rated-game report.
 
